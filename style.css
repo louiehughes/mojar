@@ -5,28 +5,26 @@ body {
   font-family: sans-serif;
 }
 
+/* Logo in top-left */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo {
+  width: 400px;
+}
+
+/* Centered georgio image */
 .container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 40px 20px;
 }
 
-/* New flex container for logo + georgio image */
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 20px;
-}
-
-/* Logo styling */
-.logo {
-  width: 400px;
-  margin: 0;
-}
-
-/* Georgio image styling */
 .georgio {
   width: 600px;
   max-width: 90%;
-  margin-left: 20px;
 }
