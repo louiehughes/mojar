@@ -5,23 +5,24 @@ body {
   font-family: sans-serif;
 }
 
-/* Logo in top-left */
+/* Logo in true top-left corner */
 .logo-container {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
+  z-index: 10; /* make sure it’s above other content */
 }
 
 .logo {
-  width: 250px;
+  width: 250px; /* smaller and subtler */
 }
 
-/* Centered georgio image */
+/* Georgio image centered on page */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 60px 20px; /* extra top padding to give space for logo */
 }
 
 .georgio {
