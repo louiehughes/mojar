@@ -1,7 +1,21 @@
 body {
   background-color: white;
-  color: black; /* optional: in case your text was light before */
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.georgio {
+  width: 600px; 
+  max-width: 90%;
 }
