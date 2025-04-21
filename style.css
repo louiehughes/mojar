@@ -8,7 +8,7 @@ body {
 /* Logo in true top-left corner */
 .logo-container {
   position: absolute;
-  top: 0px;
+  top: -10px;
   left: 10px;
   z-index: 10; /* make sure it’s above other content */
 }
