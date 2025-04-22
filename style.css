@@ -2,7 +2,10 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #111;
 }
 
 /* Logo in true top-left corner */
@@ -10,11 +13,11 @@ body {
   position: absolute;
   top: -10px;
   left: 10px;
-  z-index: 10; /* make sure it’s above other content */
+  z-index: 10;
 }
 
 .logo {
-  width: 250px; /* smaller and subtler */
+  width: 250px;
 }
 
 /* Georgio image centered on page */
@@ -22,12 +25,31 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 20px; /* extra top padding to give space for logo */
+  padding: 60px 20px;
 }
 
 .georgio {
   width: 600px;
   max-width: 90%;
   margin-top: 2cm;
+}
+
+/* Text block styling */
+.text-block {
+  max-width: 800px;
+  margin: 60px auto 100px auto;
+  padding: 0 20px;
+  font-size: 1.05rem;
+}
+
+.text-block h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.text-block p {
+  margin-bottom: 20px;
 }
 
