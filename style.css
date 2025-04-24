@@ -105,6 +105,7 @@ body {
 
 /* Reveal on hover */
 .recipe-tab:hover {
+  background-color: lightblue;
   right: 0;
 }
 
