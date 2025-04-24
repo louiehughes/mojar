@@ -7,7 +7,7 @@ body {
   line-height: 1.6;
 }
 
-/* Logo in top-left with scroll effect */
+/* Logo scrolls with parallax effect */
 .logo-container {
   position: absolute;
   top: -10px;
@@ -20,7 +20,7 @@ body {
   transition: transform 0.2s ease-out;
 }
 
-/* Georgio image centered on page */
+/* Georgio image center */
 .container {
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ body {
   margin-top: 2cm;
 }
 
-/* Text styling */
+/* Main content */
 .text-content {
   max-width: 800px;
   margin: 0 auto;
@@ -42,15 +42,15 @@ body {
   font-size: 18px;
 }
 
-/* Mirto styling */
+/* Mirto image layout */
 .mirto-wrapper {
   position: relative;
-  margin-bottom: 60px;
+  margin: 80px 0;
 }
 
 .mirto-background {
   position: absolute;
-  top: 10px;
+  top: 0;
   left: -120px;
   width: 280px;
   opacity: 0.6;
@@ -79,6 +79,7 @@ body {
   border-radius: 8px;
   flex-shrink: 0;
 }
+
 
 
 
