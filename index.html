@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <title>mojar</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+  .mirto-background {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    opacity: 0.75;
+    width: 120px;
+    z-index: 10;
+    transition: transform 0.1s ease-out;
+  }
+</style>
 </head>
 <body>
   <!-- Logo in top-left corner -->
@@ -56,6 +67,15 @@
 
     <p>Through storytelling, food, and the building of living archives, we aim not just to preserve what was, but to lay the foundations for what could be. We believe the future lies in remembering, and reimagining, the past.</p>
   </div>
+  <script>
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const mirto = document.querySelector('.mirto-background');
+    if (mirto) {
+      mirto.style.transform = `translateY(${scrollY * 0.1}px)`;
+    }
+  });
+</script>
 </body>
 </html>
 
