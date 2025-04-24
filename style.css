@@ -54,6 +54,26 @@ body {
   border-radius: 12px;
 }
 
+.mirto-wrapper {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.mirto-background {
+  position: absolute;
+  left: -100px;
+  top: 10px;
+  width: 300px;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mirto-wrapper p {
+  position: relative;
+  z-index: 1;
+}
+
 
 
 
