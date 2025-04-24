@@ -108,6 +108,24 @@ body {
   right: 0;
 }
 
+/* Visible tab element */
+.recipe-tab::before {
+  content: "Recipes";
+  position: absolute;
+  left: -2.5cm;
+  top: 40%;
+  width: 2.5cm;
+  writing-mode: vertical-rl;
+  text-align: center;
+  background-color: #eee;
+  color: #333;
+  padding: 10px 5px;
+  border: 1px solid #ccc;
+  border-left: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 /* Gallery inside the tab */
 .recipe-gallery {
   display: flex;
