@@ -88,6 +88,46 @@ body {
   flex-shrink: 0;
 }
 
+/* Recipe sidebar tab */
+.recipe-tab {
+  position: fixed;
+  top: 100px;
+  right: -18cm; /* Hides it almost entirely */
+  width: 20cm;
+  height: 80vh;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.4s ease;
+  z-index: 9;
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
+}
+
+/* Reveal on hover */
+.recipe-tab:hover {
+  right: 0;
+}
+
+/* Gallery inside the tab */
+.recipe-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.recipe-gallery img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.recipe-gallery img:hover {
+  transform: scale(1.02);
+}
+
+
 
 
 
