@@ -10,7 +10,7 @@ body {
 /* Logo scrolls with parallax effect */
 .logo-container {
   position: fixed;
-  top: 10px;
+  top: -10px;
   left: 10px;
   z-index: 10;
   pointer-events: none; /* prevents it from interfering with interactions */
