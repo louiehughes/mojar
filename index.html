@@ -87,6 +87,25 @@
   });
 </script>
 
+<script>
+  const galleryImages = document.querySelectorAll('.recipe-gallery img');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    galleryImages.forEach((img, i) => {
+      img.style.opacity = i === index ? '1' : '0'; // Show only the selected image
+      img.style.transform = i === index ? 'scale(1)' : 'scale(0.9)'; // Scale effect
+    });
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('mouseenter', () => showImage(index)); // Trigger on hover
+  });
+
+  // Initial display: show the first image
+  showImage(currentIndex);
+</script>
+
 <div class="recipe-tab">
   <div class="recipe-gallery">
     <img src="Images for website/stintino sign.jpeg" alt="Recipe 1">
