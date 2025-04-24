@@ -130,21 +130,26 @@ body {
 /* Gallery inside the tab */
 .recipe-gallery {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Keeps the layout vertical but we'll hide overflow */
   gap: 10px;
-  padding: 20px;
+  height: 100%; /* Full height of the tab */
+  overflow: hidden; /* Hides extra images */
 }
 
 .recipe-gallery img {
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s; /* Smooth appearance/disappearance */
+  opacity: 0; /* Initially hidden */
+  transform: scale(0.9); /* Slightly shrunk */
 }
 
 .recipe-gallery img:hover {
-  transform: scale(1.02);
+  transform: scale(1); /* Enlarge slightly on hover */
+  opacity: 1; /* Reveal image */
 }
+
 
 
 
