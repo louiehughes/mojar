@@ -7,7 +7,7 @@ body {
   line-height: 1.6;
 }
 
-/* Logo in true top-left corner */
+/* Logo in top-left with scroll effect */
 .logo-container {
   position: absolute;
   top: -10px;
@@ -17,6 +17,7 @@ body {
 
 .logo {
   width: 250px;
+  transition: transform 0.2s ease-out;
 }
 
 /* Georgio image centered on page */
@@ -41,19 +42,7 @@ body {
   font-size: 18px;
 }
 
-/* Section with mirto image */
-.mirto-section {
-  margin-bottom: 40px;
-}
-
-.mirto-image {
-  display: block;
-  max-width: 400px;
-  width: 100%;
-  margin: 20px auto;
-  border-radius: 12px;
-}
-
+/* Mirto styling */
 .mirto-wrapper {
   position: relative;
   margin-bottom: 60px;
@@ -61,19 +50,20 @@ body {
 
 .mirto-background {
   position: absolute;
-  left: -100px;
   top: 10px;
-  width: 300px;
-  opacity: 0.75;
-  z-index: 0;
+  left: -120px;
+  width: 280px;
+  opacity: 0.6;
+  z-index: 1;
   pointer-events: none;
 }
 
 .mirto-wrapper p {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
+/* Gallery */
 .gallery {
   display: flex;
   overflow-x: auto;
@@ -89,6 +79,7 @@ body {
   border-radius: 8px;
   flex-shrink: 0;
 }
+
 
 
 
