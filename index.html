@@ -75,13 +75,15 @@
     <img src="Images for website/stone table.jpeg" alt="Image 17">
   </div>
 
-  <!-- Parallax logo scroll -->
  <script>
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     const logo = document.getElementById('mojarLogo');
     if (logo) {
-      logo.style.transform = `translateY(${scrollY * 0.3}px)`; // adjust the 0.3 to control scroll speed
+      const maxScroll = 150; // max distance the logo moves down
+      const scrollFactor = 0.3;
+      const offset = Math.min(scrollY * scrollFactor, maxScroll);
+      logo.style.transform = `translateY(${offset}px)`;
     }
   });
 </script>
