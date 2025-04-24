@@ -76,15 +76,16 @@
   </div>
 
   <!-- Parallax logo scroll -->
-  <script>
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const logo = document.getElementById('mojarLogo');
-      if (logo) {
-        logo.style.transform = `translateY(${scrollY * 0.3}px)`; // slow scroll
-      }
-    });
-  </script>
+ <script>
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const logo = document.getElementById('mojarLogo');
+    if (logo) {
+      logo.style.transform = `translateY(${scrollY * 0.3}px)`; // adjust the 0.3 to control scroll speed
+    }
+  });
+</script>
+
 </body>
 </html>
 
