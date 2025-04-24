@@ -92,7 +92,7 @@ body {
 .recipe-tab {
   position: fixed;
   top: 100px;
-  right: -18cm; /* Hides it almost entirely */
+  right: -25cm; /* Hides it almost entirely */
   width: 20cm;
   height: 80vh;
   background-color: white;
