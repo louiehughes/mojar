@@ -47,7 +47,7 @@ body {
 /* Mirto image layout */
 .mirto-wrapper {
   position: relative;
-  margin: 80px 0;
+  margin-bottom: 2rem; /* controls space after mirto section */
 }
 
 .mirto-background {
@@ -63,6 +63,12 @@ body {
 .mirto-wrapper p {
   position: relative;
   z-index: 2;
+  margin-bottom: 0.5rem; /* tightens the spacing */
+}
+
+/* Fix double-spacing issue after mirto section */
+.mirto-wrapper + p {
+  margin-top: 0.5rem;
 }
 
 /* Gallery */
@@ -81,6 +87,7 @@ body {
   border-radius: 8px;
   flex-shrink: 0;
 }
+
 
 
 
