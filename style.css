@@ -9,15 +9,17 @@ body {
 
 /* Logo scrolls with parallax effect */
 .logo-container {
-  position: absolute;
-  top: -10px;
+  position: fixed;
+  top: 10px;
   left: 10px;
   z-index: 10;
+  pointer-events: none; /* prevents it from interfering with interactions */
 }
 
 .logo {
   width: 250px;
-  transition: transform 0.2s ease-out;
+  transform: translateY(0px);
+  transition: transform 0.1s ease-out;
 }
 
 /* Georgio image center */
