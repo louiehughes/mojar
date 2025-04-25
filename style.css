@@ -16,6 +16,15 @@ img {
 a img {
   border: none;
 }
+img {
+  border: none !important; /* Removes all borders */
+  outline: none !important; /* Removes any outlines */
+  box-shadow: none !important; /* Removes shadow effects */
+  padding: 0;
+  margin: 0; /* Ensure no margins contribute visually */
+  background: transparent !important; /* Eliminate background artifacts */
+}
+
 
 /* Logo scrolls with parallax effect */
 .logo-container {
