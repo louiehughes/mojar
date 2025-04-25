@@ -173,11 +173,12 @@ img {
   height: 8cm; /* Explicit height for the spring */
   width: auto; /* Maintain natural aspect ratio */
   cursor: pointer;
-  z-index: 10; /* Keep it above other elements */
+  z-index: 10; /* Keeps it above other elements */
   overflow: hidden; /* Ensures no extra content leaks outside */
   box-sizing: border-box; /* Ensures padding and borders are factored in properly */
 }
 
+/* Spring image styling */
 .spring-img {
   max-height: 100%; /* Fits within the spring's height */
   width: auto; /* Maintains aspect ratio */
@@ -189,9 +190,11 @@ img {
   right: 0; /* Reveal recipe tab when hovering over the spring */
 }
 
-.recipe-tab {
-  right: -20cm; /* Hide tab again when not hovered */
+/* Hide spring when the recipe gallery is open */
+.recipe-tab:hover ~ .spring {
+  display: none; /* Hides the spring completely */
 }
+
 
 
 
