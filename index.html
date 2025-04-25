@@ -104,6 +104,20 @@
 
   // Initial display: show the first image
   showImage(currentIndex);
+<script>
+  const recipeGallery = document.querySelector('.recipe-gallery');
+  const scrollLeftBtn = document.querySelector('.scroll-left');
+  const scrollRightBtn = document.querySelector('.scroll-right');
+
+  scrollLeftBtn.addEventListener('click', () => {
+    recipeGallery.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+
+  scrollRightBtn.addEventListener('click', () => {
+    recipeGallery.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+</script>
+
 </script>
 
 <div class="recipe-tab">
