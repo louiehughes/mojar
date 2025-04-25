@@ -152,7 +152,7 @@ body {
 .spring {
   position: fixed; /* Ensures it stays fixed while scrolling */
   top: 50%; /* Vertically centers the spring */
-  right: 0; /* Aligns the spring to the right-hand edge */
+  right: 1cm; /* Aligns the spring to the right-hand edge */
   transform: translateY(-50%); /* Corrects vertical centering */
   height: 8cm; /* Explicit height for the spring */
   width: auto; /* Maintain natural aspect ratio */
