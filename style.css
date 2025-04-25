@@ -6,6 +6,10 @@ body {
   color: #222;
   line-height: 1.6;
 }
+/* Utility Classes */
+.hidden {
+  display: none; /* Completely hides the element */
+}
 img {
   border: none !important;
   outline: none !important;
