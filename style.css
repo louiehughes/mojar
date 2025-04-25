@@ -97,11 +97,10 @@ body {
   width: 20cm;
   height: 80vh;
   background-color: transparent;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   transition: right 0.4s ease;
   z-index: 9;
   overflow: hidden;
-  border-left: 1px solid #ccc;
+  border-left: 0px solid #ccc;
 }
 
 /* Reveal on hover */
