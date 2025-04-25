@@ -109,8 +109,7 @@ body {
   right: 0;
 }
 
-/* Visible tab element */
-.recipe-tab::before {
+/* .recipe-tab::before {
   content: "Recipes";
   position: absolute;
   left: -2.5cm;
@@ -125,7 +124,8 @@ body {
   border-left: none;
   font-weight: bold;
   cursor: pointer;
-}
+} */
+
 
 /* Gallery inside the tab */
 .recipe-gallery {
