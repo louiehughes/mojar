@@ -7,28 +7,6 @@ body {
   line-height: 1.6;
 }
 
-img {
-  border: none;
-  outline: none;
-  padding: 0;
-}
-
-a img {
-  border: none;
-}
-img {
-  border: none !important; /* Removes all borders */
-  outline: none !important; /* Removes any outlines */
-  box-shadow: none !important; /* Removes shadow effects */
-  padding: 0;
-  margin: 0; /* Ensure no margins contribute visually */
-  background: transparent !important; /* Eliminate background artifacts */
-}
-img {
-  border-radius: 8px; /* Matches your current styling */
-  overflow: hidden;
-}
-
 
 /* Logo scrolls with parallax effect */
 .logo-container {
