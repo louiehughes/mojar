@@ -7,7 +7,6 @@ body {
   line-height: 1.6;
 }
 
-
 /* Logo scrolls with parallax effect */
 .logo-container {
   position: fixed;
@@ -92,84 +91,45 @@ body {
 /* Recipe sidebar tab */
 .recipe-tab {
   position: fixed;
-  top: 100px;
-  right: -19.5cm; /* Hides it almost entirely */
+  top: 0;
+  right: -20cm; /* Hides it almost entirely */
   width: 20cm;
-  height: 80vh;
+  height: 100vh; /* Full height */
   background-color: transparent;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   border: none;
-  transition: right 0.4s ease;
+  transition: right 0.4s ease; /* Smooth transition */
   z-index: 9;
   overflow: hidden;
-  border-left: none;
 }
 
-/* Reveal on hover */
 .recipe-tab:hover {
   background-color: transparent;
-  right: 0;
+  right: 0; /* Reveal when hovering over the tab */
 }
-
-/* .recipe-tab::before {
-  content: "Recipes";
-  position: absolute;
-  left: -2.5cm;
-  top: 40%;
-  width: 2.5cm;
-  writing-mode: vertical-rl;
-  text-align: center;
-  background-color: #eee;
-  color: #333;
-  padding: 10px 5px;
-  border: 1px solid #ccc;
-  border-left: none;
-  font-weight: bold;
-  cursor: pointer;
-} */
-
 
 /* Gallery inside the tab */
 .recipe-gallery {
   display: flex;
-  flex-direction: row; /* Keeps the layout vertical but we'll hide overflow */
+  flex-direction: row;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   gap: 10px;
   padding: 20px;
-  height: 100%; 
+  height: 100%;
 }
 
-
 .recipe-gallery img:hover {
-  transform: scale(1); /* Enlarge slightly on hover */
-  opacity: 1; /* Reveal image */
+  transform: scale(1);
+  opacity: 1;
 }
 
 .scroll-left,
 .scroll-right {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: black; /* or another color you like */
-  cursor: pointer;
-  z-index: 10;
-  padding: 0;
-  line-height: 1;
-}
-
-.scroll-left {
-  left: 10px;
-}
-
-.scroll-right {
-  right: 10px;
-}
-
-
+  transform
 
 
 
