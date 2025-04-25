@@ -92,7 +92,7 @@ body {
 .recipe-tab {
   position: fixed;
   top: 0;
-  right: -17cm; /* Hides it almost entirely */
+  right: -20cm; /* Hides it almost entirely */
   width: 20cm;
   height: 100vh; /* Full height */
   background-color: transparent;
@@ -129,7 +129,49 @@ body {
 .scroll-right {
   position: absolute;
   top: 50%;
-  transform
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  line-height: 1;
+}
+
+.scroll-left {
+  left: 10px;
+}
+
+.scroll-right {
+  right: 10px;
+}
+
+/* Spring Styling */
+.spring {
+  position: fixed; /* Stays visible as you scroll */
+  top: 50%; /* Vertically centers the spring */
+  right: 0; /* Fixed to the right edge */
+  transform: translateY(-50%); /* Fine-tuned centering */
+  cursor: pointer;
+  z-index: 10;
+}
+
+.spring-img {
+  width: auto; /* Maintain original proportions */
+  height: 100px; /* Adjust to fit your design */
+  display: block;
+}
+
+/* Interaction Between Spring and Recipe Tab */
+.spring:hover + .recipe-tab {
+  right: 0; /* Reveal recipe tab when hovering over the spring */
+}
+
+.recipe-tab {
+  right: -20cm; /* Hide tab again when not hovered */
+}
 
 
 
