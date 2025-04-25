@@ -140,10 +140,12 @@ body {
 }
 
 .recipe-gallery img {
-  border: none;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 }
 
 .recipe-gallery img:hover {
