@@ -24,6 +24,10 @@ img {
   margin: 0; /* Ensure no margins contribute visually */
   background: transparent !important; /* Eliminate background artifacts */
 }
+img {
+  border-radius: 8px; /* Matches your current styling */
+  overflow: hidden;
+}
 
 
 /* Logo scrolls with parallax effect */
