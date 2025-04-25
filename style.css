@@ -150,18 +150,20 @@ body {
 
 /* Spring Styling */
 .spring {
-  position: fixed; /* Stays visible as you scroll */
-  top: 50%; /* Vertically centers the spring */
-  right: 0; /* Fixed to the right edge */
-  transform: translateY(-50%); /* Fine-tuned centering */
+  position: fixed; /* Ensures it stays in place as you scroll */
+  top: 50%; /* Vertically centers it relative to the viewport */
+  right: 0; /* Aligns it to the right-hand side */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  height: 8cm; /* Sets the height explicitly */
+  width: auto; /* Maintains aspect ratio */
   cursor: pointer;
-  z-index: 10;
+  z-index: 10; /* Keeps it on top of other elements */
 }
 
 .spring-img {
-  width: auto; /* Maintain original proportions */
-  height: 100px; /* Adjust to fit your design */
   display: block;
+  max-height: 100%; /* Ensures the image fits within the spring container */
+  max-width: 100%;
 }
 
 /* Interaction Between Spring and Recipe Tab */
