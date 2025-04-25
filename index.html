@@ -118,13 +118,11 @@
   });
 </script>
 
-</script>
-
-<div class="spring">
+<div class="spring hidden">
   <img src="Images for website/spring.png" alt="Spring" class="spring-img">
 </div>
 
-<div class="recipe-tab">
+<div class="recipe-tab hidden">
   <button class="scroll-left">&#8592;</button>
   <button class="scroll-right">&#8594;</button>
 
@@ -135,6 +133,25 @@
     <img src="Images for website/tuna factory song.jpeg" alt="Recipe 4">
   </div>
 </div>
+<script>
+  // Function to reveal elements when scrolled to "Our Mission"
+  window.addEventListener('scroll', () => {
+    const missionSection = document.getElementById('our-mission');
+    const spring = document.querySelector('.spring');
+    const recipeTab = document.querySelector('.recipe-tab');
+    const missionTop = missionSection.getBoundingClientRect().top; // Distance from top of viewport
+    const viewportHeight = window.innerHeight;
+
+    // Check if the top of the "Our Mission" section is in view
+    if (missionTop <= viewportHeight * 0.5) {
+      spring.classList.remove('hidden'); // Show the spring
+      recipeTab.classList.remove('hidden'); // Show the gallery
+    } else {
+      spring.classList.add('hidden'); // Hide the spring
+      recipeTab.classList.add('hidden'); // Hide the gallery
+    }
+  });
+</script>
 
 
 </body>
