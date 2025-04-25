@@ -140,13 +140,6 @@ body {
   height: 100%; 
 }
 
-.recipe-gallery img {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
 
 .recipe-gallery img:hover {
   transform: scale(1); /* Enlarge slightly on hover */
