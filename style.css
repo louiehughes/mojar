@@ -140,12 +140,10 @@ body {
 }
 
 .recipe-gallery img {
-  max-height: 90%;
-  max-width: 90%;
-  object-fit: contain;
-  scroll-snap-align: center;
-  flex-shrink: 0;
-  transition: transform 0.3s, opacity 0.3; 
+  border: none;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .recipe-gallery img:hover {
