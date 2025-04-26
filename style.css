@@ -196,7 +196,7 @@ img {
   display: none; /* Initially hidden */
   z-index: 10; /* Ensures it appears above all elements */
   background-repeat: no-repeat; /* Prevents background tiling */
-  background-size: 200%; /* Zoom level (2x) */
+  background-size: contain; /* Zoom level (2x) */
 }
 
 
