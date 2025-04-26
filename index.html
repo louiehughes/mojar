@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>mojar</title>
-  <link rel="stylesheet" href="href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
-  <link rel="stylesheet" href="style.css">
+  
   <!-- PhotoSwipe CSS -->
-<link rel="stylesheet" href="https://unpkg.com/photoswipe/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
 
-<!-- PhotoSwipe JS -->
-<script src="https://unpkg.com/photoswipe"></script>
-<script src="https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
+  <!-- Your site CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PhotoSwipe JS (only this one needed for modules) -->
+  <script type="module" src="https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js"></script>
 </head>
 
 <body>
@@ -143,15 +144,23 @@
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
 
-  // Initialize PhotoSwipe
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery', // Matches your gallery ID
-    children: 'a', // Target all <a> tags inside the gallery
-    pswpModule: () => import('https://unpkg.com/photoswipe'),
-  });
-  
-  lightbox.init();
+  // Initialize PhotoSwipe for main gallery
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#gallery', 
+  children: 'a',
+  pswpModule: () => import('https://unpkg.com/photoswipe'),
+});
+lightbox.init();
+
+// Initialize PhotoSwipe for recipe gallery
+const recipeLightbox = new PhotoSwipeLightbox({
+  gallery: '.recipe-gallery', // NEW
+  children: 'a',
+  pswpModule: () => import('https://unpkg.com/photoswipe'),
+});
+recipeLightbox.init();
 </script>
+
   
 <script>
   window.addEventListener('scroll', () => {
@@ -176,11 +185,20 @@
     <button class="scroll-right">&#10095;</button>
 
     <div class="recipe-gallery">
-      <img src="Images for website/recipe 1.jpeg" alt="Recipe 1">
-      <img src="Images for website/recipe 2.jpeg" alt="Recipe 2">
-      <img src="Images for website/chicken liver pate.jpeg" alt="Recipe 3">
-      <img src="Images for website/tuna factory song.jpeg" alt="Recipe 4">
-    </div>
+  <a href="Images for website/recipe 1.jpeg" data-pswp-width="1200" data-pswp-height="800">
+    <img src="Images for website/recipe 1.jpeg" alt="Recipe 1">
+  </a>
+  <a href="Images for website/recipe 2.jpeg" data-pswp-width="1200" data-pswp-height="800">
+    <img src="Images for website/recipe 2.jpeg" alt="Recipe 2">
+  </a>
+  <a href="Images for website/chicken liver pate.jpeg" data-pswp-width="1200" data-pswp-height="800">
+    <img src="Images for website/chicken liver pate.jpeg" alt="Recipe 3">
+  </a>
+  <a href="Images for website/tuna factory song.jpeg" data-pswp-width="1200" data-pswp-height="800">
+    <img src="Images for website/tuna factory song.jpeg" alt="Recipe 4">
+  </a>
+</div>
+
 
     <!-- Only ONE magnifying lens -->
     <div class="magnifying-lens" 
