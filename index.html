@@ -254,6 +254,19 @@
   });
 </script>
 
+<script>
+  const gallery = document.querySelector('.recipe-gallery');
+  
+  // Normalize scrolling behavior for laptops
+  gallery.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    gallery.scrollBy({
+      left: event.deltaY < 0 ? -100 : 100, // Scroll direction based on wheel input
+      behavior: 'smooth',
+    });
+  });
+</script>
+
 
 </body>
 </html>
