@@ -190,12 +190,12 @@ img {
   position: absolute;
   border: 2px solid #000; /* Optional: makes the lens visible */
   border-radius: 50%; /* Makes the lens circular */
-  width: 100px; /* Lens diameter */
-  height: 100px; /* Lens diameter */
-  overflow: hidden;
-  pointer-events: none; /* Prevent interference with mouse clicks */
-  display: none; /* Hide initially */
-  z-index: 100; /* Ensures the lens appears above other elements */
+  width: 120px; /* Lens diameter */
+  height: 120px; /* Lens diameter */
+  pointer-events: none; /* Prevents interference with mouse clicks */
+  display: none; /* Hide the lens initially */
+  z-index: 10; /* Ensures the lens appears above other elements */
+  background-repeat: no-repeat; /* Prevents tiling of the zoomed image */
 }
 
 .recipe-gallery img {
