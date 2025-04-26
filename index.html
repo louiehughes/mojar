@@ -198,6 +198,7 @@
       
       <img src="Images for website/recipe 2.jpeg" alt="Recipe 2">
       <div class="magnifying-lens"></div>
+      
       <img src="Images for website/chicken liver pate.jpeg" alt="Recipe 3">
       <div class="magnifying-lens"></div>
       
@@ -270,29 +271,35 @@
     });
   });
 </script>
+
 <script>
+  // Select all images in the recipe gallery
   const galleryImages = document.querySelectorAll('.recipe-gallery img');
   const lens = document.querySelector('.magnifying-lens');
 
   galleryImages.forEach(img => {
     img.addEventListener('mousemove', (e) => {
+      // Get the image's position and dimensions
       const rect = img.getBoundingClientRect();
-      const x = e.clientX - rect.left; // X position within image
-      const y = e.clientY - rect.top; // Y position within image
+      const x = e.clientX - rect.left; // X position relative to the image
+      const y = e.clientY - rect.top; // Y position relative to the image
 
+      // Position the lens dynamically
       lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
       lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
       lens.style.backgroundImage = `url(${img.src})`;
-      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Zoom by 2x
       lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
-      lens.style.display = 'block';
+      lens.style.display = 'block'; // Show the lens
     });
 
+    // Hide the lens when the mouse leaves the image
     img.addEventListener('mouseleave', () => {
-      lens.style.display = 'none'; // Hide the lens when not hovering
+      lens.style.display = 'none';
     });
   });
 </script>
+
 
 
 </body>
