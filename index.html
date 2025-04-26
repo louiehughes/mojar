@@ -192,14 +192,18 @@
   <button class="scroll-left">&#8592;</button>
   <button class="scroll-right">&#8594;</button>
 
+<div class="gallery-wrapper" style="position: relative;">
+  <button class="scroll-left">&#10094;</button>
   <div class="recipe-gallery">
     <img src="Images for website/recipe 1.jpeg" alt="Recipe 1">
     <img src="Images for website/recipe 2.jpeg" alt="Recipe 2">
     <img src="Images for website/chicken liver pate.jpeg" alt="Recipe 3">
     <img src="Images for website/tuna factory song.jpeg" alt="Recipe 4">
   </div>
+  <button class="scroll-right">&#10095;</button>
 </div>
-<script>
+
+  <script>
   // Function to reveal elements when scrolled to "Our Mission"
   window.addEventListener('scroll', () => {
     const missionSection = document.getElementById('our-mission');
@@ -230,6 +234,23 @@
   });
   
   lightbox.init();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollLeftButton = document.querySelector('.scroll-left');
+    const scrollRightButton = document.querySelector('.scroll-right');
+    const gallery = document.querySelector('.gallery');
+
+    const scrollAmount = 300; // pixels to scroll
+
+    scrollLeftButton.addEventListener('click', () => {
+      gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    scrollRightButton.addEventListener('click', () => {
+      gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  });
 </script>
 
 </body>
