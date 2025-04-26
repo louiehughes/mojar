@@ -227,25 +227,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   galleryImages.forEach((img) => {
-    img.addEventListener('mousemove', (e) => {
-      if (img.style.opacity !== '1') return;
+  img.addEventListener('mousemove', (e) => {
+    const rect = img.getBoundingClientRect(); // Get image dimensions and position
+    const x = e.clientX - rect.left; // Mouse X within image
+    const y = e.clientY - rect.top; // Mouse Y within image
 
-      const rect = img.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    // Position the lens at the cursor
+    lens.style.left = `${rect.left + x - lens.offsetWidth / 2}px`;
+    lens.style.top = `${rect.top + y - lens.offsetHeight / 2}px`;
 
-      lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
-      lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
-      lens.style.backgroundImage = `url(${img.src})`;
-      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
-      lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
-      lens.style.display = 'block';
-    });
-
-    img.addEventListener('mouseleave', () => {
-      lens.style.display = 'none';
-    });
+    // Set up the zoom
+    lens.style.backgroundImage = `url(${img.src})`; // Background is the current image
+    lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // 2x zoom
+    lens.style.backgroundPosition = `-${x * 2}px -${y * 2}px`; // Offset zoomed area
+    lens.style.display = 'block'; // Show the lens
   });
+
+  img.addEventListener('mouseleave', () => {
+    lens.style.display = 'none'; // Hide the lens when not hovering
+  });
+});
 
   window.addEventListener('scroll', () => {
     const missionSection = document.getElementById('our-mission');
