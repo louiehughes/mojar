@@ -129,54 +129,31 @@ img {
 
 /* Gallery container */
 .recipe-gallery {
-  position: relative;
-  width: 100%;
-  max-width: 600px; /* Adjust max-width as needed */
-  margin: 0 auto; /* Center the gallery */
-  overflow: hidden; /* Prevent horizontal scrollbar */
-}
-
-/* Arrow styles */
-.recipe-gallery .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border: none;
-  font-size: 24px;
-  z-index: 1;
-}
-
-.recipe-gallery .arrow-left {
-  left: 10px;
-}
-
-.recipe-gallery .arrow-right {
-  right: 10px;
-}
-
-/* Image container */
-.recipe-gallery .images {
   display: flex;
-  transition: transform 0.3s ease;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-/* Each image */
-.recipe-gallery img {
+.gallery-thumbnails a {
+  display: block;
+  width: 100%;
+  max-width: 200px; /* Adjust size as needed */
+  margin-bottom: 10px;
+}
+
+.gallery-thumbnails img {
   width: 100%;
   height: auto;
-  object-fit: contain; /* Ensure images don't stretch */
+  object-fit: cover;
+  cursor: pointer;
 }
 
-/* Optional hover effect */
-.recipe-gallery img:hover {
-  transform: scale(1.02);
+/* Optional: Image hover effects */
+.gallery-thumbnails img:hover {
+  transform: scale(1.05);
   opacity: 0.9;
 }
-
 
 
 
