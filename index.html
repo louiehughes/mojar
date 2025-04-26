@@ -270,6 +270,29 @@
     });
   });
 </script>
+<script>
+  const galleryImages = document.querySelectorAll('.recipe-gallery img');
+  const lens = document.querySelector('.magnifying-lens');
+
+  galleryImages.forEach(img => {
+    img.addEventListener('mousemove', (e) => {
+      const rect = img.getBoundingClientRect();
+      const x = e.clientX - rect.left; // X position within image
+      const y = e.clientY - rect.top; // Y position within image
+
+      lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
+      lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
+      lens.style.backgroundImage = `url(${img.src})`;
+      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+      lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
+      lens.style.display = 'block';
+    });
+
+    img.addEventListener('mouseleave', () => {
+      lens.style.display = 'none'; // Hide the lens when not hovering
+    });
+  });
+</script>
 
 
 </body>
