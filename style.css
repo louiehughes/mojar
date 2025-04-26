@@ -133,8 +133,9 @@ img {
   flex-direction: row; /* Makes the images align horizontally */
   gap: 10px;
   padding: 20px;
-  overflow: hidden; /* Prevent images from overflowing */
+  overflow-x: auto; /* Allows horizontal scrolling but disables vertical scrolling */
   width: 100%; /* Ensures the gallery takes up the full width of its container */
+  max-height: 500px; /* Restricts height to prevent the image from overflowing */
 }
 
 .recipe-gallery a {
@@ -142,11 +143,12 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* Prevents images from spilling out */
 }
 
 .recipe-gallery img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  max-height: 100%; /* Ensures the image height is constrained within the container */
   object-fit: contain; /* Ensures the image stays fully visible without being cropped */
   cursor: pointer;
   border: none;
@@ -159,6 +161,7 @@ img {
   transform: scale(1.02);
   opacity: 0.9;
 }
+
 
 /* Arrows are not needed anymore with PhotoSwipe */
 
