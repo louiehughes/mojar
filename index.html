@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <title>mojar</title>
   <link rel="stylesheet" href="href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">">
-</head>
   <link rel="stylesheet" href="style.css">
+  <!-- PhotoSwipe CSS -->
+<link rel="stylesheet" href="https://unpkg.com/photoswipe/style.css">
+
+<!-- PhotoSwipe JS -->
+<script src="https://unpkg.com/photoswipe"></script>
+<script src="https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
 </head>
 
 <body>
@@ -59,52 +64,52 @@
 
  <!-- Horizontal gallery changed to PhotoSwipe -->
 <div class="gallery" id="gallery">
-  <a href="Images for website/stintino sign.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/stintino sign.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/stintino sign.jpeg" alt="Image 1">
   </a>
-  <a href="House of Georgio.jpg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="House of Georgio.jpg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="House of Georgio.jpg" alt="Image 2">
   </a>
-  <a href="Garum.jpg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Garum.jpg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Garum.jpg" alt="Image 3">
   </a>
-  <a href="Images for website/hands salt.JPG" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/hands salt.JPG" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/hands salt.JPG" alt="Image 6">
   </a>
-  <a href="Images for website/salt in sun.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/salt in sun.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/salt in sun.jpeg" alt="Image 7">
   </a>
-  <a href="Images for website/garum package.JPG" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/garum package.JPG" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/garum package.JPG" alt="Image 4">
   </a>
-  <a href="Images for website/salt package.JPG" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/salt package.JPG" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/salt package.JPG" alt="Image 8">
   </a>
-  <a href="Images for website/garumsaltchristmas.JPG" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/garumsaltchristmas.JPG" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/garumsaltchristmas.JPG" alt="Image 9">
   </a>
-  <a href="Images for website/boat front.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/boat front.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/boat front.jpeg" alt="Image 10">
   </a>
-  <a href="Images for website/georgio and edo.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/georgio and edo.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/georgio and edo.jpeg" alt="Image 11">
   </a>
-  <a href="Images for website/edo fishing.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/edo fishing.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/edo fishing.jpeg" alt="Image 12">
   </a>
-  <a href="Images for website/cooking squid.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/cooking squid.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/cooking squid.jpeg" alt="Image 13">
   </a>
-  <a href="Images for website/dinner table buffet.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/dinner table buffet.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/dinner table buffet.jpeg" alt="Image 14">
   </a>
-  <a href="Images for website/pasta wine bottle.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/pasta wine bottle.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/pasta wine bottle.jpeg" alt="Image 15">
   </a>
-  <a href="Images for website/making gnudi.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/making gnudi.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/making gnudi.jpeg" alt="Image 16">
   </a>
-  <a href="Images for website/stone table.jpeg" data-pswp-width="1600" data-pswp-height="1067" target="_blank">
+  <a href="Images for website/stone table.jpeg" data-pswp-width="1600" data-pswp-height="1067">
     <img src="Images for website/stone table.jpeg" alt="Image 17">
   </a>
 </div>
@@ -214,6 +219,18 @@
   });
 </script>
 
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
+
+  // Initialize PhotoSwipe
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery', // Matches your gallery ID
+    children: 'a', // Target all <a> tags inside the gallery
+    pswpModule: () => import('https://unpkg.com/photoswipe'),
+  });
+  
+  lightbox.init();
+</script>
 
 </body>
 </html>
