@@ -235,13 +235,14 @@
   
   lightbox.init();
 </script>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const scrollLeftButton = document.querySelector('.scroll-left');
-    const scrollRightButton = document.querySelector('.scroll-right');
-    const gallery = document.querySelector('.gallery');
+    const scrollLeftButton = document.querySelector('.recipe-tab .scroll-left');
+    const scrollRightButton = document.querySelector('.recipe-tab .scroll-right');
+    const gallery = document.querySelector('.recipe-gallery');
 
-    const scrollAmount = 300; // pixels to scroll
+    const scrollAmount = 300; // Pixels to scroll per click
 
     scrollLeftButton.addEventListener('click', () => {
       gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -252,6 +253,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
