@@ -188,15 +188,17 @@ img {
 /* Magnifying lens */
 .magnifying-lens {
   position: absolute;
-  border: none; /* Optional: makes the lens visible */
-  border-radius: 50%; /* Makes the lens circular */
-  width: 120px; /* Lens diameter */
-  height: 120px; /* Lens diameter */
-  pointer-events: none; /* Prevents interference with mouse clicks */
-  display: none; /* Hide the lens initially */
-  z-index: 10; /* Ensures the lens appears above other elements */
-  background-repeat: no-repeat; /* Prevents tiling of the zoomed image */
+  border: 2px solid rgba(0, 0, 0, 0.5); /* Optional semi-transparent border */
+  border-radius: 50%; /* Creates a circular lens */
+  width: 120px; /* Diameter of the lens */
+  height: 120px; /* Diameter of the lens */
+  pointer-events: none; /* Prevent the lens from interfering with clicks */
+  display: none; /* Initially hidden */
+  z-index: 10; /* Ensures it appears above all elements */
+  background-repeat: no-repeat; /* Prevents background tiling */
+  background-size: 200%; /* Zoom level (2x) */
 }
+
 
 .recipe-gallery img {
   position: relative;
