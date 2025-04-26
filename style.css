@@ -131,24 +131,16 @@ img {
 /* Gallery inside the tab */
 .recipe-gallery {
   display: flex;
-  flex-direction: row;
-  overflow-x: auto; /* Allows horizontal scrolling */
-  overflow-y: hidden; /* Prevents vertical scrolling */
-  gap: 10px;
-  padding: 20px;
-  height: 80vh; /* Adjusts height to fit within the viewport */
-  scroll-behavior: smooth; /* Enables smooth scrolling */
-  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling for laptops and touch devices */
-  align-items: center; /* Vertically centers images */
-  position: relative;
+  overflow: hidden; /* Hides the scroll bar */
+  width: 100%; /* Ensures the container is full width */
+  transition: transform 0.3s ease; /* Smooth transition when sliding images */
 }
 
 .recipe-gallery img {
-  scroll-snap-align: center;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain; 
-  flex-shrink: 0;
+  display: flex;
+  overflow: hidden; /* Hides the scroll bar */
+  width: 100%; /* Ensures the container is full width */
+  transition: transform 0.3s ease; /* Smooth transition when sliding images */
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
