@@ -205,6 +205,24 @@ img {
   width: auto; /* Maintains aspect ratio */
   display: block; /* Makes the image block-level for consistent rendering */
 }
+/* Flashing effect for the spring icon */
+@keyframes flashIcon {
+  0% {
+    content: url("Images for website/spring.png");
+  }
+  50% {
+    content: url("Images for website/recipes.png");
+  }
+  100% {
+    content: url("Images for website/spring.png");
+  }
+}
+
+.flashing-icon {
+  width: auto;
+  height: 8cm;
+  animation: flashIcon 2s infinite;
+}
 
 /* Interaction Between Spring and Recipe Tab */
 .spring:hover + .recipe-tab {
