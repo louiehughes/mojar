@@ -185,20 +185,35 @@ recipeLightbox.init();
     <button class="scroll-right">&#10095;</button>
 
     <div class="recipe-gallery">
-  <a href="Images for website/recipe 1.jpeg" data-pswp-width="1200" data-pswp-height="800">
-    <img src="Images for website/recipe 1.jpeg" alt="Recipe 1">
-  </a>
-  <a href="Images for website/recipe 2.jpeg" data-pswp-width="1200" data-pswp-height="800">
-    <img src="Images for website/recipe 2.jpeg" alt="Recipe 2">
-  </a>
-  <a href="Images for website/chicken liver pate.jpeg" data-pswp-width="1200" data-pswp-height="800">
-    <img src="Images for website/chicken liver pate.jpeg" alt="Recipe 3">
-  </a>
-  <a href="Images for website/tuna factory song.jpeg" data-pswp-width="1200" data-pswp-height="800">
-    <img src="Images for website/tuna factory song.jpeg" alt="Recipe 4">
-  </a>
+  <!-- Thumbnails visible in the gallery -->
+  <div class="gallery-thumbnails">
+    <a href="image1.jpg" data-size="800x600">
+      <img src="image1.jpg" alt="Image 1">
+    </a>
+    <a href="image2.jpg" data-size="800x600">
+      <img src="image2.jpg" alt="Image 2">
+    </a>
+    <a href="image3.jpg" data-size="800x600">
+      <img src="image3.jpg" alt="Image 3">
+    </a>
+    <!-- Add more thumbnails as needed -->
+  </div>
 </div>
 
+<!-- PhotoSwipe markup -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <!-- Controls like close button, zoom, etc. -->
+    </div>
+  </div>
+</div>
 
     <!-- Only ONE magnifying lens -->
     <div class="magnifying-lens" 
