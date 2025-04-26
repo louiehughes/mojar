@@ -144,7 +144,7 @@ img {
   scroll-snap-align: center;
   max-height: 60%;
   max-width: 70%;
-  object fit: contain; 
+  object-fit: contain; 
   flex-shrink: 0;
   border: none !important;
   outline: none !important;
