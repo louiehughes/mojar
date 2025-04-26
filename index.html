@@ -189,44 +189,21 @@
 </div>
 
 <div class="recipe-tab hidden">
-  <div class="gallery-wrapper" style="position: relative;">
+  <div class="gallery-wrapper" style="position: relative; overflow: hidden;">
     <button class="scroll-left">&#10094;</button>
     <button class="scroll-right">&#10095;</button>
+
     <div class="recipe-gallery">
       <img src="Images for website/recipe 1.jpeg" alt="Recipe 1">
-      <div class="magnifying-lens"></div>
-      
       <img src="Images for website/recipe 2.jpeg" alt="Recipe 2">
-      <div class="magnifying-lens"></div>
-      
       <img src="Images for website/chicken liver pate.jpeg" alt="Recipe 3">
-      <div class="magnifying-lens"></div>
-      
       <img src="Images for website/tuna factory song.jpeg" alt="Recipe 4">
-      <div class="magnifying-lens"></div>
     </div>
+
+    <!-- Only ONE magnifying lens -->
+    <div class="magnifying-lens" style="display:none; position:absolute; width:100px; height:100px; border:2px solid black; border-radius:50%; pointer-events:none; background-repeat:no-repeat;"></div>
   </div>
 </div>
-
-  <script>
-  // Function to reveal elements when scrolled to "Our Mission"
-  window.addEventListener('scroll', () => {
-    const missionSection = document.getElementById('our-mission');
-    const spring = document.querySelector('.spring');
-    const recipeTab = document.querySelector('.recipe-tab');
-    const missionTop = missionSection.getBoundingClientRect().top; // Distance from top of viewport
-    const viewportHeight = window.innerHeight;
-
-    // Check if the top of the "Our Mission" section is in view
-    if (missionTop <= viewportHeight * 0.5) {
-      spring.classList.remove('hidden'); // Show the spring
-      recipeTab.classList.remove('hidden'); // Show the gallery
-    } else {
-      spring.classList.add('hidden'); // Hide the spring
-      recipeTab.classList.add('hidden'); // Hide the gallery
-    }
-  });
-</script>
 
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
@@ -242,68 +219,71 @@
 </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollLeftButton = document.querySelector('.recipe-tab .scroll-left');
-    const scrollRightButton = document.querySelector('.recipe-tab .scroll-right');
-    const gallery = document.querySelector('.recipe-gallery');
-
-    const scrollAmount = 300; // Pixels to scroll per click
-
-    scrollLeftButton.addEventListener('click', () => {
-      gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    scrollRightButton.addEventListener('click', () => {
-      gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-  });
-</script>
-
-<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollLeftButton = document.querySelector('.scroll-left');
+  const scrollRightButton = document.querySelector('.scroll-right');
   const gallery = document.querySelector('.recipe-gallery');
-  
-  // Normalize scrolling behavior for laptops
+  const lens = document.querySelector('.magnifying-lens');
+  const scrollAmount = 300;
+
+  // Scroll buttons
+  scrollLeftButton.addEventListener('click', () => {
+    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  scrollRightButton.addEventListener('click', () => {
+    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  // Horizontal scrolling with mousewheel
   gallery.addEventListener('wheel', (event) => {
     event.preventDefault();
     gallery.scrollBy({
-      left: event.deltaY < 0 ? -100 : 100, // Scroll direction based on wheel input
+      left: event.deltaY < 0 ? -100 : 100,
       behavior: 'smooth',
     });
   });
-</script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const galleryImages = document.querySelectorAll('.recipe-gallery img'); // Target all gallery images
-  const lens = document.querySelector('.magnifying-lens'); // Target the magnifying lens div
+// Magnifying glass effect
+  const galleryImages = document.querySelectorAll('.recipe-gallery img');
 
   galleryImages.forEach((img) => {
     img.addEventListener('mousemove', (e) => {
-      // Get the image's bounding box (size and position relative to viewport)
       const rect = img.getBoundingClientRect();
-      const x = e.clientX - rect.left; // X position relative to the image
-      const y = e.clientY - rect.top; // Y position relative to the image
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-      // Calculate the position of the lens
       lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
       lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
-
-      // Set up the zoom effect
-      lens.style.backgroundImage = `url(${img.src})`; // Use the image being hovered as the background
-      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Magnify by 2x
+      lens.style.backgroundImage = `url(${img.src})`;
+      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
       lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
-      lens.style.display = 'block'; // Ensure the lens is visible while hovering
+      lens.style.display = 'block';
     });
 
-    // Hide the lens when the mouse leaves the image
     img.addEventListener('mouseleave', () => {
-      lens.style.display = 'none'; // Hide the lens
+      lens.style.display = 'none';
     });
+  });
+
+  // Show spring + recipe tab when scrolled to "Our Mission"
+  window.addEventListener('scroll', () => {
+    const missionSection = document.getElementById('our-mission');
+    const spring = document.querySelector('.spring');
+    const recipeTab = document.querySelector('.recipe-tab');
+    const missionTop = missionSection.getBoundingClientRect().top;
+    const viewportHeight = window.innerHeight;
+
+    if (missionTop <= viewportHeight * 0.5) {
+      spring.classList.remove('hidden');
+      recipeTab.classList.remove('hidden');
+    } else {
+      spring.classList.add('hidden');
+      recipeTab.classList.add('hidden');
+    }
   });
 });
 </script>
-
-
 
 </body>
 </html>
