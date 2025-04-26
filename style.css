@@ -127,42 +127,56 @@ img {
   right: 0;
 }
 
-/* Gallery inside the tab */
+/* Gallery container */
 .recipe-gallery {
-  display: flex;
-  flex-wrap: wrap; /* Allows the images to wrap onto the next line */
-  gap: 10px;
-  padding: 20px;
-  width: 100%; /* Ensures the gallery takes up the full width of its container */
-  max-height: 400px; /* Restrict the height of the container */
-  overflow: hidden; /* Prevents vertical scrollbar */
-  box-sizing: border-box; /* Prevents overflow due to padding */
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Adjust max-width as needed */
+  margin: 0 auto; /* Center the gallery */
+  overflow: hidden; /* Prevent horizontal scrollbar */
 }
 
-.recipe-gallery a {
-  flex: 1 1 calc(33.33% - 10px); /* Each image will take up approximately 1/3 of the width, minus the gap */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+/* Arrow styles */
+.recipe-gallery .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  font-size: 24px;
+  z-index: 1;
 }
 
+.recipe-gallery .arrow-left {
+  left: 10px;
+}
+
+.recipe-gallery .arrow-right {
+  right: 10px;
+}
+
+/* Image container */
+.recipe-gallery .images {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+/* Each image */
 .recipe-gallery img {
   width: 100%;
   height: auto;
-  max-height: 100%;
-  object-fit: contain; /* Ensures the image stays fully visible without being cropped */
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: transparent;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  object-fit: contain; /* Ensure images don't stretch */
 }
 
+/* Optional hover effect */
 .recipe-gallery img:hover {
   transform: scale(1.02);
   opacity: 0.9;
 }
+
 
 
 
