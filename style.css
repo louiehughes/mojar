@@ -200,6 +200,14 @@ img {
   background-size: contain; /* Zoom level (2x) */
 }
 
+.magnify-large {
+  pointer-events: none;
+  position: absolute;
+  z-index: 999;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  transform: translate(-50%, -50%); /* Centers the glass on cursor */
+}
 
 .recipe-gallery img {
   position: relative;
