@@ -6,10 +6,12 @@ body {
   color: #222;
   line-height: 1.6;
 }
+
 /* Utility Classes */
 .hidden {
   display: none; /* Completely hides the element */
 }
+
 img {
   border: none !important;
   outline: none !important;
@@ -83,7 +85,7 @@ img {
   margin-top: 0.5rem;
 }
 
-/* Gallery */
+/* Gallery (PhotoSwipe target) */
 .gallery {
   display: flex;
   overflow-x: auto;
@@ -102,6 +104,8 @@ img {
   outline: none !important;
   box-shadow: none !important;
   background: transparent !important;
+  padding: 0;
+  margin: 0;
 }
 
 /* Recipe sidebar tab */
@@ -136,15 +140,24 @@ img {
   height: 100%;
 }
 
-.recipe-gallery img:hover {
-  transform: scale(1);
-  opacity: 1;
+.recipe-gallery img {
+  scroll-snap-align: center;
+  max-height: 100%;
+  flex-shrink: 0;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
   background: transparent !important;
+  padding: 0;
+  margin: 0;
 }
 
+.recipe-gallery img:hover {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Arrows (optional, if you use them) */
 .scroll-left,
 .scroll-right {
   position: absolute;
