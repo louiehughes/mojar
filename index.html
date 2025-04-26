@@ -274,29 +274,30 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const galleryImages = document.querySelectorAll('.recipe-gallery img');
-  const lens = document.querySelector('.magnifying-lens');
+  const galleryImages = document.querySelectorAll('.recipe-gallery img'); // Target all gallery images
+  const lens = document.querySelector('.magnifying-lens'); // Target the magnifying lens div
 
-  galleryImages.forEach(img => {
+  galleryImages.forEach((img) => {
     img.addEventListener('mousemove', (e) => {
-      // Get image dimensions and mouse position within the image
+      // Get the image's bounding box (size and position relative to viewport)
       const rect = img.getBoundingClientRect();
       const x = e.clientX - rect.left; // X position relative to the image
       const y = e.clientY - rect.top; // Y position relative to the image
 
-      // Update lens position
+      // Calculate the position of the lens
       lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
       lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
 
-      // Update lens zoom logic
-      lens.style.backgroundImage = `url(${img.src})`;
-      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Zoom factor (2x)
+      // Set up the zoom effect
+      lens.style.backgroundImage = `url(${img.src})`; // Use the image being hovered as the background
+      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Magnify by 2x
       lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
-      lens.style.display = 'block'; // Show the lens
+      lens.style.display = 'block'; // Ensure the lens is visible while hovering
     });
 
+    // Hide the lens when the mouse leaves the image
     img.addEventListener('mouseleave', () => {
-      lens.style.display = 'none'; // Hide the lens when the cursor leaves the image
+      lens.style.display = 'none'; // Hide the lens
     });
   });
 });
