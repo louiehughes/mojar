@@ -185,6 +185,26 @@ img {
   right: 10px;
 }
 
+/* Magnifying lens */
+.magnifying-lens {
+  position: absolute;
+  border: 2px solid #000; /* Optional: makes the lens visible */
+  border-radius: 50%; /* Makes the lens circular */
+  width: 100px; /* Lens diameter */
+  height: 100px; /* Lens diameter */
+  overflow: hidden;
+  pointer-events: none; /* Prevent interference with mouse clicks */
+  display: none; /* Hide initially */
+}
+
+.recipe-gallery img {
+  position: relative;
+}
+
+.recipe-gallery img:hover + .magnifying-lens {
+  display: block; /* Show the lens on hover */
+}
+
 /* Spring Styling */
 .spring {
   position: fixed; /* Ensures it stays fixed while scrolling */
