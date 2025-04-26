@@ -136,10 +136,11 @@ img {
   width: 100%; /* Ensures the gallery takes up the full width of its container */
   max-height: 400px; /* Restrict the height of the container */
   overflow: hidden; /* Prevents vertical scrollbar */
+  box-sizing: border-box; /* Prevents overflow due to padding */
 }
 
 .recipe-gallery a {
-  flex: 1 0 30%; /* Makes each image take up 30% of the container width */
+  flex: 1 1 calc(33.33% - 10px); /* Each image will take up approximately 1/3 of the width, minus the gap */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,6 +163,7 @@ img {
   transform: scale(1.02);
   opacity: 0.9;
 }
+
 
 
 /* Arrows are not needed anymore with PhotoSwipe */
