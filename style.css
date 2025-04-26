@@ -195,6 +195,7 @@ img {
   overflow: hidden;
   pointer-events: none; /* Prevent interference with mouse clicks */
   display: none; /* Hide initially */
+  z-index: 100; /* Ensures the lens appears above other elements */
 }
 
 .recipe-gallery img {
