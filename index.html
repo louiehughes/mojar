@@ -140,7 +140,20 @@
   </div>
 </div>
 
- <script>
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
+
+  // Initialize PhotoSwipe
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery', // Matches your gallery ID
+    children: 'a', // Target all <a> tags inside the gallery
+    pswpModule: () => import('https://unpkg.com/photoswipe'),
+  });
+  
+  lightbox.init();
+</script>
+  
+<script>
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     const logo = document.getElementById('mojarLogo');
@@ -150,37 +163,6 @@
       const offset = Math.min(scrollY * scrollFactor, maxScroll);
       logo.style.transform = `translateY(${offset}px)`;
     }
-  });
-</script>
-
-<script>
-  const galleryImages = document.querySelectorAll('.recipe-gallery img');
-  let currentIndex = 0;
-
-  function showImage(index) {
-    galleryImages.forEach((img, i) => {
-      img.style.opacity = i === index ? '1' : '0'; // Show only the selected image
-      img.style.transform = i === index ? 'scale(1)' : 'scale(0.9)'; // Scale effect
-    });
-  }
-
-  galleryImages.forEach((img, index) => {
-    img.addEventListener('mouseenter', () => showImage(index)); // Trigger on hover
-  });
-
-  // Initial display: show the first image
-  showImage(currentIndex);
-<script>
-  const recipeGallery = document.querySelector('.recipe-gallery');
-  const scrollLeftBtn = document.querySelector('.scroll-left');
-  const scrollRightBtn = document.querySelector('.scroll-right');
-
-  scrollLeftBtn.addEventListener('click', () => {
-    recipeGallery.scrollBy({ left: -300, behavior: 'smooth' });
-  });
-
-  scrollRightBtn.addEventListener('click', () => {
-    recipeGallery.scrollBy({ left: 300, behavior: 'smooth' });
   });
 </script>
 
@@ -205,50 +187,49 @@
   </div>
 </div>
 
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
-
-  // Initialize PhotoSwipe
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery', // Matches your gallery ID
-    children: 'a', // Target all <a> tags inside the gallery
-    pswpModule: () => import('https://unpkg.com/photoswipe'),
-  });
-  
-  lightbox.init();
-</script>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const scrollLeftButton = document.querySelector('.scroll-left');
-  const scrollRightButton = document.querySelector('.scroll-right');
-  const gallery = document.querySelector('.recipe-gallery');
+  let currentIndex = 0;
+
+  const scrollLeftBtn = document.querySelector('.scroll-left');
+  const scrollRightBtn = document.querySelector('.scroll-right');
+  const recipeGallery = document.querySelector('.recipe-gallery');
   const lens = document.querySelector('.magnifying-lens');
-  const scrollAmount = 300;
+  const galleryImages = document.querySelectorAll('.recipe-gallery img');
 
-  // Scroll buttons
-  scrollLeftButton.addEventListener('click', () => {
-    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  function showImage(index) {
+    galleryImages.forEach((img, i) => {
+      img.style.opacity = i === index ? '1' : '0';
+      img.style.transform = i === index ? 'scale(1)' : 'scale(0.9)';
+    });
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('mouseenter', () => showImage(index));
   });
 
-  scrollRightButton.addEventListener('click', () => {
-    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  showImage(currentIndex);
+
+  scrollLeftBtn.addEventListener('click', () => {
+    recipeGallery.scrollBy({ left: -300, behavior: 'smooth' });
   });
 
-  // Horizontal scrolling with mousewheel
-  gallery.addEventListener('wheel', (event) => {
+  scrollRightBtn.addEventListener('click', () => {
+    recipeGallery.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+
+  recipeGallery.addEventListener('wheel', (event) => {
     event.preventDefault();
-    gallery.scrollBy({
+    recipeGallery.scrollBy({
       left: event.deltaY < 0 ? -100 : 100,
       behavior: 'smooth',
     });
   });
 
-// Magnifying glass effect
-  const galleryImages = document.querySelectorAll('.recipe-gallery img');
-
   galleryImages.forEach((img) => {
     img.addEventListener('mousemove', (e) => {
+      if (img.style.opacity !== '1') return;
+
       const rect = img.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -266,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Show spring + recipe tab when scrolled to "Our Mission"
   window.addEventListener('scroll', () => {
     const missionSection = document.getElementById('our-mission');
     const spring = document.querySelector('.spring');
@@ -284,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 
 </body>
 </html>
