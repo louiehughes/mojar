@@ -140,6 +140,7 @@ img {
   scroll-behavior: smooth; /* Enables smooth scrolling */
   -webkit-overflow-scrolling: touch; /* Enables smooth scrolling for laptops and touch devices */
   align-items: center; /* Vertically centers images */
+  position: relative;
 }
 
 .recipe-gallery img {
