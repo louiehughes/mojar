@@ -130,25 +130,26 @@ img {
 /* Gallery inside the tab */
 .recipe-gallery {
   display: flex;
-  flex-direction: row; /* Makes the images align horizontally */
+  flex-wrap: wrap; /* Allows the images to wrap onto the next line */
   gap: 10px;
   padding: 20px;
-  overflow-x: auto; /* Allows horizontal scrolling but disables vertical scrolling */
   width: 100%; /* Ensures the gallery takes up the full width of its container */
-  max-height: 500px; /* Restricts height to prevent the image from overflowing */
+  max-height: 400px; /* Restrict the height of the container */
+  overflow: hidden; /* Prevents vertical scrollbar */
 }
 
 .recipe-gallery a {
-  flex: 0 0 100%; /* Each image gets its own slide (takes up 100% width) */
+  flex: 1 0 30%; /* Makes each image take up 30% of the container width */
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Prevents images from spilling out */
+  overflow: hidden;
 }
 
 .recipe-gallery img {
-  max-width: 100%;
-  max-height: 100%; /* Ensures the image height is constrained within the container */
+  width: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain; /* Ensures the image stays fully visible without being cropped */
   cursor: pointer;
   border: none;
