@@ -112,134 +112,72 @@ img {
 .recipe-tab {
   position: fixed;
   top: 0;
-  right: -20cm; /* Hides it almost entirely */
+  right: -20cm; /* Hide it initially */
   width: 20cm;
-  height: 100vh; /* Full height */
+  height: 100vh;
   background-color: transparent;
-  box-shadow: none;
   border: none;
-  transition: right 0.4s ease; /* Smooth transition */
+  box-shadow: none;
+  transition: right 0.4s ease;
   z-index: 9;
-  overflow: hidden;
+  overflow: auto; /* Allow scrolling inside if needed */
 }
 
 .recipe-tab:hover {
-  background-color: transparent;
-  right: 0; /* Reveal when hovering over the tab */
+  right: 0;
 }
 
 /* Gallery inside the tab */
 .recipe-gallery {
-  display: flex;
-  overflow: hidden; /* Hides the scroll bar */
-  width: 100%; /* Ensures the container is full width */
-  transition: transform 0.3s ease; /* Smooth transition when sliding images */
+  display: grid;
+  grid-template-columns: 1fr; /* One image per row (adjust as needed) */
+  gap: 10px;
+  padding: 20px;
 }
 
 .recipe-gallery img {
-  display: flex;
-  overflow: hidden; /* Hides the scroll bar */
-  width: 100%; /* Ensures the container is full width */
-  transition: transform 0.3s ease; /* Smooth transition when sliding images */
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  padding: 0;
-  margin: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .recipe-gallery img:hover {
-  transform: scale(1);
-  opacity: 1;
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
-/* Arrows (optional, if you use them) */
-.scroll-left,
-.scroll-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: black;
-  cursor: pointer;
-  z-index: 10;
-  padding: 0;
-  line-height: 1;
-}
-
-.scroll-left {
-  left: 10px;
-}
-
-.scroll-right {
-  right: 10px;
-}
-
-/* Magnifying lens */
-.magnifying-lens {
-  position: absolute;
-  border: 2px solid rgba(0, 0, 0, 0.5); /* Optional semi-transparent border */
-  border-radius: 50%; /* Creates a circular lens */
-  width: 120px; /* Diameter of the lens */
-  height: 120px; /* Diameter of the lens */
-  pointer-events: none; /* Prevent the lens from interfering with clicks */
-  display: none; /* Initially hidden */
-  z-index: 10; /* Ensures it appears above all elements */
-  background-repeat: no-repeat; /* Prevents background tiling */
-  background-size: contain; /* Zoom level (2x) */
-}
-
-.magnify-large {
-  pointer-events: none;
-  position: absolute;
-  z-index: 999;
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  transform: translate(-50%, -50%); /* Centers the glass on cursor */
-}
-
-.recipe-gallery img {
-  position: relative;
-}
-
-.recipe-gallery img:hover + .magnifying-lens {
-  display: block; /* Show the lens on hover */
-}
+/* Arrows are not needed anymore with PhotoSwipe */
 
 /* Spring Styling */
 .spring {
-  position: fixed; /* Ensures it stays fixed while scrolling */
-  top: 50%; /* Vertically centers the spring */
-  right: 1cm; /* Aligns the spring to the right-hand edge */
-  transform: translateY(-50%); /* Corrects vertical centering */
-  height: 8cm; /* Explicit height for the spring */
-  width: auto; /* Maintain natural aspect ratio */
+  position: fixed;
+  top: 50%;
+  right: 1cm;
+  transform: translateY(-50%);
+  height: 8cm;
   cursor: pointer;
-  z-index: 10; /* Keeps it above other elements */
-  overflow: hidden; /* Ensures no extra content leaks outside */
-  box-sizing: border-box; /* Ensures padding and borders are factored in properly */
+  z-index: 10;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* Spring image styling */
 .spring-img {
-  max-height: 100%; /* Fits within the spring's height */
-  width: auto; /* Maintains aspect ratio */
-  display: block; /* Makes the image block-level for consistent rendering */
+  max-height: 100%;
+  width: auto;
+  display: block;
 }
+
 /* Flashing effect for the spring icon */
 @keyframes flashIcon {
-  0% {
-    content: url("Images for website/spring.png");
-  }
-  50% {
-    content: url("Images for website/recipes.png");
-  }
-  100% {
-    content: url("Images for website/spring.png");
-  }
+  0% { content: url("Images for website/spring.png"); }
+  50% { content: url("Images for website/recipes.png"); }
+  100% { content: url("Images for website/spring.png"); }
 }
 
 .flashing-icon {
@@ -250,19 +188,10 @@ img {
 
 /* Interaction Between Spring and Recipe Tab */
 .spring:hover + .recipe-tab {
-  right: 0; /* Reveal recipe tab when hovering over the spring */
+  right: 0;
 }
 
 /* Hide spring when the recipe gallery is open */
 .recipe-tab:hover ~ .spring {
-  display: none; /* Hides the spring completely */
+  display: none;
 }
-
-
-
-
-
-
-
-
-
