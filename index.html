@@ -227,29 +227,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   galleryImages.forEach((img) => {
-  img.addEventListener('mousemove', (e) => {
-    const rect = img.getBoundingClientRect(); // Get image dimensions and position
-    const x = e.clientX - rect.left; // Mouse X within image
-    const y = e.clientY - rect.top; // Mouse Y within image
+    img.addEventListener('mousemove', (e) => {
+      const rect = img.getBoundingClientRect(); // Get image dimensions and position
+      const x = e.clientX - rect.left; // Mouse X within image
+      const y = e.clientY - rect.top; // Mouse Y within image
 
-    // Position the lens at the cursor
-    lens.style.left = `${e.clientX - lens.offsetWidth / 2}px`;
-    lens.style.top = `${e.clientY - lens.offsetHeight / 2}px`;
+      // Position the lens at the cursor
+      lens.style.left = `${rect.left + x - lens.offsetWidth / 2}px`;
+      lens.style.top = `${rect.top + y - lens.offsetHeight / 2}px`;
 
+      // Set up the zoom
+      lens.style.backgroundImage = `url(${img.src})`;
+      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+      lens.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
+      lens.style.display = 'block'; // Show the lens
+    });
 
-
-
-    // Set up the zoom
-    lens.style.backgroundImage = `url(${img.src})`; // Background is the current image
-    lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // 2x zoom
-    lens.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
-    lens.style.display = 'block'; // Show the lens
+    img.addEventListener('mouseleave', () => {
+      lens.style.display = 'none'; // Hide the lens when not hovering
+    });
   });
-
-  img.addEventListener('mouseleave', () => {
-    lens.style.display = 'none'; // Hide the lens when not hovering
-  });
-});
 
   window.addEventListener('scroll', () => {
     const missionSection = document.getElementById('our-mission');
@@ -268,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 
 
 </body>
