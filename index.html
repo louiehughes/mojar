@@ -205,7 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const recipeGallery = document.querySelector('.recipe-gallery');
   const lens = document.querySelector('.magnifying-lens');
   const galleryImages = document.querySelectorAll('.recipe-gallery img');
+  const totalImages = galleryImages.length;
 
+  // Function to update the displayed image
+  function updateImage() {
+    const offset = -currentIndex * 100; // Move the gallery by -100% for each image
+    recipeGallery.style.transform = `translateX(${offset}%)`; // Move the gallery horizontally
+  }
+
+  // Show the image based on the current index (for the zoom effect)
   function showImage(index) {
     galleryImages.forEach((img, i) => {
       img.style.opacity = i === index ? '1' : '0';
@@ -218,23 +226,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   showImage(currentIndex);
+  updateImage();
 
+  // Arrow button event listeners
   scrollLeftBtn.addEventListener('click', () => {
-    recipeGallery.scrollBy({ left: -300, behavior: 'smooth' });
+    if (currentIndex > 0) {
+      currentIndex--;
+      showImage(currentIndex);
+      updateImage();
+    }
   });
 
   scrollRightBtn.addEventListener('click', () => {
-    recipeGallery.scrollBy({ left: 300, behavior: 'smooth' });
+    if (currentIndex < totalImages - 1) {
+      currentIndex++;
+      showImage(currentIndex);
+      updateImage();
+    }
   });
 
+  // Disable scrolling on mouse wheel (to prevent scrolling when hovering)
   recipeGallery.addEventListener('wheel', (event) => {
     event.preventDefault();
-    recipeGallery.scrollBy({
-      left: event.deltaY < 0 ? -100 : 100,
-      behavior: 'smooth',
-    });
   });
 
+  // Magnifying lens effect
   galleryImages.forEach((img) => {
     img.addEventListener('mousemove', (e) => {
       const rect = img.getBoundingClientRect(); // Get image dimensions and position
@@ -274,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-
 
 
 </body>
