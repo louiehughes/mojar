@@ -275,23 +275,32 @@
 <script>
   // Select all images in the recipe gallery
   const galleryImages = document.querySelectorAll('.recipe-gallery img');
-  const lens = document.querySelector('.magnifying-lens');
+const lens = document.querySelector('.magnifying-lens');
 
-  galleryImages.forEach(img => {
-    img.addEventListener('mousemove', (e) => {
-      // Get the image's position and dimensions
-      const rect = img.getBoundingClientRect();
-      const x = e.clientX - rect.left; // X position relative to the image
-      const y = e.clientY - rect.top; // Y position relative to the image
+galleryImages.forEach(img => {
+  img.addEventListener('mousemove', (e) => {
+    // Get the image's position and dimensions
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left; // X position within the image
+    const y = e.clientY - rect.top; // Y position within the image
 
-      // Position the lens dynamically
-      lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
-      lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
-      lens.style.backgroundImage = `url(${img.src})`;
-      lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Zoom by 2x
-      lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
-      lens.style.display = 'block'; // Show the lens
-    });
+    // Ensure the lens is always positioned correctly
+    lens.style.left = `${e.pageX - lens.offsetWidth / 2}px`;
+    lens.style.top = `${e.pageY - lens.offsetHeight / 2}px`;
+    
+    // Set the lens background to zoom the image
+    lens.style.backgroundImage = `url(${img.src})`;
+    lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Zoom by 2x
+    lens.style.backgroundPosition = `-${x * 2 - lens.offsetWidth / 2}px -${y * 2 - lens.offsetHeight / 2}px`;
+    lens.style.display = 'block'; // Show the lens
+  });
+
+  // Hide the lens when the mouse leaves the image
+  img.addEventListener('mouseleave', () => {
+    lens.style.display = 'none';
+  });
+});
+
 
     // Hide the lens when the mouse leaves the image
     img.addEventListener('mouseleave', () => {
