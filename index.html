@@ -145,7 +145,7 @@ recipeLightbox.init();
       const maxScroll = 150; // max distance the logo moves down
       const scrollFactor = 0.3;
       const offset = Math.min(scrollY * scrollFactor, maxScroll);
-      logo.style.transform = `translateY(${offset}px)`;
+      logo.style.transform = translateY(${offset}px);
     }
   });
 </script>
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to update the displayed image
   function updateImage() {
     const offset = -currentIndex * 100; // Move the gallery by -100% for each image
-    recipeGallery.style.transform = `translateX(${offset}%)`; // Move the gallery horizontally
+    recipeGallery.style.transform = translateX(${offset}%); // Move the gallery horizontally
   }
 
   // Show the image based on the current index (for the zoom effect)
@@ -272,8 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipeTab = document.querySelector('.recipe-tab');
     const missionTop = missionSection.getBoundingClientRect().top;
     const viewportHeight = window.innerHeight;
-
-    console.log(missionTop); 
 
     if (missionTop <= viewportHeight * 0.5) {
       spring.classList.remove('hidden');
