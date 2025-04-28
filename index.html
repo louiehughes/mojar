@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <title>mojar</title>
   
-  <!-- PhotoSwipe CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+ <!-- Photoswipe CSS -->
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
 
-  <!-- Your site CSS -->
-  <link rel="stylesheet" href="style.css">
+<!-- Photoswipe JS -->
+<script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
 
-  <!-- PhotoSwipe JS (only this one needed for modules) -->
-  <script type="module" src="https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js"></script>
+  
 </head>
 
 <body>
@@ -115,32 +114,6 @@
   </a>
 </div>
 
-<!-- PhotoSwipe root (REQUIRED) -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="pswp__bg"></div>
-  <div class="pswp__scroll-wrap">
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    <div class="pswp__ui pswp__ui--hidden">
-      <div class="pswp__top-bar">
-        <div class="pswp__counter"></div>
-        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-        <div class="pswp__preloader">
-          <div class="pswp__preloader__icn">
-            <div class="pswp__preloader__cut">
-              <div class="pswp__preloader__donut"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
 
@@ -197,21 +170,6 @@ recipeLightbox.init();
       <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
     </a>
     <!-- Add more thumbnails as needed -->
-  </div>
-</div>
-
-<!-- PhotoSwipe markup -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="pswp__bg"></div>
-  <div class="pswp__scroll-wrap">
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    <div class="pswp__ui pswp__ui--hidden">
-      <!-- Controls like close button, zoom, etc. -->
-    </div>
   </div>
 </div>
 
