@@ -273,6 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const missionTop = missionSection.getBoundingClientRect().top;
     const viewportHeight = window.innerHeight;
 
+    console.log(missionTop); 
+
     if (missionTop <= viewportHeight * 0.5) {
       spring.classList.remove('hidden');
       recipeTab.classList.remove('hidden');
