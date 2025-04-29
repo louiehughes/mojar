@@ -126,12 +126,15 @@
     });
     lightbox.init();
   </script>
-<!-- Recipe Gallery (Now with Proper Arrow Placement) -->
+  
+<!-- Recipe Gallery (Now with Proper Arrow Placement and Close Button) -->
 <div class="recipe-gallery">
   <!-- Left Arrow -->
   <button class="scroll-left">&#10094;</button>
   <!-- Right Arrow -->
   <button class="scroll-right">&#10095;</button>
+  <!-- Close Button -->
+  <button class="close-button">×</button>
 
   <!-- Thumbnails visible in the gallery -->
   <div class="gallery-thumbnails">
@@ -159,6 +162,7 @@
 
     const scrollLeftBtn = document.querySelector('.scroll-left');
     const scrollRightBtn = document.querySelector('.scroll-right');
+    const closeButton = document.querySelector('.close-button');
     const recipeGallery = document.querySelector('.recipe-gallery');
     const galleryImages = Array.from(document.querySelectorAll('.recipe-gallery img'));
     const spring = document.querySelector('.spring');
@@ -190,13 +194,13 @@
       }
     });
 
-    // Show gallery when hovering over the spring icon
+    // Show gallery on hover over the spring icon (it stays visible)
     spring.addEventListener('mouseenter', () => {
       recipeGallery.style.display = 'block';
     });
 
-    // Hide gallery when mouse leaves the spring icon
-    spring.addEventListener('mouseleave', () => {
+    // Hide gallery when clicking the close button
+    closeButton.addEventListener('click', () => {
       recipeGallery.style.display = 'none';
     });
 
@@ -214,6 +218,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
