@@ -115,29 +115,24 @@ img {
 }
 
 .recipe-gallery {
-  position: fixed; /* Keep the gallery fixed in the middle of the screen */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Ensure proper centering */
-  display: none; /* Use flexbox to center the image */
-  justify-content: center; /* Horizontally center the image */
-  align-items: center; /* Vertically center the image */
-  width: auto; /* Let the gallery width adjust to the image */
-  height: auto; /* Let the gallery height adjust to the image */
-  padding: 0; /* Remove unnecessary padding */
-  background-color: white; /* Optional background */
-  overflow: hidden; /* Ensures rounded corners are visible */
-  border-radius: 20px; /* Optional rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  z-index: 11; /* Ensure it appears above other elements */
+  position: relative;
+  width: auto;
+  height: auto;
+  border-radius: 10px; /* Add rounded corners */
+  overflow: hidden; /* Ensure the corners are respected */
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow */
 }
 
+/* Style for the images inside the gallery */
 .recipe-gallery img {
-  max-width: 90vw; /* Ensure the image fits within the viewport width */
-  max-height: 90vh; /* Ensure the image fits within the viewport height */
-  object-fit: contain; /* Maintain aspect ratio */
-  display: block; /* Ensure proper spacing */
+  max-width: 90vw; /* Ensure the images fit */
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px; /* Ensure images match the gallery corners */
 }
+
 
 @media (max-width: 768px) {
   .recipe-gallery {
@@ -154,49 +149,48 @@ img {
   display: block; /* Show only the first image initially */
 }
 
-/* Arrows Styling */
+/* Arrow buttons */
 .scroll-left,
 .scroll-right {
-  position: absolute; /* Position relative to the gallery container */
-  top: 50%; /* Vertically center the arrows */
-  transform: translateY(-50%); /* Proper vertical alignment */
-  background: none; /* Remove background from buttons */
-  border: none; /* Remove default button borders */
-  cursor: pointer; /* Add pointer interaction for better UX */
-  z-index: 12; /* Ensure arrows are above the gallery content */
-  width: 40px; /* Set a fixed width for the arrows */
-  height: 40px; /* Set a fixed height for the arrows */
-  padding: 0; /* Remove any extra padding */
+  position: absolute; /* Absolutely position arrows within the wrapper */
+  top: 50%; /* Center them vertically */
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px; /* Arrow size */
+  height: 40px;
+  padding: 0;
+  z-index: 12; /* Ensure arrows appear above the gallery */
 }
 
+/* Positioning for each arrow */
 .scroll-left {
-  left: -5.5rem; /* Position to the left of the gallery */
+  left: -5.5rem; /* Move left arrow further out */
 }
 
 .scroll-right {
-  right: -5.5rem; /* Position to the right of the gallery */
+  right: -5.5rem; /* Move right arrow further out */
 }
 
-/* Styling the SVG Arrows */
+/* Styling for SVG inside arrows */
 .scroll-left svg,
 .scroll-right svg {
-  width: 100%; /* Make the SVG scale with the button size */
-  height: 100%; /* Keep the aspect ratio intact */
-  stroke: #222; /* Set a neutral dark gray for the arrow lines */
-  stroke-width: 2; /* Define the line thickness */
-  stroke-linecap: round; /* Add rounded edges to the arrow lines */
-  stroke-linejoin: round; /* Smoothly connect the arrow points */
-  fill: none; /* Ensure no background for the arrows */
-  transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth interactions */
+  width: 100%;
+  height: 100%;
+  stroke: #222; /* Dark gray for arrows */
+  stroke-width: 2; /* Line thickness */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
-/* Hover Effect for Arrows */
 .scroll-left:hover svg,
 .scroll-right:hover svg {
-  stroke: #555; /* Lighten the stroke color slightly on hover */
-  transform: scale(1.1); /* Slightly enlarge the arrow for emphasis */
+  stroke: #555; /* Lighten arrow on hover */
+  transform: scale(1.1); /* Slight enlargement on hover */
+  transition: transform 0.2s ease, stroke 0.2s ease;
 }
-
 
 
 /* Close Button (Minimalist "X" Style) */
