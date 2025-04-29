@@ -104,29 +104,27 @@ img {
 }
 
 .recipe-gallery {
-  position: fixed; /* Keep the gallery fixed on the screen */
+  position: fixed; /* Keep the gallery fixed in the middle of the screen */
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Ensure proper centering */
-  display: none; /* Initially hidden */
-  justify-content: center;
-  align-items: center;
-  width: 90%; /* Constrain width to avoid overflow */
-  max-width: 600px; /* Optional: Adjust maximum size for desktop */
-  max height: 90vh; /* Allow height to adjust based on content */
-  background-color: white; /* Optional: Add background */
-  border-radius: 10px; /* Optional: Rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+  display: flex; /* Use flexbox to center the image */
+  justify-content: center; /* Horizontally center the image */
+  align-items: center; /* Vertically center the image */
+  width: auto; /* Let the gallery width adjust to the image */
+  height: auto; /* Let the gallery height adjust to the image */
+  padding: 0; /* Remove unnecessary padding */
+  background-color: white; /* Optional background */
+  border-radius: 10px; /* Optional rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   z-index: 11; /* Ensure it appears above other elements */
 }
 
 
 .recipe-gallery img {
-  width: auto; /* Maintain aspect ratio */
-  max-width: 100%; /* Prevent images from overflowing horizontally */
-  height: auto; /* Allow dynamic height adjustment */
-  max-height: 90vh; /* Ensure image fits within the viewport height */
-  object-fit: contain; /* Avoid distortion */
+  max-width: 90vw; /* Ensure the image fits within the viewport width */
+  max-height: 90vh; /* Ensure the image fits within the viewport height */
+  object-fit: contain; /* Maintain aspect ratio */
   display: block; /* Ensure proper spacing */
 }
 
