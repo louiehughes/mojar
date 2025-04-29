@@ -103,6 +103,17 @@ img {
   flex-shrink: 0;
 }
 
+/* Wrapper for arrows and gallery */
+.recipe-gallery-wrapper {
+  position: relative; /* Container for gallery and arrows */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  z-index: 10; /* Ensure this container is above other elements */
+}
+
 .recipe-gallery {
   position: fixed; /* Keep the gallery fixed in the middle of the screen */
   top: 50%; /* Center vertically */
