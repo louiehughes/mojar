@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <title>mojar</title>
   
- <!-- Photoswipe CSS -->
-<link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <!-- Photoswipe CSS for Main Gallery Only -->
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
 
-<!-- Photoswipe JS -->
-<script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
+  <!-- Photoswipe JS for Main Gallery Only -->
+  <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
 
-<!-- Your site CSS -->
-<link rel="stylesheet" href="style.css">  
+  <!-- Your site CSS -->
+  <link rel="stylesheet" href="style.css">  
 
 </head>
 
@@ -116,179 +116,113 @@
   </a>
 </div>
 
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
+<!-- Recipe Gallery (Custom JavaScript-Based) -->
+  <div class="recipe-tab hidden">
+    <div class="gallery-wrapper" style="position: relative; overflow: hidden;">
+      <button class="scroll-left">&#10094;</button>
+      <button class="scroll-right">&#10095;</button>
 
-  // Initialize PhotoSwipe for main gallery
-const lightbox = new PhotoSwipeLightbox({
-  gallery: '#gallery', 
-  children: 'a',
-  pswpModule: () => import('https://unpkg.com/photoswipe'),
-});
-lightbox.init();
+      <div class="recipe-gallery">
+        <!-- Thumbnails visible in the gallery -->
+        <div class="gallery-thumbnails">
+          <a href="Images for website/recipe 1.jpeg" data-size="1200x900">
+            <img src="Images for website/recipe 1.jpeg" alt="Image 1">
+          </a>
+          <a href="Images for website/recipe 2.jpeg" data-size="1200x900">
+            <img src="Images for website/recipe 2.jpeg" alt="Image 2">
+          </a>
+          <a href="Images for website/chicken liver pate.jpeg" data-size="1200x900">
+            <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
+          </a>
+          <!-- Add more thumbnails as needed -->
+        </div>
+      </div>
 
-// Initialize PhotoSwipe for recipe gallery
-const recipeLightbox = new PhotoSwipeLightbox({
-  gallery: '.recipe-gallery', // NEW
-  children: 'a',
-  pswpModule: () => import('https://unpkg.com/photoswipe'),
-});
-recipeLightbox.init();
-</script>
-
-  
-<script>
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const logo = document.getElementById('mojarLogo');
-    if (logo) {
-      const maxScroll = 150; // max distance the logo moves down
-      const scrollFactor = 0.3;
-      const offset = Math.min(scrollY * scrollFactor, maxScroll);
-      logo.style.transform = translateY(${offset}px);
-    }
-  });
-</script>
-
-<div class="spring hidden">
-  <!-- Flashing icon that alternates between spring and recipe images -->
-  <img src="Images for website/spring.png" alt="Spring" class="spring-img flashing-icon">
-</div>
-
-
-<div class="recipe-tab hidden">
-  <div class="gallery-wrapper" style="position: relative; overflow: hidden;">
-    <button class="scroll-left">&#10094;</button>
-    <button class="scroll-right">&#10095;</button>
-
-    <div class="recipe-gallery">
-  <!-- Thumbnails visible in the gallery -->
-  <div class="gallery-thumbnails">
-    <a href="Images for website/recipe 1.jpeg" data-size="1200x900">
-      <img src="Images for website/recipe 1.jpeg" alt="Image 1">
-    </a>
-    <a href="Images for website/recipe 2.jpeg" data-size="1200x900">
-      <img src="Images for website/recipe 2.jpeg" alt="Image 2">
-    </a>
-    <a href="Images for website/chicken liver pate.jpeg" data-size="1200x900">
-      <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
-    </a>
-    <!-- Add more thumbnails as needed -->
-  </div>
-</div>
-
-    <!-- Only ONE magnifying lens -->
-    <div class="magnifying-lens" 
-      style="display:none; 
-      position:absolute; 
-      width:300px; 
-      height:300px; 
-      border:none; 
-      border-radius:none; 
-      pointer-events:none; 
-      background-repeat:no-repeat;">
+      <!-- Magnifying lens removed as part of simplification -->
     </div>
   </div>
-</div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  let currentIndex = 0;
+  <!-- Flashing Spring Tab -->
+  <div class="spring hidden">
+    <img src="Images for website/spring.png" alt="Spring" class="spring-img flashing-icon">
+  </div>
 
-  const scrollLeftBtn = document.querySelector('.scroll-left');
-  const scrollRightBtn = document.querySelector('.scroll-right');
-  const recipeGallery = document.querySelector('.recipe-gallery');
-  const lens = document.querySelector('.magnifying-lens');
-  const galleryImages = document.querySelectorAll('.recipe-gallery img');
-  const totalImages = galleryImages.length;
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
 
-  // Function to update the displayed image
-  function updateImage() {
-    const offset = -currentIndex * 100; // Move the gallery by -100% for each image
-    recipeGallery.style.transform = translateX(${offset}%); // Move the gallery horizontally
-  }
-
-  // Show the image based on the current index (for the zoom effect)
-  function showImage(index) {
-    galleryImages.forEach((img, i) => {
-      img.style.opacity = i === index ? '1' : '0';
-      img.style.transform = i === index ? 'scale(1)' : 'scale(0.9)';
+    // Initialize PhotoSwipe for Main Gallery Only
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery', 
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe'),
     });
-  }
+    lightbox.init();
+  </script>
 
-  galleryImages.forEach((img, index) => {
-    img.addEventListener('mouseenter', () => showImage(index));
-  });
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentIndex = 0;
 
-  showImage(currentIndex);
-  updateImage();
+      const scrollLeftBtn = document.querySelector('.scroll-left');
+      const scrollRightBtn = document.querySelector('.scroll-right');
+      const recipeGallery = document.querySelector('.recipe-gallery');
+      const galleryImages = document.querySelectorAll('.recipe-gallery img');
+      const totalImages = galleryImages.length;
 
-  // Arrow button event listeners
-  scrollLeftBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
+      // Function to update the displayed image
+      function updateImage() {
+        const offset = -currentIndex * 100;
+        recipeGallery.style.transform = `translateX(${offset}%)`;
+      }
+
+      // Show the image based on the current index
+      function showImage(index) {
+        galleryImages.forEach((img, i) => {
+          img.style.opacity = i === index ? '1' : '0.9';
+          img.style.transform = i === index ? 'scale(1)' : 'scale(0.95)';
+        });
+      }
+
       showImage(currentIndex);
       updateImage();
-    }
-  });
 
-  scrollRightBtn.addEventListener('click', () => {
-    if (currentIndex < totalImages - 1) {
-      currentIndex++;
-      showImage(currentIndex);
-      updateImage();
-    }
-  });
+      // Arrow button event listeners
+      scrollLeftBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          showImage(currentIndex);
+          updateImage();
+        }
+      });
 
-  // Disable scrolling on mouse wheel (to prevent scrolling when hovering)
-  recipeGallery.addEventListener('wheel', (event) => {
-    event.preventDefault();
-  });
+      scrollRightBtn.addEventListener('click', () => {
+        if (currentIndex < totalImages - 1) {
+          currentIndex++;
+          showImage(currentIndex);
+          updateImage();
+        }
+      });
 
-  // Magnifying lens effect
-  galleryImages.forEach((img) => {
-    img.addEventListener('mousemove', (e) => {
-      const rect = img.getBoundingClientRect(); // Get image dimensions and position
-      const x = e.clientX - rect.left; // Mouse X within image
-      const y = e.clientY - rect.top; // Mouse Y within image
+      // Flashing Tab Visibility on Scroll
+      const spring = document.querySelector('.spring');
+      const recipeTab = document.querySelector('.recipe-tab');
 
-      // Position the lens at the cursor
-      lens.style.left = x + 'px';
-      lens.style.top = y + 'px';
+      window.addEventListener('scroll', () => {
+        const missionSection = document.getElementById('our-mission');
+        const missionTop = missionSection.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
 
-      // Set up the zoom
-      lens.style.backgroundImage = url(${img.src});
-      lens.style.backgroundSize = ${img.width * 2}px ${img.height * 2}px;
-      lens.style.backgroundPosition = -${x * 2}px -${y * 2}px;
-      lens.style.display = 'block'; // Show the lens
+        if (missionTop <= viewportHeight * 0.5) {
+          spring.classList.remove('hidden');
+          recipeTab.classList.remove('hidden');
+        } else {
+          spring.classList.add('hidden');
+          recipeTab.classList.add('hidden');
+        }
+      });
     });
-
-    img.addEventListener('mouseleave', () => {
-      lens.style.display = 'none'; // Hide the lens when not hovering
-    });
-  });
-
-  window.addEventListener('scroll', () => {
-    const missionSection = document.getElementById('our-mission');
-    const spring = document.querySelector('.spring');
-    const recipeTab = document.querySelector('.recipe-tab');
-    const missionTop = missionSection.getBoundingClientRect().top;
-    const viewportHeight = window.innerHeight;
-
-    if (missionTop <= viewportHeight * 0.5) {
-      spring.classList.remove('hidden');
-      recipeTab.classList.remove('hidden');
-    } else {
-      spring.classList.add('hidden');
-      recipeTab.classList.add('hidden');
-    }
-  });
-});
-</script>
-
-
+  </script>
 </body>
 </html>
-
 
 
