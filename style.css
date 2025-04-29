@@ -149,15 +149,14 @@ img {
   right: 0;
 }
 
-/* Spring Styling */
 .spring {
   position: fixed;
-  top: 50%;
+  top: calc(50% - 10px); /* Adjust based on the exact middle of Georgio image */
   right: 1cm;
-  transform: translateY(-50%);
   height: 8cm;
   cursor: pointer;
   z-index: 10;
+  transition: top 0.4s ease; /* Smooth scroll effect */
 }
 
 .spring-img {
