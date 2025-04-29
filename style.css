@@ -147,6 +147,38 @@ img {
   display: block; /* Show only the first image initially */
 }
 
+.scroll-left,
+.scroll-right {
+  position: absolute; /* Position arrows relative to the gallery container */
+  top: 50%; /* Align them to the middle of the gallery height */
+  transform: translateY(-50%); /* Proper vertical alignment */
+  font-size: 2.5rem; /* Size of the arrows */
+  color: #222; /* Modern color */
+  background-color: transparent; /* Remove box styling */
+  border: none; /* Remove borders */
+  cursor: pointer; /* Add pointer for interactivity */
+  z-index: 12; /* Ensure arrows appear above the images */
+}
+
+/* Left arrow positioning */
+.scroll-left {
+  left: 1cm; /* Position 1cm from the left of the gallery */
+}
+
+/* Right arrow positioning */
+.scroll-right {
+  right: 1cm; /* Position 1cm from the right of the gallery */
+}
+
+/* Hover effects for the arrows */
+.scroll-left:hover,
+.scroll-right:hover {
+  color: #555; /* Slightly lighter color on hover */
+  transform: translateY(-50%) scale(1.2); /* Enlarge slightly on hover */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth animation */
+}
+
+
 
 /* Spring Styling */
 .spring {
