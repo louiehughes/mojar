@@ -168,6 +168,9 @@
     const spring = document.querySelector('.spring');
     const totalImages = galleryImages.length;
 
+     // **Ensure gallery is hidden on page load**
+    recipeGallery.style.display = 'none'; // This hides the gallery initially
+
     // Function to update the displayed image
     function updateImage() {
       galleryImages.forEach((img, i) => {
