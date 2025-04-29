@@ -129,6 +129,10 @@ img {
   display: none; /* Hide thumbnails */
 }
 
+.recipe-gallery img:first-child {
+  display: block; /* Show only the first image initially */
+}
+
 /* Recipe Sidebar Tab */
 .recipe-tab {
   position: fixed;
