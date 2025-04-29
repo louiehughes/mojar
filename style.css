@@ -116,9 +116,10 @@ img {
 
 .recipe-gallery img {
   width: auto;
-  height: 100%; /* Scale to fit the container height */
+  height: 50%; /* Scale to fit the container height */
   object-fit: contain; /* Maintain aspect ratio */
   flex-shrink: 0; /* Prevent shrinking */
+  object-fit: contain;
 }
 
 .gallery-thumbnails a {
