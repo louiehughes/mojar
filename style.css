@@ -120,14 +120,12 @@ img {
   z-index: 11; /* Ensure it appears above other elements */
 }
 
-
 .recipe-gallery img {
   max-width: 90vw; /* Ensure the image fits within the viewport width */
   max-height: 90vh; /* Ensure the image fits within the viewport height */
   object-fit: contain; /* Maintain aspect ratio */
   display: block; /* Ensure proper spacing */
 }
-
 
 @media (max-width: 768px) {
   .recipe-gallery {
@@ -139,7 +137,6 @@ img {
     max-height: 70vh; /* Constrain image height on small screens */
   }
 }
-
 
 .recipe-gallery img:first-child {
   display: block; /* Show only the first image initially */
@@ -174,7 +171,26 @@ img {
   transition: transform 0.3s ease, color 0.3s ease; /* Smooth animation */
 }
 
+/* Close Button (Minimalist "X" Style) */
+.close-button {
+  position: absolute; /* Place above the gallery */
+  top: 10px; /* Align 10px from the top edge of the gallery */
+  right: 10px; /* Align 10px from the right edge of the gallery */
+  background: none; /* Remove background */
+  border: none; /* Remove borders */
+  color: #222; /* Dark color for the "X" */
+  font-size: 1.5rem; /* Size for better visibility */
+  font-weight: bold; /* Make the "X" more prominent */
+  cursor: pointer; /* Add pointer for interactivity */
+  padding: 0; /* Remove default padding */
+  line-height: 1; /* Ensure proper alignment */
+}
 
+.close-button:hover {
+  color: #555; /* Slightly lighten the "X" color on hover */
+  transform: scale(1.2); /* Slightly enlarge for emphasis on hover */
+  transition: transform 0.2s ease, color 0.2s ease; /* Smooth hover animation */
+}
 
 /* Spring Styling */
 .spring {
@@ -215,6 +231,7 @@ img {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
 
 
 
