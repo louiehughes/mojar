@@ -168,11 +168,19 @@
     const spring = document.querySelector('.spring');
     const totalImages = galleryImages.length;
 
+    // Function to dynamically resize the gallery based on the current image's dimensions
+    function updateGallerySize() {
+      const currentImage = galleryImages[currentIndex];
+      recipeGallery.style.width = `${currentImage.naturalWidth}px`; // Adapt gallery width
+      recipeGallery.style.height = `${currentImage.naturalHeight}px`; // Adapt gallery height
+    }
+
     // Function to update the displayed image
     function updateImage() {
       galleryImages.forEach((img, i) => {
         img.style.display = i === currentIndex ? 'block' : 'none'; // Show only the current image
       });
+      updateGallerySize(); // Dynamically adjust the gallery size
     }
 
     // Initial call to display the first image
@@ -218,6 +226,7 @@
     });
   });
 </script>
+
 
 
 </body>
