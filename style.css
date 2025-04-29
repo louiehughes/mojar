@@ -104,28 +104,41 @@ img {
 }
 
 .recipe-gallery {
-  position: fixed; /* Makes it independent of parent positioning */
-  top: 50%; /* Adjust to align near the spring icon */
-  left: calc(100% - 5cm); /* Push it closer to the spring icon */
-  transform: translateY(-50%); /* Center vertically */
+  position: fixed; /* Keep the gallery fixed on the screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Ensure proper centering */
   display: none; /* Initially hidden */
   justify-content: center;
   align-items: center;
-  width: 80%; /* Adjust width for visibility */
-  max-width: 500px; /* Ensure it doesn’t become too large */
-  height: auto; /* Allow flexibility */
-  background-color: white; /* Background for clarity */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  width: 90%; /* Constrain width to avoid overflow */
+  max-width: 600px; /* Optional: Adjust maximum size for desktop */
+  height: auto; /* Allow height to adjust based on content */
+  background-color: white; /* Optional: Add background */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
   z-index: 11; /* Ensure it appears above other elements */
 }
 
 
 .recipe-gallery img {
-  width: auto;
-  height: 100%; /* Make it larger */
-  object-fit: contain;
+  width: 100%; /* Make image take up the full width of the gallery */
+  max-width: 100%; /* Prevent it from exceeding the container width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image fits without distortion */
 }
+
+@media (max-width: 768px) {
+  .recipe-gallery {
+    width: 90%; /* Adjust gallery width for smaller screens */
+    max-width: 100%; /* Allow it to take up the full viewport width */
+  }
+
+  .recipe-gallery img {
+    max-height: 70vh; /* Constrain image height on small screens */
+  }
+}
+
 
 .recipe-gallery img:first-child {
   display: block; /* Show only the first image initially */
