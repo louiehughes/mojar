@@ -210,15 +210,19 @@
         }
       });
 
-      // Hover behavior to show recipe tab
       document.querySelector('.spring').addEventListener('mouseenter', () => {
-        recipeTab.style.right = '0';
-        recipeTab.style.display = 'block';
-      });
+  const recipeTab = document.querySelector('.recipe-tab');
+  recipeTab.style.right = '0';
+  recipeTab.style.display = 'block';
+});
 
-      document.querySelector('.spring').addEventListener('mouseleave', () => {
-        recipeTab.style.right = '-20cm';
-        recipeTab.style.display = 'none';
+// Optionally, add a button or interaction to close the gallery manually
+document.querySelector('.recipe-tab').addEventListener('mouseleave', () => {
+  const recipeTab = document.querySelector('.recipe-tab');
+  recipeTab.style.right = '-20cm';
+  recipeTab.style.display = 'none';
+});
+
       });
     });
 </script>
