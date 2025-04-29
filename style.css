@@ -1,3 +1,4 @@
+/* General Reset */
 body {
   background-color: white;
   margin: 0;
@@ -5,11 +6,6 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #222;
   line-height: 1.6;
-}
-
-/* Utility Classes */
-.hidden {
-  display: none; /* Completely hides the element */
 }
 
 img {
@@ -21,13 +17,18 @@ img {
   background: transparent !important;
 }
 
+/* Hidden Utility Class */
+.hidden {
+  display: none; /* Completely hides the element */
+}
+
 /* Logo scrolls with parallax effect */
 .logo-container {
   position: fixed;
   top: -10px;
   left: 10px;
   z-index: 10;
-  pointer-events: none; /* prevents it from interfering with interactions */
+  pointer-events: none; /* Prevents interactions */
 }
 
 .logo {
@@ -61,7 +62,7 @@ img {
 /* Mirto image layout */
 .mirto-wrapper {
   position: relative;
-  margin-bottom: 2rem; /* controls space after mirto section */
+  margin-bottom: 2rem; /* Controls space after mirto section */
 }
 
 .mirto-background {
@@ -77,7 +78,7 @@ img {
 .mirto-wrapper p {
   position: relative;
   z-index: 2;
-  margin-bottom: 0.5rem; /* tightens the spacing */
+  margin-bottom: 0.5rem; /* Tightens spacing */
 }
 
 /* Fix double-spacing issue after mirto section */
@@ -85,7 +86,7 @@ img {
   margin-top: 0.5rem;
 }
 
-/* Gallery (PhotoSwipe target) */
+/* Main PhotoSwipe Gallery */
 .gallery {
   display: flex;
   overflow-x: auto;
@@ -100,34 +101,9 @@ img {
   max-height: 300px;
   border-radius: 8px;
   flex-shrink: 0;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  padding: 0;
-  margin: 0;
 }
 
-/* Recipe sidebar tab */
-.recipe-tab {
-  position: fixed;
-  top: 0;
-  right: -20cm; /* Hide it initially */
-  width: 20cm;
-  height: 100vh;
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  transition: right 0.4s ease;
-  z-index: 9;
-  overflow: auto; /* Allow scrolling inside if needed */
-}
-
-.recipe-tab:hover {
-  right: 0;
-}
-
-/* Gallery container */
+/* Recipe Gallery (Custom JavaScript-based) */
 .recipe-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -155,9 +131,23 @@ img {
   opacity: 0.9;
 }
 
+/* Recipe Sidebar Tab */
+.recipe-tab {
+  position: fixed;
+  top: 0;
+  right: -20cm; /* Hide it initially */
+  width: 20cm;
+  height: 100vh;
+  background-color: transparent;
+  border: none;
+  transition: right 0.4s ease;
+  z-index: 9;
+  overflow: auto; /* Allow scrolling inside if needed */
+}
 
-
-/* Arrows are not needed anymore with PhotoSwipe */
+.recipe-tab:hover {
+  right: 0;
+}
 
 /* Spring Styling */
 .spring {
@@ -168,18 +158,15 @@ img {
   height: 8cm;
   cursor: pointer;
   z-index: 10;
-  overflow: hidden;
-  box-sizing: border-box;
 }
 
-/* Spring image styling */
 .spring-img {
   max-height: 100%;
   width: auto;
   display: block;
 }
 
-/* Flashing effect for the spring icon */
+/* Flashing Effect */
 @keyframes flashIcon {
   0% { content: url("Images for website/spring.png"); }
   50% { content: url("Images for website/recipes.png"); }
@@ -187,8 +174,6 @@ img {
 }
 
 .flashing-icon {
-  width: auto;
-  height: 8cm;
   animation: flashIcon 2s infinite;
 }
 
@@ -201,3 +186,4 @@ img {
 .recipe-tab:hover ~ .spring {
   display: none;
 }
+
