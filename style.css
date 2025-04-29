@@ -162,8 +162,16 @@ img {
 }
 
 .spring:hover + .recipe-gallery {
-  display: flex; /* Show the gallery */
+  display: flex;
+  opacity: 0; /* Initially invisible */
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
 
 
