@@ -147,32 +147,30 @@ img {
 
 .scroll-left,
 .scroll-right {
-  position: absolute; /* Position arrows relative to the gallery container */
-  top: 50%; /* Align them to the middle of the gallery height */
+  position: absolute; /* Position relative to the gallery container */
+  top: 50%; /* Vertically center the arrows */
   transform: translateY(-50%); /* Proper vertical alignment */
-  font-size: 2.5rem; /* Size of the arrows */
-  color: #222; /* Modern color */
-  background-color: transparent; /* Remove box styling */
+  font-size: 2.5rem; /* Set the arrow size */
+  color: #222; /* Modern dark arrow color */
+  background-color: transparent; /* Remove background */
   border: none; /* Remove borders */
-  cursor: pointer; /* Add pointer for interactivity */
-  z-index: 12; /* Ensure arrows appear above the images */
+  cursor: pointer; /* Change cursor to pointer */
+  z-index: 12; /* Ensure arrows are on top of the gallery */
 }
 
-/* Left arrow positioning */
 .scroll-left {
-  left: 1cm; /* Position 1cm from the left of the gallery */
+  left: -2rem; /* Position 2rem to the left of the image container */
 }
 
-/* Right arrow positioning */
 .scroll-right {
-  right: 1cm; /* Position 1cm from the right of the gallery */
+  right: -2rem; /* Position 2rem to the right of the image container */
 }
 
-/* Hover effects for the arrows */
+/* Optional: Add hover effect */
 .scroll-left:hover,
 .scroll-right:hover {
-  color: #555; /* Slightly lighter color on hover */
-  transform: translateY(-50%) scale(1.2); /* Enlarge slightly on hover */
+  color: #555; /* Lighten the arrow color on hover */
+  transform: translateY(-50%) scale(1.2); /* Slightly enlarge for emphasis */
   transition: transform 0.3s ease, color 0.3s ease; /* Smooth animation */
 }
 
