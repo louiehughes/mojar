@@ -163,47 +163,41 @@
       const scrollLeftBtn = document.querySelector('.scroll-left');
       const scrollRightBtn = document.querySelector('.scroll-right');
       const recipeGallery = document.querySelector('.recipe-gallery');
-      const galleryImages = document.querySelectorAll('.recipe-gallery img');
+      const galleryImages = Array.from(document.querySelectorAll('.recipe-gallery img'));
       const totalImages = galleryImages.length;
 
       // Function to update the displayed image
       function updateImage() {
-        const offset = -currentIndex * 100;
-        recipeGallery.style.transform = `translateX(${offset}%)`;
-      }
-
-      // Show the image based on the current index
-      function showImage(index) {
         galleryImages.forEach((img, i) => {
-          img.style.opacity = i === index ? '1' : '0.9';
-          img.style.transform = i === index ? 'scale(1)' : 'scale(0.95)';
+          img.style.display = i === currentIndex ? 'block' : 'none'; // Show only the current image
         });
       }
 
-      showImage(currentIndex);
+      // Initial call to display the first image
       updateImage();
 
-      // Arrow button event listeners
+      // Left arrow button click event
       scrollLeftBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
           currentIndex--;
-          showImage(currentIndex);
           updateImage();
         }
       });
 
+      // Right arrow button click event
       scrollRightBtn.addEventListener('click', () => {
         if (currentIndex < totalImages - 1) {
           currentIndex++;
-          showImage(currentIndex);
           updateImage();
         }
       });
 
+      // Flashing Tab Visibility on Scroll
+      const spring = document.querySelector('.spring');
+      const recipeTab = document.querySelector('.recipe-tab');
+      const missionSection = document.getElementById('our-mission');
+
       window.addEventListener('scroll', () => {
-        const spring = document.querySelector('.spring');
-        const recipeTab = document.querySelector('.recipe-tab');
-        const missionSection = document.getElementById('our-mission');
         const missionTop = missionSection.getBoundingClientRect().top;
         const viewportHeight = window.innerHeight;
 
@@ -216,12 +210,17 @@
         }
       });
 
+      // Hover behavior to show recipe tab
       document.querySelector('.spring').addEventListener('mouseenter', () => {
-        const recipeTab = document.querySelector('.recipe-tab');
         recipeTab.style.right = '0';
         recipeTab.style.display = 'block';
       });
+
+      document.querySelector('.spring').addEventListener('mouseleave', () => {
+        recipeTab.style.right = '-20cm';
+        recipeTab.style.display = 'none';
+      });
     });
-  </script>
-</body>
+</script>
+</body> 
 </html>
