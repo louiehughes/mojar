@@ -203,33 +203,23 @@
         }
       });
 
-      document.addEventListener('DOMContentLoaded', () => {
-  const spring = document.querySelector('.spring');
-  const recipeTab = document.querySelector('.recipe-tab');
-  const georgioImage = document.querySelector('.georgio');
+// Flashing Tab Visibility on Scroll
+      const spring = document.querySelector('.spring');
+      const recipeTab = document.querySelector('.recipe-tab');
 
-  // Ensure spring appears immediately on page load
-  spring.classList.remove('hidden');
-  recipeTab.classList.remove('hidden');
+      window.addEventListener('scroll', () => {
+        const missionSection = document.getElementById('our-mission');
+        const missionTop = missionSection.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
 
-  // Adjust visibility and position dynamically on scroll
-  window.addEventListener('scroll', () => {
-    const missionSection = document.getElementById('our-mission');
-    const missionTop = missionSection.getBoundingClientRect().top;
-    const viewportHeight = window.innerHeight;
-
-    // Dynamically calculate middle of Georgio image height
-    const georgioMiddle = georgioImage.getBoundingClientRect().top + georgioImage.getBoundingClientRect().height / 2;
-
-    if (missionTop <= viewportHeight * 0.5) {
-      spring.style.top = `${georgioMiddle}px`; // Maintain middle alignment of Georgio
-      recipeTab.classList.remove('hidden');
-    } else {
-      spring.style.top = 'calc(50vh - 10rem)'; // Return to initial position on scroll
-      recipeTab.classList.add('hidden');
-    }
-  });
-});
+        if (missionTop <= viewportHeight * 0.5) {
+          spring.classList.remove('hidden');
+          recipeTab.classList.remove('hidden');
+        } else {
+          spring.classList.add('hidden');
+          recipeTab.classList.add('hidden');
+        }
+      });
 
   </script>
 </body>
