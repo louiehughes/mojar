@@ -136,13 +136,15 @@ img {
   position: fixed;
   top: 0;
   right: -20cm; /* Hide it initially */
+  display: none; /* Starts as hidden */
   width: 20cm;
   height: 100vh;
   background-color: transparent;
   border: none;
-  transition: right 0.4s ease;
+  transition: right 0.4s ease, display 0.4s ease;
   z-index: 9;
   overflow: auto; /* Allow scrolling inside if needed */
+  
 }
 
 .recipe-tab:hover {
@@ -158,6 +160,7 @@ img {
   height: 8cm;
   cursor: pointer;
   z-index: 10;
+  transition: opacity 0.4s ease;
 }
 
 .spring-img {
@@ -180,6 +183,7 @@ img {
 /* Interaction Between Spring and Recipe Tab */
 .spring:hover + .recipe-tab {
   right: 0;
+  display: block; /* Ensures visibility */
 }
 
 /* Hide spring when the recipe gallery is open */
