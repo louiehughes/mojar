@@ -145,9 +145,9 @@ img {
 
 .scroll-left,
 .scroll-right {
-  position: absolute; /* Position them relative to the gallery container */
+  position: absolute; /* Position relative to the gallery container */
   top: 50%; /* Vertically center the arrows */
-  transform: translateY(-50%); /* Center perfectly on Y-axis */
+  transform: translateY(-50%); /* Proper vertical alignment */
   background: none; /* Remove default background */
   border: none; /* Remove borders */
   cursor: pointer; /* Add pointer interaction */
@@ -165,7 +165,6 @@ img {
   right: -3rem; /* Position to the right of the gallery */
 }
 
-/* Styling SVG arrows for thin lines and an imperfect shape */
 .scroll-left svg,
 .scroll-right svg {
   width: 100%; /* Make the SVG fit the button size */
