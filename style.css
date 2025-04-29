@@ -152,35 +152,39 @@ img {
   border: none; /* Remove borders */
   cursor: pointer; /* Add pointer interaction */
   z-index: 12; /* Ensure arrows appear on top */
-  width: 40px; /* Adjust arrow width */
-  height: 40px; /* Adjust arrow height */
+  width: 35px; /* Adjust arrow width */
+  height: 35px; /* Adjust arrow height */
   padding: 0; /* Remove padding */
 }
 
 .scroll-left {
-  left: -3rem; /* Position to the left of the gallery */
+  left: -2.5rem; /* Position to the left of the gallery */
 }
 
 .scroll-right {
-  right: -3rem; /* Position to the right of the gallery */
+  right: -2.5rem; /* Position to the right of the gallery */
 }
 
 .scroll-left svg,
 .scroll-right svg {
   width: 100%; /* Make the SVG fit the button size */
   height: 100%; /* Maintain proportions */
-  stroke: #222; /* Set arrow line color */
-  stroke-width: 2; /* Thin lines for elegance */
-  stroke-linecap: round; /* Rounded ends for a softer look */
-  fill: none; /* Ensure no background inside the arrows */
+  stroke: #444; /* Soft gray for a subtle look */
+  stroke-width: 1.8; /* Slightly thinner lines for elegance */
+  stroke-linecap: round; /* Rounded ends for softer aesthetics */
+  stroke-linejoin: round; /* Smoothly connect arrow points */
+  fill: none; /* No background inside the arrows */
+  opacity: 0.8; /* Make the arrows less conspicuous */
 }
 
 .scroll-left:hover svg,
 .scroll-right:hover svg {
-  stroke: #555; /* Slightly lighter color on hover */
+  stroke: #666; /* Slightly lighter color on hover */
+  opacity: 1; /* Make them stand out slightly */
   transform: scale(1.1); /* Slightly enlarge on hover */
-  transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth hover effect */
+  transition: transform 0.2s ease, opacity 0.2s ease, stroke 0.2s ease; /* Smooth hover effect */
 }
+
 
 
 /* Close Button (Minimalist "X" Style) */
