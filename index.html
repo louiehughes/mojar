@@ -210,20 +210,19 @@
         }
       });
 
-    document.querySelector('.spring').addEventListener('mouseenter', () => {
-      const recipeTab = document.querySelector('.recipe-tab');
-      recipeTab.style.right = '0';
-      recipeTab.style.display = 'block';
-    });
+      document.querySelector('.spring').addEventListener('mouseenter', () => {
+        const recipeTab = document.querySelector('.recipe-tab');
+        recipeTab.style.right = '0';
+        recipeTab.style.display = 'block';
+      });
 
 // Optionally, add a button or interaction to close the gallery manually
-    document.querySelector('.recipe-tab').addEventListener('mouseleave', () => {
-      const recipeTab = document.querySelector('.recipe-tab');
-      recipeTab.style.right = '-20cm';
-      recipeTab.style.display = 'none';
+      document.querySelector('.recipe-tab').addEventListener('mouseleave', () => {
+        const recipeTab = document.querySelector('.recipe-tab');
+        recipeTab.style.right = '-20cm';
+        recipeTab.style.display = 'none';
+      });
     });
-   });
-  });
 </script>
 </body> 
 </html>
