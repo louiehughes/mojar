@@ -241,7 +241,7 @@ img {
   border-radius: 50%;
   border: 3px solid rgba(0, 0, 0, 0.3);
   background-repeat: no-repeat;
-  background-size: 400%; /* Adjust zoom level */
+  background-size: 600%; /* Adjust zoom level */
   pointer-events: none;
   display: none;
   z-index: 2000;
