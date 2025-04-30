@@ -188,91 +188,134 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-  let currentIndex = 0;
-  const totalImages = document.querySelectorAll('.gallery-thumbnails a').length;
+    let currentIndex = 0;
+    const totalImages = document.querySelectorAll('.gallery-thumbnails a').length;
 
-  const scrollLeftBtn = document.querySelector('.scroll-left');
-  const scrollRightBtn = document.querySelector('.scroll-right');
-  const closeButton = document.querySelector('.close-button');
-  const galleryWrapper = document.querySelector('.recipe-gallery-wrapper');
-  const recipeGallery = document.querySelector('.recipe-gallery');
-  const galleryControls = document.querySelector('.gallery-controls');
-  const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
-  const spring = document.querySelector('.spring');
-  const missionSection = document.getElementById('our-mission');
-  const lightbox = document.querySelector('.lightbox');
-  const lightboxImage = document.querySelector('#lightbox-image');
-  const closeLightbox = document.querySelector('.close-lightbox');
+    const scrollLeftBtn = document.querySelector('.scroll-left');
+    const scrollRightBtn = document.querySelector('.scroll-right');
+    const closeButton = document.querySelector('.close-button');
+    const galleryWrapper = document.querySelector('.recipe-gallery-wrapper');
+    const recipeGallery = document.querySelector('.recipe-gallery');
+    const galleryControls = document.querySelector('.gallery-controls');
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
+    const spring = document.querySelector('.spring');
+    const missionSection = document.getElementById('our-mission');
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImage = document.querySelector('#lightbox-image');
+    const closeLightbox = document.querySelector('.close-lightbox');
 
-  // Hide all images except the first
-  function updateImage() {
-    galleryImages.forEach((img, i) => {
-      img.style.display = i === currentIndex ? 'block' : 'none';
+    // Hide all images except the first
+    function updateImage() {
+      galleryImages.forEach((img, i) => {
+        img.style.display = i === currentIndex ? 'block' : 'none';
+      });
+    }
+
+    updateImage(); // Initialize
+
+    // Scroll Left
+    scrollLeftBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateImage();
+      }
     });
-  }
 
-  updateImage(); // Initialize
+    // Scroll Right
+    scrollRightBtn.addEventListener('click', () => {
+      if (currentIndex < totalImages - 1) {
+        currentIndex++;
+        updateImage();
+      }
+    });
 
-  // Scroll Left
-  scrollLeftBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateImage();
-    }
-  });
+    // Open gallery
+    spring.addEventListener('mouseenter', () => {
+      recipeGallery.classList.remove('hidden');
+      recipeGallery.classList.add('show');
+      galleryControls.classList.remove('hidden');
+    });
 
-  // Scroll Right
-  scrollRightBtn.addEventListener('click', () => {
-    if (currentIndex < totalImages - 1) {
-      currentIndex++;
-      updateImage();
-    }
-  });
+    // Close gallery
+    closeButton.addEventListener('click', () => {
+      recipeGallery.classList.remove('show');
+      recipeGallery.classList.add('hidden');
+      galleryControls.classList.add('hidden');
+    });
 
-  // Open gallery
-  spring.addEventListener('mouseenter', () => {
-    recipeGallery.classList.remove('hidden');
-    recipeGallery.classList.add('show');
-    galleryControls.classList.remove('hidden');
-  });
+    // Show spring icon when user scrolls to mission section
+    window.addEventListener('scroll', () => {
+      const missionTop = missionSection.getBoundingClientRect().top;
+      const viewportHeight = window.innerHeight;
 
-  // Close gallery
-  closeButton.addEventListener('click', () => {
-    recipeGallery.classList.remove('show');
-    recipeGallery.classList.add('hidden');
-    galleryControls.classList.add('hidden');
-  });
+      if (missionTop <= viewportHeight * 0.5) {
+        spring.classList.remove('hidden');
+      } else {
+        spring.classList.add('hidden');
+      }
+    });
 
-  // Show spring icon when user scrolls to mission section
-  window.addEventListener('scroll', () => {
-    const missionTop = missionSection.getBoundingClientRect().top;
-    const viewportHeight = window.innerHeight;
+    // Open lightbox when image clicked
+    galleryImages.forEach((img, index) => {
+      img.parentElement.addEventListener('click', () => {
+        lightbox.classList.remove('hidden');
+        lightboxImage.src = img.src;
+        currentIndex = index;
+        updateImage();
+      });
+    });
 
-    if (missionTop <= viewportHeight * 0.5) {
-      spring.classList.remove('hidden');
-    } else {
-      spring.classList.add('hidden');
-    }
-  });
+    // Close lightbox
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+    });
 
-  // Open lightbox when image clicked
-  galleryImages.forEach((img, index) => {
-    img.parentElement.addEventListener('click', () => {
-      lightbox.classList.remove('hidden');
-      lightboxImage.src = img.src;
-      currentIndex = index;
-      updateImage();
+    // Magnifying Glass for Thumbnails
+    const magnifyingGlass = document.createElement('div');
+    magnifyingGlass.classList.add('magnifying-glass');
+    document.body.appendChild(magnifyingGlass);
+
+    galleryImages.forEach((thumbnail) => {
+      thumbnail.addEventListener('mouseenter', (e) => {
+        magnifyingGlass.style.display = 'block'; // Show magnifying glass
+
+        const imgSrc = thumbnail.src; // Get the source of the thumbnail image
+        const zoomedImage = document.createElement('img');
+        zoomedImage.src = imgSrc; // Set zoomed-in image source
+        zoomedImage.classList.add('zoomed-image');
+        magnifyingGlass.appendChild(zoomedImage);
+
+        // Position magnifying glass and zoomed image
+        const rect = thumbnail.getBoundingClientRect();
+        const glassSize = magnifyingGlass.offsetWidth;
+
+        magnifyingGlass.style.top = `${rect.top}px`;
+        magnifyingGlass.style.left = `${rect.left}px`;
+
+        thumbnail.addEventListener('mousemove', (e) => {
+          const mouseX = e.pageX;
+          const mouseY = e.pageY;
+
+          // Calculate the offset of the image within the magnifying glass
+          const xOffset = mouseX - rect.left - glassSize / 2;
+          const yOffset = mouseY - rect.top - glassSize / 2;
+
+          // Set position of magnifying glass and zoomed-in view
+          magnifyingGlass.style.left = `${mouseX - glassSize / 2}px`;
+          magnifyingGlass.style.top = `${mouseY - glassSize / 2}px`;
+
+          zoomedImage.style.transform = `translate(-${xOffset}px, -${yOffset}px)`;
+          zoomedImage.style.visibility = 'visible'; // Show zoomed-in image
+        });
+      });
+
+      thumbnail.addEventListener('mouseleave', () => {
+        magnifyingGlass.style.display = 'none'; // Hide magnifying glass
+        magnifyingGlass.innerHTML = ''; // Remove zoomed image when leaving
+      });
     });
   });
-
-  // Close lightbox
-  closeLightbox.addEventListener('click', () => {
-    lightbox.classList.add('hidden');
-  });
-
-});
 </script>
-
 
 
 </body>
