@@ -154,9 +154,13 @@ img {
   }
 
   .recipe-gallery img {
-    display: none;
     max-height: 70vh; /* Constrain image height on small screens */
   }
+}
+
+.recipe-gallery img:first-child {
+  display: block; /* Show only the first image initially */
+}
 
 .recipe-gallery-inner {
   position: relative;
@@ -271,7 +275,6 @@ img {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 
 
 
