@@ -139,6 +139,10 @@ img {
   display: block; /* Ensure proper spacing */
 }
 
+.recipe-gallery.hidden {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .recipe-gallery {
     width: 90%; /* Adjust gallery width for smaller screens */
