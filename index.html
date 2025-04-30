@@ -251,6 +251,8 @@
 
     galleryThumbnails.forEach(img => {
       img.addEventListener('mousemove', (e) => {
+        if (img.style.display === 'none') return;
+
         const rect = img.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -261,6 +263,7 @@
         magnifier.style.backgroundImage = `url(${img.src})`;
         magnifier.style.backgroundPosition = `-${x * 2 - 60}px -${y * 2 - 60}px`;
       });
+
 
       img.addEventListener('mouseleave', () => {
         magnifier.style.display = 'none';
