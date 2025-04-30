@@ -181,7 +181,7 @@ img {
   background-colour: none;
   border: none; /* Remove default button borders */
   cursor: pointer; /* Add pointer interaction for better UX */
-  z-index: 12; /* Ensure arrows are above the gallery content */
+  z-index: 15; /* Ensure arrows are above the gallery content */
   width: 40px; /* Set a fixed width for the arrows */
   height: 40px; /* Set a fixed height for the arrows */
   padding: 0; /* Remove any extra padding */
