@@ -247,6 +247,12 @@ img {
   z-index: 2000;
 }
 
+#magnifier {
+  display: block !important;
+  left: 200px;
+  top: 200px;
+  background-image: url('Images for website/recipe 1.jpeg');
+}
 
 /* Spring Styling */
 .spring {
