@@ -234,6 +234,20 @@ img {
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
+.magnifier {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-size: 200%; /* Adjust zoom level */
+  pointer-events: none;
+  display: none;
+  z-index: 1100;
+}
+
+
 /* Spring Styling */
 .spring {
   position: fixed;
