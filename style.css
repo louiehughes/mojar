@@ -187,11 +187,11 @@ img {
 }
 
 .scroll-left {
-  left: calc(-6cm - 20px); /* Position to the left of the gallery */
+  left: calc(-5cm - 20px); /* Position to the left of the gallery */
 }
 
 .scroll-right {
-  right: calc(-6cm - 20px); /* Position to the right of the gallery */
+  right: calc(-5cm - 20px); /* Position to the right of the gallery */
 }
 
 /* Styling the SVG Arrows */
