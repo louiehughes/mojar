@@ -314,6 +314,56 @@
         magnifyingGlass.innerHTML = ''; // Remove zoomed image when leaving
       });
     });
+    // Fixing the image selection
+const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
+
+// Creating and appending the magnifying glass div to the body
+const magnifyingGlass = document.createElement('div');
+magnifyingGlass.classList.add('magnifying-glass');
+document.body.appendChild(magnifyingGlass);
+
+// Apply magnifying effect to each image
+galleryImages.forEach((thumbnail) => {
+  thumbnail.addEventListener('mouseenter', (e) => {
+    magnifyingGlass.style.display = 'block'; // Show magnifying glass
+    
+    // Create and append the zoomed-in image
+    const zoomedImage = document.createElement('img');
+    zoomedImage.src = thumbnail.src; // Set zoomed-in image source
+    zoomedImage.classList.add('zoomed-image');
+    magnifyingGlass.appendChild(zoomedImage);
+
+    // Position magnifying glass and zoomed image
+    const rect = thumbnail.getBoundingClientRect();
+    const glassSize = 100; // Define the size of the magnifying glass
+
+    magnifyingGlass.style.width = `${glassSize}px`;
+    magnifyingGlass.style.height = `${glassSize}px`;
+    magnifyingGlass.style.top = `${rect.top}px`;
+    magnifyingGlass.style.left = `${rect.left}px`;
+
+    thumbnail.addEventListener('mousemove', (e) => {
+      const mouseX = e.pageX;
+      const mouseY = e.pageY;
+
+      // Calculate the offset of the image within the magnifying glass
+      const xOffset = mouseX - rect.left - glassSize / 2;
+      const yOffset = mouseY - rect.top - glassSize / 2;
+
+      // Set position of magnifying glass and zoomed-in view
+      magnifyingGlass.style.left = `${mouseX - glassSize / 2}px`;
+      magnifyingGlass.style.top = `${mouseY - glassSize / 2}px`;
+
+      zoomedImage.style.transform = `translate(-${xOffset}px, -${yOffset}px)`;
+      zoomedImage.style.visibility = 'visible'; // Show zoomed-in image
+    });
+  });
+
+  thumbnail.addEventListener('mouseleave', () => {
+    magnifyingGlass.style.display = 'none'; // Hide magnifying glass
+    magnifyingGlass.innerHTML = ''; // Remove zoomed image when leaving
+  });
+});
   });
 </script>
 
