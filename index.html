@@ -157,13 +157,13 @@
     <div class="recipe-gallery-inner">
       <!-- Gallery Thumbnails -->
       <div class="gallery-thumbnails">
-        <a href="Images for website/recipe 1.jpeg" data-size="1200x900">
+        <a href="javascript:void(0);" data-id="1">
           <img src="Images for website/recipe 1.jpeg" alt="Image 1">
         </a>
-        <a href="Images for website/recipe 2.jpeg" data-size="1200x900">
+        <a href="javascript:void(0);" data-id="2">
           <img src="Images for website/recipe 2.jpeg" alt="Image 2">
         </a>
-        <a href="Images for website/chicken liver pate.jpeg" data-size="1200x900">
+        <a href="javascript:void(0);" data-id="3">
           <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
         </a>
       </div>
@@ -172,10 +172,19 @@
 
 </div>
 
+<!-- Modal/Lightbox -->
+<div class="lightbox hidden">
+  <div class="lightbox-content">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-image" src="" alt="Large view">
+  </div>
+</div>
+
 <!-- Spring Icon -->
 <div class="spring hidden">
   <img src="Images for website/spring.png" alt="Spring" class="spring-img flashing-icon">
 </div>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
