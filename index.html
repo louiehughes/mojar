@@ -157,13 +157,13 @@
     <div class="recipe-gallery-inner">
       <!-- Gallery Thumbnails -->
       <div class="gallery-thumbnails">
-        <a href="javascript:void(0);" data-id="1">
+        <a href="Images for website/recipe 1.jpeg" data-size="1200x900">
           <img src="Images for website/recipe 1.jpeg" alt="Image 1">
         </a>
-        <a href="javascript:void(0);" data-id="2">
+        <a href="Images for website/recipe 2.jpeg" data-size="1200x900">
           <img src="Images for website/recipe 2.jpeg" alt="Image 2">
         </a>
-        <a href="javascript:void(0);" data-id="3">
+        <a href="Images for website/chicken liver pate.jpeg" data-size="1200x900">
           <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
         </a>
       </div>
@@ -172,24 +172,14 @@
 
 </div>
 
-<!-- Modal/Lightbox -->
-<div class="lightbox hidden">
-  <div class="lightbox-content">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-image" src="" alt="Large view">
-  </div>
-</div>
-
 <!-- Spring Icon -->
 <div class="spring hidden">
   <img src="Images for website/spring.png" alt="Spring" class="spring-img flashing-icon">
 </div>
 
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
-    const totalImages = document.querySelectorAll('.gallery-thumbnails a').length;
 
     const scrollLeftBtn = document.querySelector('.scroll-left');
     const scrollRightBtn = document.querySelector('.scroll-right');
@@ -200,9 +190,7 @@
     const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
     const spring = document.querySelector('.spring');
     const missionSection = document.getElementById('our-mission');
-    const lightbox = document.querySelector('.lightbox');
-    const lightboxImage = document.querySelector('#lightbox-image');
-    const closeLightbox = document.querySelector('.close-lightbox');
+    const totalImages = galleryImages.length;
 
     // Hide all images except the first
     function updateImage() {
@@ -213,7 +201,6 @@
 
     updateImage(); // Initialize
 
-    // Scroll Left
     scrollLeftBtn.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
@@ -221,7 +208,6 @@
       }
     });
 
-    // Scroll Right
     scrollRightBtn.addEventListener('click', () => {
       if (currentIndex < totalImages - 1) {
         currentIndex++;
@@ -254,118 +240,9 @@
         spring.classList.add('hidden');
       }
     });
-
-    // Open lightbox when image clicked
-    galleryImages.forEach((img, index) => {
-      img.parentElement.addEventListener('click', () => {
-        lightbox.classList.remove('hidden');
-        lightboxImage.src = img.src;
-        currentIndex = index;
-        updateImage();
-      });
-    });
-
-    // Close lightbox
-    closeLightbox.addEventListener('click', () => {
-      lightbox.classList.add('hidden');
-    });
-
-    // Magnifying Glass for Thumbnails
-    const magnifyingGlass = document.createElement('div');
-    magnifyingGlass.classList.add('magnifying-glass');
-    document.body.appendChild(magnifyingGlass);
-
-    galleryImages.forEach((thumbnail) => {
-      thumbnail.addEventListener('mouseenter', (e) => {
-        magnifyingGlass.style.display = 'block'; // Show magnifying glass
-
-        const imgSrc = thumbnail.src; // Get the source of the thumbnail image
-        const zoomedImage = document.createElement('img');
-        zoomedImage.src = imgSrc; // Set zoomed-in image source
-        zoomedImage.classList.add('zoomed-image');
-        magnifyingGlass.appendChild(zoomedImage);
-
-        // Position magnifying glass and zoomed image
-        const rect = thumbnail.getBoundingClientRect();
-        const glassSize = magnifyingGlass.offsetWidth;
-
-        magnifyingGlass.style.top = `${rect.top}px`;
-        magnifyingGlass.style.left = `${rect.left}px`;
-
-        thumbnail.addEventListener('mousemove', (e) => {
-          const mouseX = e.pageX;
-          const mouseY = e.pageY;
-
-          // Calculate the offset of the image within the magnifying glass
-          const xOffset = mouseX - rect.left - glassSize / 2;
-          const yOffset = mouseY - rect.top - glassSize / 2;
-
-          // Set position of magnifying glass and zoomed-in view
-          magnifyingGlass.style.left = `${mouseX - glassSize / 2}px`;
-          magnifyingGlass.style.top = `${mouseY - glassSize / 2}px`;
-
-          zoomedImage.style.transform = `translate(-${xOffset}px, -${yOffset}px)`;
-          zoomedImage.style.visibility = 'visible'; // Show zoomed-in image
-        });
-      });
-
-      thumbnail.addEventListener('mouseleave', () => {
-        magnifyingGlass.style.display = 'none'; // Hide magnifying glass
-        magnifyingGlass.innerHTML = ''; // Remove zoomed image when leaving
-      });
-    });
-    // Fixing the image selection
-const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
-
-// Creating and appending the magnifying glass div to the body
-const magnifyingGlass = document.createElement('div');
-magnifyingGlass.classList.add('magnifying-glass');
-document.body.appendChild(magnifyingGlass);
-
-// Apply magnifying effect to each image
-galleryImages.forEach((thumbnail) => {
-  thumbnail.addEventListener('mouseenter', (e) => {
-    magnifyingGlass.style.display = 'block'; // Show magnifying glass
-    
-    // Create and append the zoomed-in image
-    const zoomedImage = document.createElement('img');
-    zoomedImage.src = thumbnail.src; // Set zoomed-in image source
-    zoomedImage.classList.add('zoomed-image');
-    magnifyingGlass.appendChild(zoomedImage);
-
-    // Position magnifying glass and zoomed image
-    const rect = thumbnail.getBoundingClientRect();
-    const glassSize = 100; // Define the size of the magnifying glass
-
-    magnifyingGlass.style.width = `${glassSize}px`;
-    magnifyingGlass.style.height = `${glassSize}px`;
-    magnifyingGlass.style.top = `${rect.top}px`;
-    magnifyingGlass.style.left = `${rect.left}px`;
-
-    thumbnail.addEventListener('mousemove', (e) => {
-      const mouseX = e.pageX;
-      const mouseY = e.pageY;
-
-      // Calculate the offset of the image within the magnifying glass
-      const xOffset = mouseX - rect.left - glassSize / 2;
-      const yOffset = mouseY - rect.top - glassSize / 2;
-
-      // Set position of magnifying glass and zoomed-in view
-      magnifyingGlass.style.left = `${mouseX - glassSize / 2}px`;
-      magnifyingGlass.style.top = `${mouseY - glassSize / 2}px`;
-
-      zoomedImage.style.transform = `translate(-${xOffset}px, -${yOffset}px)`;
-      zoomedImage.style.visibility = 'visible'; // Show zoomed-in image
-    });
-  });
-
-  thumbnail.addEventListener('mouseleave', () => {
-    magnifyingGlass.style.display = 'none'; // Hide magnifying glass
-    magnifyingGlass.innerHTML = ''; // Remove zoomed image when leaving
-  });
-});
   });
 </script>
+
 
 
 </body>
