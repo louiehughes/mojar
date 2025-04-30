@@ -242,6 +242,38 @@ img {
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
+/* Styling for the recipe gallery container */
+.recipe-gallery .gallery {
+  display: flex;
+  gap: 10px; /* Adjust gap between images */
+}
+
+/* Thumbnail image styling */
+.recipe-gallery .gallery img {
+  width: 120px;  /* Adjust the size of thumbnails */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Optional: zoom effect on hover */
+}
+
+/* Magnifying glass effect */
+.magnifying-glass {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100px; /* Size of the magnifying glass */
+  height: 100px;
+  display: none;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Zoom effect for thumbnails on hover */
+.recipe-gallery .gallery img:hover {
+  transform: scale(1.1); /* Optional: thumbnail zoom effect on hover */
+}
+
 /* Lightbox Styles */
 .lightbox {
   position: fixed;
