@@ -158,6 +158,15 @@ img {
   display: block; /* Show only the first image initially */
 }
 
+.recipe-gallery-inner {
+  position: relative;
+  display: inline-block; /* Shrink-wraps around the image */
+}
+
+.recipe-gallery-inner img {
+  display: block; /* Avoids extra spacing */
+}
+
 /* Arrows Styling */
 .scroll-left,
 .scroll-right {
@@ -201,24 +210,26 @@ img {
   transform: scale(1.1); /* Slightly enlarge the arrow for emphasis */
 }
 
-
-
+/* Close button positioned relative to the image */
 .close-button {
-  display: none; /* hide it by default */
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
+  top: 1cm;
+  right: -1cm;
   background: none;
   border: none;
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
-  z-index: 1000; /* ensure it appears on top when shown */
+  padding: 0;
+  line-height: 1;
+  z-index: 20;
 }
 
 .close-button:hover {
-  color: #555; /* Slightly lighten the "X" color on hover */
-  transform: scale(1.2); /* Slightly enlarge for emphasis on hover */
-  transition: transform 0.2s ease, color 0.2s ease; /* Smooth hover animation */
+  color: #555;
+  transform: scale(1.2);
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 /* Spring Styling */
