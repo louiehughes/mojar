@@ -192,7 +192,7 @@
     const missionSection = document.getElementById('our-mission');
     const totalImages = galleryImages.length;
 
-    // Hide all images except the first
+    // Show selected image
     function updateImage() {
       galleryImages.forEach((img, i) => {
         img.style.display = i === currentIndex ? 'block' : 'none';
@@ -222,11 +222,31 @@
       galleryControls.classList.remove('hidden');
     });
 
-    // Close gallery
+    // Close gallery (via button)
     closeButton.addEventListener('click', () => {
       recipeGallery.classList.remove('show');
       recipeGallery.classList.add('hidden');
       galleryControls.classList.add('hidden');
+    });
+
+    // Close gallery (via Escape key)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        recipeGallery.classList.remove('show');
+        recipeGallery.classList.add('hidden');
+        galleryControls.classList.add('hidden');
+      }
+    });
+
+    // Optional: open gallery by clicking an image
+    galleryImages.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        currentIndex = i;
+        updateImage();
+        recipeGallery.classList.remove('hidden');
+        recipeGallery.classList.add('show');
+        galleryControls.classList.remove('hidden');
+      });
     });
 
     // Show spring icon when user scrolls to mission section
@@ -242,6 +262,7 @@
     });
   });
 </script>
+
 
 
 
