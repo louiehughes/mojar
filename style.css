@@ -177,7 +177,8 @@ img {
   position: absolute; /* Position relative to the gallery container */
   top: 50%; /* Vertically center the arrows */
   transform: translateY(-50%); /* Proper vertical alignment */
-  background-color: rgba(0, 0, 0, 0.5)
+  background: none;
+  background-colour: none;
   border: none; /* Remove default button borders */
   cursor: pointer; /* Add pointer interaction for better UX */
   z-index: 12; /* Ensure arrows are above the gallery content */
