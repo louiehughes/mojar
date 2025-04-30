@@ -171,27 +171,42 @@ img {
   display: block;
 }
 
-/* Arrows Styling (outside the gallery now) */
+/* Gallery Controls Wrapper */
+.gallery-controls {
+  display: none; /* Hidden by default */
+}
+
+.gallery-controls.show {
+  display: block; /* Show controls when active */
+}
+
+/* Arrows Styling (controlled via gallery-controls) */
 .scroll-left,
 .scroll-right {
-  position: fixed; /* UPDATED: from absolute to fixed */
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1100; /* UPDATED: above gallery */
+  z-index: 1100;
   width: 40px;
   height: 40px;
   padding: 0;
+  display: none; /* Hidden by default, shown with gallery-controls.show */
+}
+
+.gallery-controls.show .scroll-left,
+.gallery-controls.show .scroll-right {
+  display: block;
 }
 
 .scroll-left {
-  left: 5vw; /* UPDATED: position relative to viewport */
+  left: 5vw;
 }
 
 .scroll-right {
-  right: 5vw; /* UPDATED: position relative to viewport */
+  right: 5vw;
 }
 
 .scroll-left svg,
@@ -212,20 +227,25 @@ img {
   transform: scale(1.1);
 }
 
-/* Close button (outside the gallery now) */
+/* Close button (controlled via gallery-controls) */
 .close-button {
-  position: fixed; /* UPDATED: from absolute to fixed */
-  top: 3vh; /* UPDATED: relative to viewport */
+  position: fixed;
+  top: 3vh;
   right: 3vw;
   background: none;
   border: none;
   color: #222;
-  font-size: 2rem; /* UPDATED: larger and clearer */
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  z-index: 1100; /* ABOVE arrows if needed */
+  z-index: 1100;
+  display: none; /* Hidden by default, shown with gallery-controls.show */
+}
+
+.gallery-controls.show .close-button {
+  display: block;
 }
 
 .close-button:hover {
@@ -272,6 +292,7 @@ img {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
 
 
 
