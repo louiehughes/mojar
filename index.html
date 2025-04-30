@@ -210,15 +210,17 @@
       }
     });
 
-    // Show gallery on hover over the spring icon (it stays visible)
     spring.addEventListener('mouseenter', () => {
-      recipeGallery.style.display = 'block';
+      recipeGallery.style.display = 'flex';
+      closeButton.style.display = 'block';
     });
 
-    // Hide gallery when clicking the close button
+
     closeButton.addEventListener('click', () => {
       recipeGallery.style.display = 'none';
+      closeButton.style.display = 'none';
     });
+
 
     // Optional: Ensure spring icon appears on scroll
     const missionSection = document.getElementById('our-mission');
