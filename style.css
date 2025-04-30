@@ -115,32 +115,32 @@ img {
 }
 
 .recipe-gallery {
-  position: fixed; /* Keep the gallery fixed in the middle of the screen */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Ensure proper centering */
-  display: none; /* Initially hidden */
-  justify-content: center; /* Horizontally center the image */
-  align-items: center; /* Vertically center the image */
-  width: auto; /* Let the gallery width adjust to the image */
-  height: auto; /* Let the gallery height adjust to the image */
-  padding: 0; /* Remove unnecessary padding */
-  background-color: none; /* Optional background */
-  overflow: hidden; /* Ensures rounded corners are visible */
-  border-radius: 20px; /* Optional rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  z-index: 10; /* Ensure it appears above other elements */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background-color: none;
+  overflow: hidden; /* Keeps rounded corners effect */
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Lower than arrows/close button */
 }
 
 .recipe-gallery.show {
-  display: flex; /* Show the gallery when the 'show' class is added */
+  display: flex;
 }
 
 .recipe-gallery img {
-  max-width: 90vw; /* Ensure the image fits within the viewport width */
-  max-height: 90vh; /* Ensure the image fits within the viewport height */
-  object-fit: contain; /* Maintain aspect ratio */
-  display: block; /* Ensure proper spacing */
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
 }
 
 .recipe-gallery.hidden {
@@ -149,86 +149,83 @@ img {
 
 @media (max-width: 768px) {
   .recipe-gallery {
-    width: 90%; /* Adjust gallery width for smaller screens */
-    max-width: 100%; /* Allow it to take up the full viewport width */
+    width: 90%;
+    max-width: 100%;
   }
 
   .recipe-gallery img {
-    max-height: 70vh; /* Constrain image height on small screens */
+    max-height: 70vh;
   }
 }
 
 .recipe-gallery img:first-child {
-  display: block; /* Show only the first image initially */
+  display: block;
 }
 
 .recipe-gallery-inner {
   position: relative;
-  display: inline-block; /* Shrink-wraps around the image */
+  display: inline-block;
 }
 
 .recipe-gallery-inner img {
-  display: block; /* Avoids extra spacing */
+  display: block;
 }
 
-/* Arrows Styling */
+/* Arrows Styling (outside the gallery now) */
 .scroll-left,
 .scroll-right {
-  position: absolute; /* Position relative to the gallery container */
-  top: 50%; /* Vertically center the arrows */
-  transform: translateY(-50%); /* Proper vertical alignment */
+  position: fixed; /* UPDATED: from absolute to fixed */
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
-  background-colour: none;
-  border: none; /* Remove default button borders */
-  cursor: pointer; /* Add pointer interaction for better UX */
-  z-index: 15; /* Ensure arrows are above the gallery content */
-  width: 40px; /* Set a fixed width for the arrows */
-  height: 40px; /* Set a fixed height for the arrows */
-  padding: 0; /* Remove any extra padding */
+  border: none;
+  cursor: pointer;
+  z-index: 1100; /* UPDATED: above gallery */
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 .scroll-left {
-  left: -50px; /* Position to the left of the gallery */
+  left: 5vw; /* UPDATED: position relative to viewport */
 }
 
 .scroll-right {
-  right: -50px; /* Position to the right of the gallery */
+  right: 5vw; /* UPDATED: position relative to viewport */
 }
 
-/* Styling the SVG Arrows */
 .scroll-left svg,
 .scroll-right svg {
-  width: 100%; /* Make the SVG scale with the button size */
-  height: 100%; /* Keep the aspect ratio intact */
-  stroke: #222; /* Set a neutral dark gray for the arrow lines */
-  stroke-width: 2; /* Define the line thickness */
-  stroke-linecap: round; /* Add rounded edges to the arrow lines */
-  stroke-linejoin: round; /* Smoothly connect the arrow points */
-  fill: none; /* Ensure no background for the arrows */
-  transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth interactions */
+  width: 100%;
+  height: 100%;
+  stroke: #222;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: transform 0.3s ease, stroke 0.3s ease;
 }
 
-/* Hover Effect for Arrows */
 .scroll-left:hover svg,
 .scroll-right:hover svg {
-  stroke: #555; /* Lighten the stroke color slightly on hover */
-  transform: scale(1.1); /* Slightly enlarge the arrow for emphasis */
+  stroke: #555;
+  transform: scale(1.1);
 }
 
-/* Close button positioned relative to the image */
+/* Close button (outside the gallery now) */
 .close-button {
-  position: absolute;
-  top: 1cm;
-  right: -1cm;
+  position: fixed; /* UPDATED: from absolute to fixed */
+  top: 3vh; /* UPDATED: relative to viewport */
+  right: 3vw;
   background: none;
   border: none;
   color: #222;
-  font-size: 1.5rem;
+  font-size: 2rem; /* UPDATED: larger and clearer */
   font-weight: bold;
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  z-index: 20;
+  z-index: 1100; /* ABOVE arrows if needed */
 }
 
 .close-button:hover {
@@ -255,7 +252,6 @@ img {
   display: block;
 }
 
-/* Flashing Effect */
 @keyframes flashIcon {
   0% { content: url("Images for website/spring.png"); }
   50% { content: url("Images for website/recipes.png"); }
@@ -268,7 +264,7 @@ img {
 
 .spring:hover + .recipe-gallery {
   display: flex;
-  opacity: 0; /* Initially invisible */
+  opacity: 0;
   animation: fadeIn 0.3s ease-in-out forwards;
 }
 
