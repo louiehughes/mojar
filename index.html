@@ -179,61 +179,28 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const recipeGallery = document.querySelector('.recipe-gallery');
-    const galleryControls = document.querySelector('.gallery-controls');
-    const closeButton = document.querySelector('.close-button');
-    const scrollLeftBtn = document.querySelector('.scroll-left');
-    const scrollRightBtn = document.querySelector('.scroll-right');
-    const galleryLinks = document.querySelectorAll('.recipe-image');
-    const totalImages = galleryLinks.length;
     let currentIndex = 0;
 
-    // Open gallery on spring icon hover
+    const scrollLeftBtn = document.querySelector('.scroll-left');
+    const scrollRightBtn = document.querySelector('.scroll-right');
+    const closeButton = document.querySelector('.close-button');
+    const galleryWrapper = document.querySelector('.recipe-gallery-wrapper');
+    const recipeGallery = document.querySelector('.recipe-gallery');
+    const galleryControls = document.querySelector('.gallery-controls');
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
     const spring = document.querySelector('.spring');
-    spring.addEventListener('mouseenter', () => {
-      recipeGallery.classList.remove('hidden');
-      recipeGallery.classList.add('show');
-      galleryControls.classList.remove('hidden');
-    });
+    const missionSection = document.getElementById('our-mission');
+    const totalImages = galleryImages.length;
 
-    // Close gallery on clicking the close button
-    closeButton.addEventListener('click', () => {
-      recipeGallery.classList.remove('show');
-      recipeGallery.classList.add('hidden');
-      galleryControls.classList.add('hidden');
-    });
-
-    // Close gallery on pressing ESC key
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        recipeGallery.classList.remove('show');
-        recipeGallery.classList.add('hidden');
-        galleryControls.classList.add('hidden');
-      }
-    });
-
-    // Close gallery when clicking outside the image
-    recipeGallery.addEventListener('click', (e) => {
-      if (e.target === recipeGallery) {
-        recipeGallery.classList.remove('show');
-        recipeGallery.classList.add('hidden');
-        galleryControls.classList.add('hidden');
-      }
-    });
-
-    // Open the clicked image in enlarged view
-    galleryLinks.forEach((link, index) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default link behavior
-
-        currentIndex = index;
-        updateImage();
-        recipeGallery.classList.add('show');
-        galleryControls.classList.remove('hidden');
+    // Hide all images except the first
+    function updateImage() {
+      galleryImages.forEach((img, i) => {
+        img.style.display = i === currentIndex ? 'block' : 'none';
       });
-    });
+    }
 
-    // Left arrow scroll
+    updateImage(); // Initialize
+
     scrollLeftBtn.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
@@ -241,7 +208,6 @@
       }
     });
 
-    // Right arrow scroll
     scrollRightBtn.addEventListener('click', () => {
       if (currentIndex < totalImages - 1) {
         currentIndex++;
@@ -249,26 +215,19 @@
       }
     });
 
-    // Update the displayed image based on currentIndex
-    function updateImage() {
-      const currentLink = galleryLinks[currentIndex];
-      const imageUrl = currentLink.getAttribute('href');
-      const imageSize = currentLink.getAttribute('data-size').split('x');
-      const imgElement = document.createElement('img');
-      imgElement.src = imageUrl;
-      imgElement.style.maxWidth = '90vw';
-      imgElement.style.maxHeight = '90vh';
-      imgElement.style.objectFit = 'contain';
+    // Open gallery
+    spring.addEventListener('mouseenter', () => {
+      recipeGallery.classList.remove('hidden');
+      recipeGallery.classList.add('show');
+      galleryControls.classList.remove('hidden');
+    });
 
-      // Replace current image in the gallery
-      const galleryInner = recipeGallery.querySelector('.recipe-gallery-inner');
-      galleryInner.innerHTML = ''; // Clear existing images
-      galleryInner.appendChild(imgElement);
-    }
-
-    // Initial image display
-    updateImage();
-  });
+    // Close gallery
+    closeButton.addEventListener('click', () => {
+      recipeGallery.classList.remove('show');
+      recipeGallery.classList.add('hidden');
+      galleryControls.classList.add('hidden');
+    });
 
     // Show spring icon when user scrolls to mission section
     window.addEventListener('scroll', () => {
@@ -283,7 +242,6 @@
     });
   });
 </script>
-
 
 
 
