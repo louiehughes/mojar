@@ -238,6 +238,15 @@
       }
     });
 
+    // Close gallery when clicking outside the image
+    recipeGallery.addEventListener('click', (e) => {
+      if (e.target === recipeGallery) { // If the click was outside the image (on the backdrop)
+        recipeGallery.classList.remove('show');
+        recipeGallery.classList.add('hidden');
+        galleryControls.classList.add('hidden');
+      }
+    });
+
     // Optional: open gallery by clicking an image
     galleryImages.forEach((img, i) => {
       img.addEventListener('click', () => {
