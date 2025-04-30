@@ -129,41 +129,29 @@
   
 <!-- Main Gallery Container -->
 <div class="recipe-gallery hidden">
-  
-  <!-- Image area with close button -->
+  <!-- Image area with navigation -->
   <div class="recipe-gallery-inner">
-    <!-- Thumbnails visible in the gallery -->
-    <div class="gallery-thumbnails">
-      <a href="Images for website/recipe 1.jpeg" data-size="1200x900">
-        <img src="Images for website/recipe 1.jpeg" alt="Image 1">
-      </a>
-      <a href="Images for website/recipe 2.jpeg" data-size="1200x900">
-        <img src="Images for website/recipe 2.jpeg" alt="Image 2">
-      </a>
-      <a href="Images for website/chicken liver pate.jpeg" data-size="1200x900">
-        <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
-      </a>
-    </div>
+    
+    <!-- Recipe Images -->
+    <img src="Images for website/recipe 1.jpeg" alt="Image 1">
+    <img src="Images for website/recipe 2.jpeg" alt="Image 2">
+    <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
 
-    <!-- Close Button positioned relative to gallery-inner -->
+    <!-- Close Button -->
     <button class="close-button">×</button>
+
+    <!-- Arrows -->
+    <button class="scroll-left">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <polyline points="15 18 9 12 15 6" stroke="#222" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="scroll-right">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <polyline points="9 18 15 12 9 6" stroke="#222" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
-
-  <!-- Left Arrow -->
-  <button class="scroll-left">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M15 4 L6 12 L15 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-      <line x1="10" y1="12" x2="15" y2="12" stroke-width="1.5" stroke-linecap="round" />
-    </svg>
-  </button>
-
-  <!-- Right Arrow -->
-  <button class="scroll-right">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M9 4 L18 12 L9 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-      <line x1="9" y1="12" x2="14" y2="12" stroke-width="1.5" stroke-linecap="round" />
-    </svg>
-  </button>
 </div>
 
 <!-- Spring Icon -->
@@ -180,24 +168,22 @@
     const scrollRightBtn = document.querySelector('.scroll-right');
     const closeButton = document.querySelector('.close-button');
     const recipeGallery = document.querySelector('.recipe-gallery');
-    const galleryImages = Array.from(document.querySelectorAll('.recipe-gallery img'));
+    const galleryImages = Array.from(document.querySelectorAll('.recipe-gallery-inner img'));
     const spring = document.querySelector('.spring');
     const totalImages = galleryImages.length;
 
-    // Ensure gallery is hidden on page load
-    recipeGallery.style.display = 'none';
+    // Hide gallery on page load
+    recipeGallery.classList.remove('show');
+    recipeGallery.classList.add('hidden');
 
-    // Function to update the displayed image
     function updateImage() {
       galleryImages.forEach((img, i) => {
-        img.style.display = i === currentIndex ? 'block' : 'none'; // Show only the current image
+        img.style.display = i === currentIndex ? 'block' : 'none';
       });
     }
 
-    // Initial call to display the first image
     updateImage();
 
-    // Left arrow button click event
     scrollLeftBtn.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
@@ -205,7 +191,6 @@
       }
     });
 
-    // Right arrow button click event
     scrollRightBtn.addEventListener('click', () => {
       if (currentIndex < totalImages - 1) {
         currentIndex++;
@@ -214,33 +199,27 @@
     });
 
     spring.addEventListener('mouseenter', () => {
-      recipeGallery.style.display = 'flex';
-      closeButton.style.display = 'block';
-      scrollLeftBtn.style.display = 'block';
-      scrollRightBtn.style.display = 'block';
+      recipeGallery.classList.remove('hidden');
+      recipeGallery.classList.add('show');
     });
-
 
     closeButton.addEventListener('click', () => {
-      recipeGallery.style.display = 'none';
-      closeButton.style.display = 'none';
+      recipeGallery.classList.remove('show');
+      recipeGallery.classList.add('hidden');
     });
 
-
-    // Optional: Ensure spring icon appears on scroll
+    // Optional: Show spring icon on scroll
     const missionSection = document.getElementById('our-mission');
-    window.addEventListener('scroll', () => {
-      const missionTop = missionSection.getBoundingClientRect().top;
-      const viewportHeight = window.innerHeight;
-
-      if (missionTop <= viewportHeight * 0.5) {
-        spring.classList.remove('hidden');
-      } else {
-        spring.classList.add('hidden');
-      }
-    });
+    if (missionSection) {
+      window.addEventListener('scroll', () => {
+        const missionTop = missionSection.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
+        spring.classList.toggle('hidden', missionTop > viewportHeight * 0.5);
+      });
+    }
   });
 </script>
+
 
 
 </body>
