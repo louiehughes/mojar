@@ -257,11 +257,14 @@
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
+        const backgroundX = -x * 2 + 60; // adjust multiplier for zoom
+        const backgroundY = -y * 2 + 60;
+
         magnifier.style.display = 'block';
-        magnifier.style.left = `${e.pageX - 60}px`;
-        magnifier.style.top = `${e.pageY - 60}px`;
+        magnifier.style.left = `${e.clientX - 60}px`;
+        magnifier.style.top = `${e.clientY - 60}px`;
         magnifier.style.backgroundImage = `url(${img.src})`;
-        magnifier.style.backgroundPosition = `-${x * 2 - 60}px -${y * 2 - 60}px`;
+        magnifier.style.backgroundPosition = `${backgroundX}px ${backgroundY}px`;
       });
 
 
