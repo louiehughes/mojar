@@ -166,6 +166,7 @@
         <a href="Images for website/chicken liver pate.jpeg" data-size="1200x900">
           <img src="Images for website/chicken liver pate.jpeg" alt="Image 3">
         </a>
+        <div id="magnifier" class="magnifier"></div>
       </div>
     </div>
   </div>
@@ -243,6 +244,30 @@
   });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const magnifier = document.getElementById('magnifier');
+    const galleryThumbnails = document.querySelectorAll('.gallery-thumbnails img');
+
+    galleryThumbnails.forEach(img => {
+      img.addEventListener('mousemove', (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        magnifier.style.display = 'block';
+        magnifier.style.left = `${e.pageX - 60}px`;
+        magnifier.style.top = `${e.pageY - 60}px`;
+        magnifier.style.backgroundImage = `url(${img.src})`;
+        magnifier.style.backgroundPosition = `-${x * 2 - 60}px -${y * 2 - 60}px`;
+      });
+
+      img.addEventListener('mouseleave', () => {
+        magnifier.style.display = 'none';
+      });
+    });
+  });
+</script>
 
 
 </body>
