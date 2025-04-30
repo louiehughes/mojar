@@ -203,19 +203,16 @@ img {
 
 
 
-/* Close Button (Minimalist "X" Style) */
 .close-button {
-  position: absolute; /* Place above the gallery */
-  top: 10px; /* Align 10px from the top edge of the gallery */
-  right: 10px; /* Align 10px from the right edge of the gallery */
-  background: none; /* Remove background */
-  border: none; /* Remove borders */
-  color: #222; /* Dark color for the "X" */
-  font-size: 1.5rem; /* Size for better visibility */
-  font-weight: bold; /* Make the "X" more prominent */
-  cursor: pointer; /* Add pointer for interactivity */
-  padding: 0; /* Remove default padding */
-  line-height: 1; /* Ensure proper alignment */
+  display: none; /* hide it by default */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000; /* ensure it appears on top when shown */
 }
 
 .close-button:hover {
