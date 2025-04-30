@@ -171,42 +171,27 @@ img {
   display: block;
 }
 
-/* Gallery Controls Wrapper */
-.gallery-controls {
-  display: none; /* Hidden by default */
-}
-
-.gallery-controls.show {
-  display: block; /* Show controls when active */
-}
-
-/* Arrows Styling (controlled via gallery-controls) */
+/* Arrows Styling (outside the gallery now) */
 .scroll-left,
 .scroll-right {
-  position: fixed;
+  position: fixed; /* UPDATED: from absolute to fixed */
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1100;
+  z-index: 1100; /* UPDATED: above gallery */
   width: 40px;
   height: 40px;
   padding: 0;
-  display: none; /* Hidden by default, shown with gallery-controls.show */
-}
-
-.gallery-controls.show .scroll-left,
-.gallery-controls.show .scroll-right {
-  display: block;
 }
 
 .scroll-left {
-  left: 5vw;
+  left: 5vw; /* UPDATED: position relative to viewport */
 }
 
 .scroll-right {
-  right: 5vw;
+  right: 5vw; /* UPDATED: position relative to viewport */
 }
 
 .scroll-left svg,
@@ -227,25 +212,20 @@ img {
   transform: scale(1.1);
 }
 
-/* Close button (controlled via gallery-controls) */
+/* Close button (outside the gallery now) */
 .close-button {
-  position: fixed;
-  top: 3vh;
+  position: fixed; /* UPDATED: from absolute to fixed */
+  top: 3vh; /* UPDATED: relative to viewport */
   right: 3vw;
   background: none;
   border: none;
   color: #222;
-  font-size: 2rem;
+  font-size: 2rem; /* UPDATED: larger and clearer */
   font-weight: bold;
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  z-index: 1100;
-  display: none; /* Hidden by default, shown with gallery-controls.show */
-}
-
-.gallery-controls.show .close-button {
-  display: block;
+  z-index: 1100; /* ABOVE arrows if needed */
 }
 
 .close-button:hover {
@@ -291,6 +271,28 @@ img {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+can you add this that you sent me to it? Changing and adding what is necessary.
+
+.gallery-controls {
+  display: none; /* Hidden by default */
+}
+
+.gallery-controls.show {
+  display: block;
+}
+
+.scroll-left,
+.scroll-right,
+.close-button {
+  display: none; /* Start hidden by default */
+}
+
+.gallery-controls.show .scroll-left,
+.gallery-controls.show .scroll-right,
+.gallery-controls.show .close-button {
+  display: block; /* Show only when gallery is active */
 }
 
 
