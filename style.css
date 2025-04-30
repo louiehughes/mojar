@@ -262,11 +262,6 @@ img {
   animation: flashIcon 2s infinite;
 }
 
-.spring:hover + .recipe-gallery {
-  display: flex;
-  opacity: 0;
-  animation: fadeIn 0.3s ease-in-out forwards;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; }
