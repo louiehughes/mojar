@@ -236,8 +236,8 @@ img {
 
 .magnifier {
   position: fixed;
-  width: 250px;
-  height: 250px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   border: none;
   background-repeat: no-repeat;
