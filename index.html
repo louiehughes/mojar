@@ -251,21 +251,30 @@
 
   galleryThumbnails.forEach(img => {
     img.addEventListener('mousemove', (e) => {
-      if (img.style.display === 'none') return;
+  if (img.style.display === 'none') return;
 
-      const rect = img.getBoundingClientRect();
-      const x = e.clientX - rect.left; // Mouse position relative to the image
-      const y = e.clientY - rect.top;
+  const rect = img.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
-      const backgroundX = -x * 4 + 60; // Adjust multiplier for zoom (400% scale)
-      const backgroundY = -y * 4 + 60;
+  const naturalWidth = img.naturalWidth;
+  const naturalHeight = img.naturalHeight;
 
-      magnifier.style.display = 'block';
-      magnifier.style.left = `${e.clientX - 60}px`;
-      magnifier.style.top = `${e.clientY - 60}px`;
-      magnifier.style.backgroundImage = `url(${img.src})`;
-      magnifier.style.backgroundPosition = `${backgroundX}px ${backgroundY}px`; // Adjust to zoom into mouse position
-    });
+  const displayedWidth = rect.width;
+  const displayedHeight = rect.height;
+
+  const zoomRatioX = naturalWidth / displayedWidth;
+  const zoomRatioY = naturalHeight / displayedHeight;
+
+  magnifier.style.display = 'block';
+  magnifier.style.left = `${e.clientX - 60}px`;
+  magnifier.style.top = `${e.clientY - 60}px`;
+  magnifier.style.backgroundImage = `url(${img.src})`;
+
+  magnifier.style.backgroundSize = `${naturalWidth}px ${naturalHeight}px`;
+  magnifier.style.backgroundPosition = `${-x * zoomRatioX + 60}px ${-y * zoomRatioY + 60}px`;
+});
+
 
     img.addEventListener('mouseleave', () => {
       magnifier.style.display = 'none';
