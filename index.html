@@ -294,5 +294,45 @@
 </div>
 
 
+<div class="video-grid">
+  <video src="Images for website/animation.mp4" class="video-thumb" autoplay muted loop playsinline></video>
+  <video src="Images for website/video boat front night.mp4" class="video-thumb" autoplay muted loop playsinline></video>
+  <video src="videos/video3.mp4" class="video-thumb" autoplay muted loop playsinline></video>
+  <video src="videos/video4.mp4" class="video-thumb" autoplay muted loop playsinline></video>
+</div>
+
+<script>
+  document.querySelectorAll('.video-thumb').forEach(video => {
+    video.addEventListener('click', () => {
+      // Toggle enlarged class
+      const isEnlarged = video.classList.contains('enlarged');
+
+      // Reset all videos
+      document.querySelectorAll('.video-thumb').forEach(v => {
+        v.classList.remove('enlarged');
+        v.muted = true;
+      });
+
+      if (!isEnlarged) {
+        video.classList.add('enlarged');
+        video.muted = false;
+        video.play();
+      }
+    });
+  });
+
+  // Optional: close enlarged video on click outside
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('video-thumb')) {
+      document.querySelectorAll('.video-thumb.enlarged').forEach(v => {
+        v.classList.remove('enlarged');
+        v.muted = true;
+      });
+    }
+  });
+</script>
+
+
+
 </body>
 </html>
