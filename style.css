@@ -287,6 +287,16 @@ img {
   to { opacity: 1; }
 }
 
+.video-section {
+  max-width: 800px;
+  margin: 2rem auto; /* Center horizontally and add top/bottom space */
+  padding: 1rem;
+}
+
+.text-content {
+  margin-bottom: 1.5rem;
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -313,6 +323,7 @@ img {
   z-index: 1000;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
+
 
 
 
