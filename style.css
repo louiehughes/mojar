@@ -287,6 +287,34 @@ img {
   to { opacity: 1; }
 }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 800px; /* match your text width */
+  margin: 0 auto;
+}
+
+.video-thumb {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  border-radius: 10px;
+}
+
+.video-thumb.enlarged {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  max-height: 80vh;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+
 
 
 
