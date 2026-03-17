@@ -34,7 +34,7 @@ const CONTENIDO = {
             team: [
                 {
                     name: 'Pilar',
-                    photo: 'imagenes/pilar.JPG',
+                    photo: 'imagenes/pilar.jpg',
                     role: 'Diseño de proyectos · Investigación de campo',
                     description: 'Pilar se encarga de la atención al público, el diseño de proyectos y la investigación de campo. Su enfoque está en construir puentes entre las ideas y las personas, creando experiencias que conecten lo gastronómico con lo social y lo cultural.'
                 },
@@ -68,7 +68,7 @@ const CONTENIDO = {
                 {
                     title: 'The new heritage project',
                     url: 'proyectos/new-heritage/new-heritage-project.html',
-                    image: 'imagenes/proyectos/new-heritage-project.JPG',
+                    image: 'imagenes/proyectos/new-heritage-project.jpg',
                     tags: ['practicas', 'produccion', 'investigacion'],
                     description: 'Investigación sobre patrimonio culinario tradicional en riesgo de desaparecer. Documentamos paisajes, recetas y prácticas alimentarias locales para crear productos artesanales basados en la memoria gastronómica del territorio.'
                 },
