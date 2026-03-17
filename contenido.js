@@ -195,7 +195,7 @@ const CONTENIDO = {
         },
         
         footer: {
-            rights: 'Todos los derechos reservados.',
+            rights: 'mojar - 2026',
             email: 'mojar.buenasmaneras@gmail.com',
             phone: '+34 605 79 19 95',
             social: {
@@ -333,7 +333,7 @@ const CONTENIDO = {
         },
 
         footer: {
-            rights: 'Todos os dereitos reservados.',
+            rights: 'mojar - 2026',
             email: 'mojar.buenasmaneras@gmail.com',
             phone: '+34 605 79 19 95',
             social: {
@@ -471,7 +471,7 @@ const CONTENIDO = {
         },
 
         footer: {
-            rights: 'All rights reserved.',
+            rights: 'mojar - 2026',
             email: 'mojar.buenasmaneras@gmail.com',
             phone: '+34 605 79 19 95',
             social: {
