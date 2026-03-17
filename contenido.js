@@ -60,7 +60,7 @@ const CONTENIDO = {
             items: [
                 {
                     title: 'Pescatori Digitali 24',
-                    url: 'proyectos/pescatori-digitali-24.html',
+                    url: 'en-construccion.html',
                     image: 'imagenes/proyectos/pescatori-24.jpg',
                     tags: ['eventos', 'investigacion'],
                     description: 'Cocinamos para este coliving pop-up llevado a cabo en Stintino, Cerdeña, siempre teniendo en mente la relación entre producto local, temporalidad y comunidad.'
@@ -74,35 +74,35 @@ const CONTENIDO = {
                 },
                 {
                     title: 'Talleres de pasta',
-                    url: 'proyectos/talleres-pasta.html',
+                    url: 'en-construccion.html',
                     image: 'imagenes/proyectos/talleres-pasta.jpg',
                     tags: ['talleres'],
                     description: 'Estos talleres se llevan a cabo en diversos lugares y con distintas recetas. Tienen la finalidad de acercar a prácticas sencillas buscando una conexión con lo manual y rudimentario. Suponen una aproximación lenta a los procesos de transformación.'
                 },
                 {
                     title: 'Diseño de una tabla',
-                    url: 'proyectos/diseno-tabla-gnocchi.html',
+                    url: 'en-construccion.html',
                     image: 'imagenes/proyectos/gnocchi.jpg',
                     tags: ['produccion'],
                     description: 'Diseño y producción de esta tabla para gnocchi con madera recuperada de forma artesanal. Ejercicio de crear lo que necesitamos para cocinar. Documentación del proceso.'
                 },
                 {
                     title: 'G(h)osts',
-                    url: 'proyectos/ghosts.html',
+                    url: 'en-construccion.html',
                     image: 'imagenes/proyectos/ghosts.jpg',
                     tags: ['talleres', 'practicas'],
                     description: 'Taller en el que exploramos la memoria gastronómica a través de olores, sabores y gestos. Un proyecto de arte comunitario donde la comida se convierte en ritual de invocación: recuperamos recetas familiares y hacemos presente lo ausente.'
                 },
                 {
                     title: 'Archivos de pertenencia',
-                    url: 'proyectos/archivos-pertenencia.html',
+                    url: 'en-construccion.html',
                     image: 'imagenes/proyectos/archivos-pertenencia.jpg',
                     tags: ['practicas', 'talleres', 'investigacion'],
                     description: 'Mapeo y documentación del patrimonio culinario gallego contemporáneo. A través de entrevistas y herramientas digitales, reconstruimos la identidad gastronómica de Galicia desde las historias personales, los recuerdos y la cocina de cada día.'
                 },
                 {
                     title: 'Pescatori Digitali 25',
-                    url: 'proyectos/pescatori-digitali-25.html',
+                    url: 'en-construccion.html',
                     image: 'imagenes/proyectos/pescatori-25.jpg',
                     tags: ['eventos', 'investigacion'],
                     description: 'Cocinamos para este coliving pop-up llevado a cabo en Stintino, Cerdeña, siempre teniendo en mente la relación entre producto local, temporalidad y comunidad.'
