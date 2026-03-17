@@ -1,297 +1,925 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>mojar</title>
-  
-  <!-- Photoswipe CSS for Main Gallery Only -->
-  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mojar - Estudio Gastronómico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Photoswipe JS for Main Gallery Only -->
-  <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray: #666666;
+            --light-gray: #F5F5F5;
+        }
 
-  <!-- Your site CSS -->
-  <link rel="stylesheet" href="style.css">  
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            border-bottom: 1px solid var(--black);
+            z-index: 1000;
+            padding: 0.75rem 4rem;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: lowercase;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 0.5rem;
+            border-left: 1px solid var(--black);
+            padding-left: 1.5rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        .lang-btn.active {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .lang-btn:hover {
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 67px;
+            height: 90vh;
+            position: relative;
+            overflow: hidden;
+
+            background-image: url("imagenes/hero.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+              to top,
+                rgba(0,0,0,0.65) 0%,
+                rgba(0,0,0,0.25) 35%,
+                rgba(0,0,0,0) 60%
+            );
+        }       
+
+        .hero-content {
+            position: absolute;
+            bottom: 4rem;
+            left: 4rem;
+
+            max-width: 800px;
+            z-index: 2;
+        }
+
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+            text-transform: lowercase;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--light-gray);
+            letter-spacing: 0.05em;
+        }
+
+        /* Flecha scroll down */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            text-decoration: none;
+            z-index: 3;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }  
+
+        .scroll-arrow:hover {
+            opacity: 1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }   
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive - ocultar en móvil */ 
+        @media (max-width: 768px) {
+            .scroll-arrow {
+                display: none;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            text-transform: lowercase;
+        }
+
+        /* About Section */
+        .about-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .team {
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+            align-items: flex-start;
+        }
+
+        .team-member {
+            flex: 1;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .member-photo {
+            width: 200px;
+            height: 250px;
+            flex-shrink: 0;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .member-role {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+
+        .member-description {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-item {
+            padding: 2rem;
+            border: 1px solid var(--black);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .service-description {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        .projects-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--black);
+            color: var(--black);
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .projects-grid {
+                column-count: 2;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+            .projects-grid {
+                column-count: 1;
+            }
+        }
+        .project-card {
+            break-inside: avoid;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            opacity: 0.9;
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: var(--light-gray);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            transition: filter 0.3s;
+            overflow: hidden;
+        }
+
+        .project-card:hover .project-image {
+            filter: brightness(0.95);
+        }
+
+        .project-tags {
+            display: none;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .project-description {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+
+        /* Blog Section */
+        /* 
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            cursor: pointer;
+            transition: opacity 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .blog-card:hover {
+            opacity: 0.8;
+        }
+
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .blog-excerpt {
+            color: var(--gray);
+            line-height: 1.6;
+        } 
+        
+        */
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid var(--black);
+            background: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s;
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--black);
+            padding: 3rem 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.5;
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .projects-grid {
+                flex-direction: column;
+            }
+
+            .projects-column {
+                animation: none !important;
+            }
+
+            .team {
+                flex-direction: column;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .lang-selector {
+                border-left: none;
+                border-top: 1px solid var(--black);
+                padding-left: 0;
+                padding-top: 0.75rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .team-member {
+                flex-direction: column;
+            }
+
+            .member-photo {
+                width: 100%;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .projects-grid,
+            .blog-grid {
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .service-item {
+                padding: 1.5rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Logo in top-left corner with parallax scroll -->
-  <div class="logo-container">
-    <img src="Logo_mojar_7-01 (1).png" alt="Logo" class="logo" id="mojarLogo">
-  </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <!-- OPCIÓN 1: Solo logo -->
+                <img src="imagenes/mojar_logo.png" alt="mojar">
+            </div>
+            <div class="nav-links">
+                <a href="#inicio" id="nav-home">Inicio</a>
+                <a href="#sobre-nosotros" id="nav-about">Sobre nosotros</a>
+                <a href="#proyectos" id="nav-projects">Proyectos</a>
+                <a href="#servicios" id="nav-services">Servicios</a>
+                <!-- <a href="#blog" id="nav-blog">Blog</a> -->
+                <a href="#contacto" id="nav-contact">Contacto</a>
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="es">ES</button>
+                    <button class="lang-btn" data-lang="gl">GL</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Centered Georgio image -->
-  <div class="container">
-    <img src="georgio.jpeg" alt="Georgio" class="georgio">
-  </div>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1 id="hero-title">mojar</h1>
+            <p id="hero-subtitle"></p>
+        </div>
 
-  <!-- Main mission text -->
-  <div class="text-content" id="our-mission">
-    <h1>Our Mission</h1>
-    <p>Stintino, a small village on the northern coast of Sardinia, was once known for its unique style of tuna fishing that involved the whole community. But like many places shaped by tradition, it has struggled under the weight of mass tourism. We were invited by Fabrizio Contini, a local activist from the NPO Absentia, to imagine how Stintino and its people might reclaim and renew their rich cultural heritage.</p>
+        <a href="#sobre-nosotros" class="scroll-arrow">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
+    </section>
 
-    <p>What we discovered was a place with a deep-rooted identity centred around food. Yet we also saw signs of decline: pasta shops permanently closed, not a single place to buy fresh fish, a lack of communal eating spaces, and no evident communal industry. Everything now depended on tourism, resulting in a particularly difficult winter period.</p>
+    <!-- About Section -->
+    <section id="sobre-nosotros">
+        <h2 class="section-title" id="about-title">Sobre nosotros</h2>
+        <div class="about-intro">
+            <p id="about-intro"></p>
+        </div>
 
-    <p>With food as our protagonist, we began our journey at the local library—unearthing old cookbooks that revealed a past diet shaped by wild plants and local ingenuity, such as the hyper-seasonal Casu Marzu, a cheese whose fermentation is aided by larvae. The cheese is consumed while the maggots are alive, because once they die, it’s considered spoiled.</p>
+        <div class="team" id="team-container"></div>
+    </section>
 
-    <p>Products like these are emblematic of the Blue Zones—places where populations have historically lived longer, healthier lives. They interest us precisely because they require collaboration with other species. Casu Marzu, for example, is banned for commercial sale by Italian authorities. A diet so popular amongst the health and wellness community, ironically cannot be commercialised exactly because it is considered dangerous to ones health. Yet for us, it’s in these products—those that rely on specific ecosystems and relationships—that we find new forms of heritage.</p>
+    <!-- Projects Section -->
+    <section id="proyectos">
+        <h2 class="section-title" id="projects-title">Proyectos</h2>
+        
+        <div class="projects-filters">
+            <button class="filter-btn active" data-filter="all" id="filter-all">Todos</button>
+            <button class="filter-btn" data-filter="eventos" id="filter-eventos">Eventos</button>
+            <button class="filter-btn" data-filter="investigacion" id="filter-investigacion">Investigación</button>
+            <button class="filter-btn" data-filter="talleres" id="filter-talleres">Talleres</button>
+            <button class="filter-btn" data-filter="produccion" id="filter-produccion">Producción artesanal</button>
+        </div>
 
-    <p>It is here that we imagine possible futures.</p>
-
-    <p>Our mission is to work closely with locals: cooking together, sharing stories, and learning hands-on techniques before they disappear. We’re building an archive of recipes and oral histories, documented not just in words but in gestures, scents, tastes, and traditions passed down through generations. Our goal is to preserve what matters most—what the community itself decides is worth saving—through collective conversation and shared meals.</p>
-
-    <p>The food we make is, therefore, an attempt to build thriving ecosystems where a sense of identity can flourish. Ironically, when we lose our collective identity through food—when we stop producing it in less regulated, communal ways, and industrial diets take over—people live shorter, unhealthier lives. By chance, our project offers an alternative future: one where investing in identity leads to something greater, where a healthier society becomes the natural consequence.</p>
-
-    <h2>How We Use Food as a Tool</h2>
-
-    <div class="mirto-wrapper">
-      <img src="mirtopng.png" alt="Mirto" class="mirto-background">
-      <p>In Stintino we began with Mirto, a plant traditionally used to make a sweet liquor. Through experimentation we found it could do much more: flavour meats, be preserved with salt into an aromatic sauce with umami qualities like ketchup, as a complementary salty topping for sweet desserts, or reduced into a syrup to accompany chicken liver pate, replacing the usual grape must. It’s a small example of how local ingredients, when reimagined, can bridge the past and future.</p>
-    </div>
-    <p>Just beyond the village, we came across the haunting remains of a salt marsh. Its stone ruins—once part of a thriving salt economy—now sit vacant, while tourists kite surf in its shadow. In homage to this forgotten industry, we collected seawater from the marsh and used traditional sun-evaporation methods to produce a salt unique to Stintino. What if the salt beds were revived sustainably, with the knowledge we have today? Could they offer the community a new identity rooted in ancestral knowledge?</p>
-
-    <p>The Tuna Museum of Stintino is another reminder of a past not yet fully let go, perhaps because letting go would leave an uncomfortable question behind: without tuna fishing, who are we?</p>
-
-    <p>During a tour, we learned about garum, a fermented sauce made from tuna offal once common in Roman cuisine and still remembered in Stintino—though not fondly. Locals recalled it as a foul, rotting substance. But garum has recently returned in modern gastronomy, appreciated for its deep umami flavor. We decided to experiment ourselves, eventually producing a refined version that could complement fish crudo and enrich sauces. Ironically, we later discovered garum was also made in our own hometown of Pontevedra.</p>
-
-    <p>Working with locals like Giorgio, we learned simple but powerful techniques. He showed us how to peel and marinate artichoke stalks—something most people discard—in lemon, olive oil, and salt. While cooking his family’s calamari pasta recipe, Giorgio spoke about the history of Stintino, his deep connection to food, and his sadness at how quickly food knowledge and diversity are disappearing.</p>
-
-    <p>These stories resonate far beyond Sardinia.</p>
-
-    <p>Our project is designed to be adaptable, rooted in any place where traditions are at risk. We believe in sustainability, not just ecologically but culturally. We aim to cultivate ecosystems—biological and social—that support not only human life, but all life.</p>
-
-    <p>Through storytelling, food, and the building of living archives, we aim not just to preserve what was, but to lay the foundations for what could be. We believe the future lies in remembering, and reimagining, the past.</p>
-  </div>
-
-  <!-- Horizontal gallery changed to PhotoSwipe -->
-  <div class="gallery" id="gallery">
-    <a href="Images for website/stintino sign.jpeg" data-pswp-width="967" data-pswp-height="2048">
-      <img src="Images for website/stintino sign.jpeg" alt="Image 1">
-    </a>
-    <a href="House of Georgio.jpg" data-pswp-width="4160" data-pswp-height="3120">
-      <img src="House of Georgio.jpg" alt="Image 2">
-    </a>
-    <a href="Garum.jpg" data-pswp-width="3120" data-pswp-height="4160">
-      <img src="Garum.jpg" alt="Image 3">
-    </a>
-    <a href="Images for website/hands salt.JPG" data-pswp-width="5616" data-pswp-height="3744">
-      <img src="Images for website/hands salt.JPG" alt="Image 6">
-    </a>
-    <a href="Images for website/salt in sun.jpeg" data-pswp-width="1200" data-pswp-height="1600">
-      <img src="Images for website/salt in sun.jpeg" alt="Image 7">
-    </a>
-    <a href="Images for website/garum package.JPG" data-pswp-width="2213" data-pswp-height="1677">
-      <img src="Images for website/garum package.JPG" alt="Image 4">
-    </a>
-    <a href="Images for website/salt package.JPG" data-pswp-width="2499" data-pswp-height="1855">
-      <img src="Images for website/salt package.JPG" alt="Image 8">
-    </a>
-    <a href="Images for website/garumsaltchristmas.JPG" data-pswp-width="5616" data-pswp-height="3744">
-      <img src="Images for website/garumsaltchristmas.JPG" alt="Image 9">
-    </a>
-    <a href="Images for website/making crowns.jpeg" data-pswp-width="5616" data-pswp-height="3744">
-      <img src="Images for website/making crowns.jpeg" alt="Image 18">
-    </a>
-    <a href="Images for website/boat front.jpeg" data-pswp-width="1600" data-pswp-height="1200">
-      <img src="Images for website/boat front.jpeg" alt="Image 10">
-    </a>
-    <a href="Images for website/georgio and edo.jpeg" data-pswp-width="1600" data-pswp-height="1200">
-      <img src="Images for website/georgio and edo.jpeg" alt="Image 11">
-    </a>
-        <a href="Images for website/edo fishing.jpeg" data-pswp-width="1600" data-pswp-height="1200">
-      <img src="Images for website/edo fishing.jpeg" alt="Image 12">
-    </a>
-    <a href="Images for website/cooking squid.jpeg" data-pswp-width="1200" data-pswp-height="1600">
-      <img src="Images for website/cooking squid.jpeg" alt="Image 13">
-    </a>
-    <a href="Images for website/dinner table buffet.jpeg" data-pswp-width="2048" data-pswp-height="1536">
-      <img src="Images for website/dinner table buffet.jpeg" alt="Image 14">
-    </a>
-    <a href="Images for website/pasta wine bottle.jpeg" data-pswp-width="1600" data-pswp-height="1200">
-      <img src="Images for website/pasta wine bottle.jpeg" alt="Image 15">
-    </a>
-    <a href="Images for website/making gnudi.jpeg" data-pswp-width="1200" data-pswp-height="1600">
-      <img src="Images for website/making gnudi.jpeg" alt="Image 16">
-    </a>
-    <a href="Images for website/stone table.jpeg" data-pswp-width="364" data-pswp-height="596">
-      <img src="Images for website/stone table.jpeg" alt="Image 17">
-    </a>XZ*
-  </div>
-
-  <script type="module">
-    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.min.js';
-
-    // Initialize PhotoSwipe for Main Gallery Only
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '#gallery', 
-      children: 'a',
-      pswpModule: () => import('https://unpkg.com/photoswipe'),
-    });
-    lightbox.init();
-  </script>
-  
-<!-- Main Gallery Container -->
-<div class="recipe-gallery-wrapper">
-
-  <!-- Gallery Controls: Close Button + Arrows -->
-  <div class="gallery-controls hidden">
-    <!-- Close Button -->
-    <button class="close-button">×</button>
-
-    <!-- Left Arrow -->
-    <button class="scroll-left">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M15 4 L6 12 L15 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-        <line x1="10" y1="12" x2="15" y2="12" stroke-width="1.5" stroke-linecap="round" />
-      </svg>
-    </button>
-
-    <!-- Right Arrow -->
-    <button class="scroll-right">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M9 4 L18 12 L9 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-        <line x1="9" y1="12" x2="14" y2="12" stroke-width="1.5" stroke-linecap="round" />
-      </svg>
-    </button>
-  </div>
-
-  <!-- Main Gallery -->
-<div class="recipe-gallery hidden">
-  <div class="recipe-gallery-inner">
-    <!-- Gallery Thumbnails -->
-    <div class="gallery-thumbnails">
-      <a href="Images for website/jada recipe 1.jpeg" data-size="1200x900">
-        <img src="Images for website/jada recipe 1.jpeg" alt="Image 1">
-      </a>
-      <a href="Images for website/jada recipe 2.jpeg" data-size="1200x900">
-        <img src="Images for website/jada recipe 2.jpeg" alt="Image 2">
-      </a>
-      <a href="Images for website/recipe 1.jpeg" data-size="1200x900">
-        <img src="Images for website/recipe 1.jpeg" alt="Image 2">
-      </a>
-      <a href="Images for website/recipe 2.jpeg" data-size="1200x900">
-        <img src="Images for website/recipe 2.jpeg" alt="Image 2">
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- Moved the magnifier here, outside of .recipe-gallery -->
-<div id="magnifier" class="magnifier"></div>
-
-<!-- Spring Icon -->
-<div class="spring hidden">
-  <img src="Images for website/spring.png" alt="Spring" class="spring-img flashing-icon">
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    let currentIndex = 0;
-
-    const scrollLeftBtn = document.querySelector('.scroll-left');
-    const scrollRightBtn = document.querySelector('.scroll-right');
-    const closeButton = document.querySelector('.close-button');
-    const galleryWrapper = document.querySelector('.recipe-gallery-wrapper');
-    const recipeGallery = document.querySelector('.recipe-gallery');
-    const galleryControls = document.querySelector('.gallery-controls');
-    const galleryImages = Array.from(document.querySelectorAll('.gallery-thumbnails img'));
-    const spring = document.querySelector('.spring');
-    const missionSection = document.getElementById('our-mission');
-    const totalImages = galleryImages.length;
-
-    // Hide all images except the first
-    function updateImage() {
-      galleryImages.forEach((img, i) => {
-        img.style.display = i === currentIndex ? 'block' : 'none';
-      });
-    }
-
-    updateImage(); // Initialize
-
-    scrollLeftBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateImage();
-      }
-    });
-
-    scrollRightBtn.addEventListener('click', () => {
-      if (currentIndex < totalImages - 1) {
-        currentIndex++;
-        updateImage();
-      }
-    });
-
-    // Open gallery
-    spring.addEventListener('mouseenter', () => {
-      recipeGallery.classList.remove('hidden');
-      recipeGallery.classList.add('show');
-      galleryControls.classList.remove('hidden');
-    });
-
-    // Close gallery
-    closeButton.addEventListener('click', () => {
-      recipeGallery.classList.remove('show');
-      recipeGallery.classList.add('hidden');
-      galleryControls.classList.add('hidden');
-    });
-
-    // Show spring icon when user scrolls to mission section
-    window.addEventListener('scroll', () => {
-      const missionTop = missionSection.getBoundingClientRect().top;
-      const viewportHeight = window.innerHeight;
-
-      if (missionTop <= viewportHeight * 0.5) {
-        spring.classList.remove('hidden');
-      } else {
-        spring.classList.add('hidden');
-      }
-    });
-  });
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-  const magnifier = document.getElementById('magnifier');
-  const galleryThumbnails = document.querySelectorAll('.gallery-thumbnails img');
-
-  galleryThumbnails.forEach(img => {
-    img.addEventListener('mousemove', (e) => {
-  if (img.style.display === 'none') return;
-
-  const rect = img.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  const naturalWidth = img.naturalWidth;
-  const naturalHeight = img.naturalHeight;
-
-  const displayedWidth = rect.width;
-  const displayedHeight = rect.height;
-
-  const zoomRatioX = naturalWidth / displayedWidth;
-  const zoomRatioY = naturalHeight / displayedHeight;
-
-  magnifier.style.display = 'block';
-  magnifier.style.left = `${e.clientX - 60}px`;
-  magnifier.style.top = `${e.clientY - 60}px`;
-  magnifier.style.backgroundImage = `url(${img.src})`;
-
-  magnifier.style.backgroundSize = `${naturalWidth}px ${naturalHeight}px`;
-  magnifier.style.backgroundPosition = `${-x * zoomRatioX + 60}px ${-y * zoomRatioY + 60}px`;
-});
+        <div class="projects-grid" id="projectsContainer">
+            <div class="projects-column column-1"></div>
+            <div class="projects-column column-2"></div>
+            <div class="projects-column column-3"></div>
+            <div class="projects-column column-4"></div>
+        </div>
+    </section>
 
 
-    img.addEventListener('mouseleave', () => {
-      magnifier.style.display = 'none';
-    });
-  });
-});
-</script>
+    <!-- Services Section -->
+    <section id="servicios">
+        <h2 class="section-title" id="services-title">Servicios</h2>
+        <div class="services-grid" id="services-container"></div>
+    </section>
 
 
+    <!-- Blog Section -->
+    <!--
+    <section id="blog">
+        <h2 class="section-title" id="blog-title">Blog</h2>
+        <div class="blog-grid" id="blog-container"></div>
+    </section>
+    -->
 
+    <!-- Contact Section -->
+    <section id="contacto">
+        <h2 class="section-title" id="contact-title">Contacto</h2>
+        
+        <div class="contact-content">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name" id="form-name-label">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="email" id="form-email-label">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="subject" id="form-subject-label">Asunto</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" id="form-message-label">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="form-submit">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-nosotros">Sobre nosotros</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#servicios">Servicios</a>
+                <!-- <a href="#blog">Blog</a> -->
+                <a href="#contacto">Contacto</a>
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="privacidad.html">Privacidad</a>
+            </div>
+            <p class="copyright">© 2026 Mojar. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- CONTENIDO EDITABLE - Carga desde contenido.js -->
+    <script src="contenido.js"></script>
+    
+    <script>
+        // Cargar contenido desde contenido.js
+        function cargarContenido(lang) {
+            const content = CONTENIDO[lang];
+            
+            // Hero
+            document.getElementById('hero-subtitle').textContent = content.hero.subtitle;
+            
+            // Navigation
+            document.getElementById('nav-home').textContent = content.nav.home;
+            document.getElementById('nav-about').textContent = content.nav.about;
+            document.getElementById('nav-projects').textContent = content.nav.projects;
+            document.getElementById('nav-services').textContent = content.nav.services;
+            /* document.getElementById('nav-blog').textContent = content.nav.blog; */
+            document.getElementById('nav-contact').textContent = content.nav.contact;
+            
+            // About
+            document.getElementById('about-title').textContent = content.about.title;
+            document.getElementById('about-intro').textContent = content.about.intro;
+            
+            // Team
+            const teamContainer = document.getElementById('team-container');
+            teamContainer.innerHTML = content.about.team.map(member => `
+                <div class="team-member">
+                    <div class="member-photo">
+                        ${member.photo ? `<img src="${member.photo}" alt="${member.name}">` : `[Foto de ${member.name}]`}
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">${member.name}</h3>
+                        <p class="member-role">${member.role}</p>
+                        <p class="member-description">${member.description}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Projects
+            document.getElementById('projects-title').textContent = content.projects.title;
+            document.getElementById('filter-all').textContent = content.projects.filters.all;
+            document.getElementById('filter-eventos').textContent = content.projects.filters.eventos;
+            document.getElementById('filter-investigacion').textContent = content.projects.filters.investigacion;
+            document.getElementById('filter-talleres').textContent = content.projects.filters.talleres;
+            document.getElementById('filter-produccion').textContent = content.projects.filters.produccion;
+            
+            // Distribuir proyectos en columnas
+            const container = document.getElementById('projectsContainer');
+
+            container.innerHTML = content.projects.items.map(project => `
+            <a href="${project.url}" class="project-card" data-tags="${project.tags.join(' ')}">
+                <div class="project-image">
+                    ${project.image ? `<img src="${project.image}" alt="${project.title}">` : `[Imagen: ${project.title}]`}
+                </div>
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+            </a>
+            `).join('');
+            
+            // Services
+            document.getElementById('services-title').textContent = content.services.title;
+            document.getElementById('services-container').innerHTML = content.services.items.map(service => `
+                <div class="service-item">
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-description">${service.description}</p>
+                </div>
+            `).join('');
+            
+            /*// Blog
+            document.getElementById('blog-title').textContent = content.blog.title;
+            document.getElementById('blog-container').innerHTML = content.blog.items.map(post => `
+                <a href="${post.url}" class="blog-card">
+                    ${post.image ? `<div class="blog-image"><img src="${post.image}" alt="${post.title}"></div>` : ''}
+                <p class="blog-date">${post.date}</p>
+                <h3 class="blog-title">${post.title}</h3>
+                <p class="blog-excerpt">${post.excerpt}</p>
+                </a>
+            `).join('');*/
+            
+            // Contact
+            document.getElementById('contact-title').textContent = content.contact.title;
+            document.getElementById('form-name-label').textContent = content.contact.form.name;
+            document.getElementById('form-email-label').textContent = content.contact.form.email;
+            document.getElementById('form-subject-label').textContent = content.contact.form.subject;
+            document.getElementById('form-message-label').textContent = content.contact.form.message;
+            document.getElementById('form-submit').textContent = content.contact.form.submit;
+            
+            // Footer
+            document.getElementById('footer-home').textContent = content.nav.home;
+            document.getElementById('footer-about').textContent = content.nav.about;
+            document.getElementById('footer-projects').textContent = content.nav.projects;
+            document.getElementById('footer-services').textContent = content.nav.services;
+            /* document.getElementById('footer-blog').textContent = content.nav.blog; */
+            document.getElementById('footer-contact').textContent = content.nav.contact;
+            document.getElementById('footer-rights').textContent = content.footer.rights;
+        }
+
+        // Language selector
+        const langBtns = document.querySelectorAll('.lang-btn');
+        let currentLang = 'es';
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentLang = btn.dataset.lang;
+                cargarContenido(currentLang);
+            });
+        });
+
+        // Projects filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+
+                const filter = btn.dataset.filter;
+
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const projects = document.querySelectorAll('.project-card');
+
+                projects.forEach(project => {
+
+                    const tags = project.dataset.tags.split(' ');
+
+                    if (filter === 'all' || tags.includes(filter)) {
+                        project.classList.remove('hidden');
+                    } else {
+                        project.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Formulario enviado! (Configura tu backend aquí)');
+        });
+
+        // Cargar contenido inicial
+        cargarContenido('es');
+    </script>
 </body>
 </html>
