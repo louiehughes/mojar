@@ -888,7 +888,6 @@
     </section>
     -->
 
-    <!-- Contact Section -->
     <section id="contacto">
         <h2 class="section-title" id="contact-title">Contacto</h2>
     
@@ -896,12 +895,8 @@
     
             <!-- Columna izquierda: texto -->
             <div class="contact-left">
-                <p class="contact-tagline">
-                    Nos encantan las ideas nuevas.
-                </p>
-                <p class="contact-body">
-                    Si tienes un proyecto entre manos, se te ha ocurrido algo que podríamos hacer juntos o simplemente quieres saber más sobre lo que hacemos, escríbenos. Nos gustan las colaboraciones que nacen de una conversación.
-                </p>
+                <p class="contact-tagline" id="contact-tagline"></p>
+                <p class="contact-body" id="contact-body"></p>
             </div>
     
             <!-- Columna derecha: datos -->
@@ -909,7 +904,6 @@
                 <div class="contact-divider"></div>
                 <div class="contact-items">
     
-                    <!-- Email -->
                     <a href="mailto:mojar.buenasmaneras@gmail.com" class="contact-item">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24">
@@ -918,12 +912,11 @@
                             </svg>
                         </div>
                         <div>
-                            <span class="contact-label">Email</span>
+                            <span class="contact-label" id="contact-label-email"></span>
                             <span class="contact-value">mojar.buenasmaneras@gmail.com</span>
                         </div>
                     </a>
     
-                    <!-- WhatsApp -->
                     <a href="https://wa.me/34605791995" class="contact-item" target="_blank" rel="noopener">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24">
@@ -931,12 +924,11 @@
                             </svg>
                         </div>
                         <div>
-                            <span class="contact-label">WhatsApp</span>
-                            <span class="contact-value">+34 605791995</span>
+                            <span class="contact-label" id="contact-label-whatsapp"></span>
+                            <span class="contact-value">+34 605 79 19 95</span>
                         </div>
                     </a>
     
-                    <!-- Instagram -->
                     <a href="https://instagram.com/mmmojar" class="contact-item" target="_blank" rel="noopener">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24">
@@ -946,7 +938,7 @@
                             </svg>
                         </div>
                         <div>
-                            <span class="contact-label">Instagram</span>
+                            <span class="contact-label" id="contact-label-instagram"></span>
                             <span class="contact-value">@mmmojar</span>
                         </div>
                     </a>
@@ -956,6 +948,7 @@
     
         </div>
     </section>
+    
     <!-- Contact Form -->
     <!--
     <section id="contacto">
@@ -1085,12 +1078,12 @@
             `).join('');*/
             
             // Contact
-            //document.getElementById('contact-title').textContent = content.contact.title;
-            //document.getElementById('form-name-label').textContent = content.contact.form.name;
-            //document.getElementById('form-email-label').textContent = content.contact.form.email;
-            //document.getElementById('form-subject-label').textContent = content.contact.form.subject;
-            //document.getElementById('form-message-label').textContent = content.contact.form.message;
-            //document.getElementById('form-submit').textContent = content.contact.form.submit;
+            document.getElementById('contact-title').textContent = content.contact.title;
+            document.getElementById('contact-tagline').textContent = content.contact.tagline;
+            document.getElementById('contact-body').textContent = content.contact.body;
+            document.getElementById('contact-label-email').textContent = content.contact.labels.email;
+            document.getElementById('contact-label-whatsapp').textContent = content.contact.labels.whatsapp;
+            document.getElementById('contact-label-instagram').textContent = content.contact.labels.instagram;
             
             // Footer
             document.getElementById('footer-home').textContent = content.nav.home;
