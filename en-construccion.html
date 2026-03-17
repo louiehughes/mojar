@@ -23,7 +23,6 @@
             flex-direction: column;
         }
 
-        /* Nav igual que la web principal */
         nav {
             position: fixed;
             top: 0;
@@ -47,7 +46,28 @@
             width: auto;
         }
 
-        /* Main */
+        .lang-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        .lang-btn.active {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .lang-btn:hover { color: var(--black); }
+
         main {
             flex: 1;
             display: flex;
@@ -114,7 +134,6 @@
             color: var(--white);
         }
 
-        /* Footer */
         footer {
             border-top: 1px solid var(--black);
             padding: 1.5rem 4rem;
@@ -127,7 +146,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav { padding: 0.75rem 1.5rem; }
             main { padding: 100px 1.5rem 3rem; }
@@ -140,27 +158,90 @@
     <nav>
         <div class="nav-content">
             <div class="logo">
-                <a href="/"><img src="imagenes/mojar_logo.png" alt="mojar"></a>
+                <a href="https://www.mojar.es"><img src="imagenes/mojar_logo.png" alt="mojar"></a>
+            </div>
+            <div class="lang-selector">
+                <button class="lang-btn" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="gl">GL</button>
+                <button class="lang-btn" data-lang="en">EN</button>
             </div>
         </div>
     </nav>
 
     <main>
         <div class="container">
-            <span class="label">Próximamente</span>
-            <h1 class="title">Estamos trabajando<br>en esto</h1>
+            <span class="label" id="label"></span>
+            <h1 class="title" id="title"></h1>
             <div class="divider"></div>
-            <p class="subtitle">
-                Esta sección está en desarrollo.<br>
-                Vuelve pronto, que estamos cocinando algo bueno.
-            </p>
-            <a href="https://www.mojar.es" class="back-link">Volver al inicio</a>
+            <p class="subtitle" id="subtitle"></p>
+            <a href="#" class="back-link" id="back-link"></a>
         </div>
     </main>
 
     <footer>
-        <p class="copyright">© 2026 Mojar. Todos los derechos reservados.</p>
+        <p class="copyright" id="copyright"></p>
     </footer>
+
+    <script>
+        const CONTENIDO = {
+            es: {
+                label: 'Próximamente',
+                title: 'Estamos trabajando<br>en esto',
+                subtitle: 'Esta sección está en desarrollo.<br>Vuelve pronto, que estamos cocinando algo bueno.',
+                backLink: 'Volver al inicio',
+                copyright: '© 2026 Mojar. Todos los derechos reservados.'
+            },
+            gl: {
+                label: 'En breve',
+                title: 'Estamos traballando<br>isto',
+                subtitle: 'Esta sección está en desenvolvemento.<br>Volve pronto, que estamos a cociñar algo bo.',
+                backLink: 'Volver ao inicio',
+                copyright: '© 2026 Mojar. Todos os dereitos reservados.'
+            },
+            en: {
+                label: 'Coming soon',
+                title: 'We\'re working<br>on this',
+                subtitle: 'This section is under development.<br>Come back soon — we\'re cooking something good.',
+                backLink: 'Back to home',
+                copyright: '© 2026 Mojar. All rights reserved.'
+            }
+        };
+
+        function cargarContenido(lang) {
+            const c = CONTENIDO[lang];
+            document.getElementById('label').textContent = c.label;
+            document.getElementById('title').innerHTML = c.title;
+            document.getElementById('subtitle').innerHTML = c.subtitle;
+            document.getElementById('back-link').textContent = c.backLink;
+            document.getElementById('back-link').href = `https://www.mojar.es?lang=${lang}`;
+            document.getElementById('copyright').textContent = c.copyright;
+            document.documentElement.lang = lang;
+        }
+
+        // Detectar idioma desde URL
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentLang = urlParams.get('lang') || 'es';
+        if (!['es', 'gl', 'en'].includes(currentLang)) currentLang = 'es';
+
+        // Botones de idioma
+        const langBtns = document.querySelectorAll('.lang-btn');
+
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === currentLang) btn.classList.add('active');
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                const url = new URL(window.location);
+                url.searchParams.set('lang', lang);
+                window.history.pushState({}, '', url);
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentLang = lang;
+                cargarContenido(lang);
+            });
+        });
+
+        cargarContenido(currentLang);
+    </script>
 
 </body>
 </html>

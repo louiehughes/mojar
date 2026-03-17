@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="alternate" hreflang="es" href="https://www.mojar.es?lang=es">
+    <link rel="alternate" hreflang="gl" href="https://www.mojar.es?lang=gl">
+    <link rel="alternate" hreflang="en" href="https://www.mojar.es?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://www.mojar.es">
     <title>Mojar - Estudio Gastronómico</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -1097,13 +1101,31 @@
 
         // Language selector
         const langBtns = document.querySelectorAll('.lang-btn');
-        let currentLang = 'es';
+
+        // Detectar idioma desde URL o usar español por defecto
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentLang = urlParams.get('lang') || 'es';
+
+        // Asegurarse de que el idioma existe
+        if (!['es', 'gl', 'en'].includes(currentLang)) currentLang = 'es';
+
+        // Marcar botón activo
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === currentLang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
 
         langBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+                // Cambiar URL sin recargar la página
+                const url = new URL(window.location);
+                url.searchParams.set('lang', lang);
+                window.history.pushState({}, '', url);
+
                 langBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                currentLang = btn.dataset.lang;
+                currentLang = lang;
                 cargarContenido(currentLang);
             });
         });
