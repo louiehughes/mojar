@@ -138,7 +138,7 @@
             position: absolute;
             bottom: 4rem;
             left: 4rem;
-
+            right: 4rem;
             max-width: 800px;
             z-index: 2;
         }
@@ -330,14 +330,13 @@
 
         @media (max-width: 1024px) {
             .projects-grid {
-                column-count: 2;
-            }
+                grid-template-columns: repeat(2, 1fr);
+            }       
         }
-
 
         @media (max-width: 600px) {
             .projects-grid {
-                column-count: 1;
+                grid-template-columns: 1fr;
             }
         }
         .project-card {
@@ -587,6 +586,16 @@
                 height: 70vh;
             }
 
+            .hero {
+                margin-top: 110px; /* compensa el nav apilado */
+            }
+
+            .hero-content {
+                bottom: 2rem;
+                left: 1.5rem;
+                right: 1.5rem;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -626,10 +635,16 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
+            .hero {
+                margin-top: 120px;
+                height: 60vh;
             }
 
+            .hero-content {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1.5rem;
+            }
             .section-title {
                 font-size: 1.75rem;
             }
