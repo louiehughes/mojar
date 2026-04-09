@@ -30,13 +30,13 @@ const CONTENIDO = {
         
         about: {
             title: 'Sobre nosotros',
-            intro: 'mojar es un colectivo gastronómico de investigación y creación formado por Pilar y Louie. Trabajamos con comunidades, productos locales y memoria alimentaria para crear eventos, talleres y proyectos artísticos que exploran nuestra relación con la comida. Desde Galicia, pero sin límites geográficos, documentamos tradiciones culinarias en riesgo de desaparecer, explorando y diseñando nuevas formas de entender el patrimonio gastronómico.',
+            intro: 'mojar es un dúo gastronómico de investigación y creación formado por Pilar y Louie. Trabajamos con comunidades, productos locales y memoria alimentaria para crear eventos, talleres y proyectos artísticos que exploran la manera en la que nos relacionamos con la comida. Desde Galicia, pero sin límites geográficos, documentamos tradiciones culinarias en riesgo de desaparecer, explorando y diseñando nuevas formas de entender el patrimonio gastronómico.',
             team: [
                 {
                     name: 'Pilar',
                     photo: 'imagenes/pilar.jpg',
                     role: 'Diseño de proyectos · Investigación de campo',
-                    description: 'Pilar se encarga de la atención al público, el diseño de proyectos y la investigación de campo. Su enfoque está en construir puentes entre las ideas y las personas, creando experiencias que conecten lo gastronómico con lo social y lo cultural.'
+                    description: 'Pilar se encarga del diseño de proyectos y la investigación de campo. Su enfoque está en construir puentes entre las ideas y las personas, creando experiencias que conecten lo gastronómico con lo social y lo cultural.'
                 },
                 {
                     name: 'Louie',
@@ -77,14 +77,14 @@ const CONTENIDO = {
                     url: 'en-construccion.html',
                     image: 'imagenes/proyectos/talleres-pasta.jpg',
                     tags: ['talleres'],
-                    description: 'Estos talleres se llevan a cabo en diversos lugares y con distintas recetas. Tienen la finalidad de acercar a prácticas sencillas buscando una conexión con lo manual y rudimentario. Suponen una aproximación lenta a los procesos de transformación.'
+                    description: 'Estos talleres tienen la finalidad de acercar a prácticas sencillas buscando una conexión con lo manual y rudimentario. Suponen una aproximación lenta a los procesos de transformación.'
                 },
                 {
                     title: 'Diseño de una tabla',
                     url: 'en-construccion.html',
                     image: 'imagenes/proyectos/gnocchi.jpg',
                     tags: ['produccion'],
-                    description: 'Diseño y producción de esta tabla para gnocchi con madera recuperada de forma artesanal. Ejercicio de crear lo que necesitamos para cocinar. Documentación del proceso.'
+                    description: 'Diseño y producción de forma artesanal de tablas para la cocina con madera recuperada. Ejercicio de crear lo que necesitamos para cocinar. Documentación del proceso.'
                 },
                 {
                     title: 'G(h)osts',
@@ -223,13 +223,13 @@ const CONTENIDO = {
 
         about: {
             title: 'Sobre nós',
-            intro: 'mojar é un colectivo gastronómico de investigación e creación formado por Pilar e Louie. Traballamos con comunidades, produtos locais e memoria alimentaria para crear eventos, obradoiros e proxectos artísticos que exploran a nosa relación coa comida. Desde Galicia, pero sen límites xeográficos, documentamos tradicións culinarias en risco de desaparecer, explorando e deseñando novas formas de entender o patrimonio gastronómico.',
+            intro: 'mojar é un dúo gastronómico de investigación e creación formado por Pilar e Louie. Traballamos con comunidades, produtos locais e memoria alimentaria para crear eventos, obradoiros e proxectos artísticos que exploran a maneira na que nos relacionamos coa comida. Desde Galicia, pero sen límites xeográficos, documentamos tradicións culinarias en risco de desaparecer, explorando e deseñando novas formas de entender o patrimonio gastronómico.',
             team: [
                 {
                     name: 'Pilar',
                     photo: 'imagenes/pilar.jpg',
                     role: 'Deseño de proxectos · Investigación de campo',
-                    description: 'Pilar encárgase da atención ao público, o deseño de proxectos e a investigación de campo. O seu enfoque está en construír pontes entre as ideas e as persoas, creando experiencias que conecten o gastronómico co social e o cultural.'
+                    description: 'Pilar encárgase do deseño de proxectos e a investigación de campo. O seu enfoque está en construír pontes entre as ideas e as persoas, creando experiencias que conecten o gastronómico co social e o cultural.'
                 },
                 {
                     name: 'Louie',
@@ -270,14 +270,14 @@ const CONTENIDO = {
                     url: 'en-construccion.html?lang=gl',
                     image: 'imagenes/proyectos/talleres-pasta.jpg',
                     tags: ['talleres'],
-                    description: 'Estes obradoiros lévanse a cabo en diversos lugares e con distintas receitas. Teñen a finalidade de achegar a prácticas sinxelas buscando unha conexión co manual e rudimentario. Supoñen unha aproximación lenta aos procesos de transformación.'
+                    description: 'Estes obradoiros teñen a finalidade de achegar a prácticas sinxelas buscando unha conexión co manual e rudimentario. Supoñen unha aproximación lenta aos procesos de transformación.'
                 },
                 {
                     title: 'Deseño dunha táboa',
                     url: 'en-construccion.html?lang=gl',
                     image: 'imagenes/proyectos/gnocchi.jpg',
                     tags: ['produccion'],
-                    description: 'Deseño e produción desta táboa para gnocchi con madeira recuperada de forma artesanal. Exercicio de crear o que necesitamos para cociñar. Documentación do proceso.'
+                    description: 'Deseño e produción de forma artesanal de táboas para a cociña con madeira recuperada. Exercicio de crear o que necesitamos para cociñar. Documentación do proceso.'
                 },
                 {
                     title: 'G(h)osts',
